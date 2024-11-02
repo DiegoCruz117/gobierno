@@ -1,0 +1,152 @@
+/* Estilos Generales */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    scroll-behavior: smooth;
+}
+
+.ancho {
+    width: 90%;
+    max-width: 1300px;
+    margin: auto;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #007BFF;
+    font-size: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+.header {
+    background-color: #007BFF;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.icono-email {
+    width: 30px;
+}
+
+.info-usuario {
+    font-size: 16px;
+    color: white;
+}
+
+/* Estilo para el menú de navegación */
+.menu {
+    display: flex;
+    justify-content: center;
+    background-color: #f4f4f9;
+    padding: 10px 0;
+}
+
+.nav-button {
+    background-color: #007BFF; /* Color de fondo */
+    color: #ffffff; /* Color del texto */
+    padding: 10px 15px;
+    text-decoration: none;
+    margin: 0 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para profundidad */
+    transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
+}
+
+.nav-button:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el mouse */
+    transform: translateY(-2px); /* Efecto de elevación */
+}
+
+.nav-button.active {
+    background-color: #0056b3; /* Color para el botón activo */
+}
+
+/* Sección de Noticias */
+.noticias {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.noticia {
+    margin-bottom: 20px;
+}
+
+.noticia h3 {
+    display: flex;
+    align-items: center;
+    color: #007BFF;
+    font-size: 22px;
+}
+
+.noticia p {
+    color: #555;
+    margin-top: 5px;
+}
+
+.noticia i {
+    margin-right: 10px;
+}
+
+.btn_detalle {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn_detalle:hover {
+    background-color: #0056b3;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #007BFF;
+    color: white;
+}
+
+.footer .social-icons a {
+    margin: 0 10px;
+    color: white;
+    font-size: 20px;
+}
+
+.footer .social-icons a:hover {
+    color: #f4f4f9;
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    .menu {
+        flex-direction: column;
+    }
+
+    .noticias {
+        padding: 15px;
+    }
+
+    .btn_detalle {
+        padding: 8px 15px;
+    }
+}
