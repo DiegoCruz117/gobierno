@@ -19,7 +19,7 @@
             <h2>Plataforma de Apoyo Gubernamental</h2>
         </div>
         <div class="header-right">
-            <a href="login.php" class="btn-login">Iniciar Sesión</a>
+            <h2 class="info-usuario"><?php echo htmlspecialchars($usuario); ?></h2>
         </div>
     </div>
 </div>
