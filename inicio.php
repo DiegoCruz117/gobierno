@@ -1,7 +1,3 @@
-<?php
-// require "seguridad.php";
-// $usuario = $_SESSION['username'];
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>

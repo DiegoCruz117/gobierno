@@ -1,34 +1,44 @@
-<?php
-session_start();
-require 'conexion.php'; // Asegúrate de que tu conexión esté correctamente configurada
+<?php 
 
-// Recibir credenciales del formulario de login
+require "conexion.php";
+
 $correo = $_POST['correo'];
 $contrasena = $_POST['contrasena'];
 
-// Consulta para validar usuario y obtener rol
-$query = "SELECT * FROM registro WHERE correo = '$correo' AND contrasena = '$contrasena'";
-$result = mysqli_query($conectar, $query);
-$user = mysqli_fetch_assoc($result);
+// Consulta preparada para evitar inyecciones SQL
+$stmt = $conectar->prepare("SELECT * FROM registro WHERE correo = ? LIMIT 1");
+$stmt->bind_param("s", $correo);
+$stmt->execute();
+$resultado = $stmt->get_result();
 
-if ($user) {
-    // Guardar estado de autenticación y rol en la sesión
-    $_SESSION['autentificado'] = "SI";
-    $_SESSION['username'] = $user['correo'];
-    $_SESSION['rol'] = $user['rol']; // Asumiendo que el rol está almacenado en la columna 'rol'
-
-    // Redirigir según el rol
-    if ($user['rol'] === 'administrador') {
-        header("Location: admin_dashboard.php");
-    } elseif ($user['rol'] === 'jefe') {
-        header("Location: jefe_dashboard.php");
+if ($resultado->num_rows > 0) {
+    $fila = $resultado->fetch_assoc();
+    if (password_verify($contrasena, $fila['contrasena'])) {
+        session_start();
+        $_SESSION['username'] = $correo;
+        $_SESSION["autentificado"] = "SI";
+        header("Location: principal.php");
+        exit();
     } else {
-        header("Location: usuario_dashboard.php");
+        // Contraseña incorrecta
+        echo '
+        <script>
+            alert("Contraseña incorrecta. Inténtalo de nuevo.");
+            location.href = "login.php?errorusuario=SI";
+        </script>
+        ';
     }
-    exit();
 } else {
-    // Redirigir a login con error
-    header("Location: login.php?errorusuario=SI");
-    exit();
+    // El correo no está registrado
+    echo '
+    <script>
+        alert("El correo electrónico no está registrado.");
+        location.href = "login.php?errorusuario=SI";
+    </script>
+    ';
 }
+
+$stmt->close();
+mysqli_close($conectar);
+
 ?>

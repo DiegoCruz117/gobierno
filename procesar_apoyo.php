@@ -16,8 +16,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nivel_educativo = mysqli_real_escape_string($conectar, $_POST['nivel_educativo']);
     $tipo_vivienda = mysqli_real_escape_string($conectar, $_POST['tipo_vivienda']);
     $descripcion = mysqli_real_escape_string($conectar, $_POST['descripcion']);
-    
-    // Campo nuevo para tipo de apoyo
     $tipo_apoyo = mysqli_real_escape_string($conectar, $_POST['tipo_apoyo']);
 
     // Requisitos (checkboxes)
@@ -31,40 +29,75 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $consentimiento = isset($_POST['consentimiento']) ? 1 : 0;
     $terminos = isset($_POST['terminos']) ? 1 : 0;
 
-    // Manejo de archivos
-    $identificacion = $_FILES['identificacion']['name'];
-    $comprobante_domicilio = $_FILES['comprobante_domicilio']['name'];
-    $informe_danos = $_FILES['informe_danos']['name'];
-    $documentacion_terreno = $_FILES['documentacion_terreno']['name'];
+    // Validar que si se marca mayor de edad, la fecha de nacimiento sea válida
+    if ($mayor_edad) {
+        $fecha_nacimiento_date = new DateTime($fecha_nacimiento);
+        $fecha_actual = new DateTime();
+        $edad = $fecha_actual->diff($fecha_nacimiento_date)->y;
+
+        if ($edad < 18) {
+            echo "<script>
+                    alert('Debes ser mayor de 18 años de edad.');
+                    window.history.go(-1);
+                  </script>";
+            exit;
+        }
+    }
+
+    // Validar el campo de teléfono
+    if (!preg_match('/^[0-9]{10}$/', $telefono)) {
+        echo "<script>
+                alert('El teléfono debe contener solo números y tener exactamente 10 dígitos.');
+                window.history.go(-1);
+              </script>";
+        exit;
+    }
 
     // Directorio de subida
     $target_dir = "uploads/";
 
-    // Subir archivos
-    $target_file_identificacion = $target_dir . basename($identificacion);
-    move_uploaded_file($_FILES["identificacion"]["tmp_name"], $target_file_identificacion);
+    // Validación y subida de archivos PDF (máx. 2 MB)
+    $archivos = ['identificacion', 'comprobante_domicilio', 'informe_danos', 'documentacion_terreno'];
+    $archivos_subidos = [];
 
-    $target_file_comprobante = $target_dir . basename($comprobante_domicilio);
-    move_uploaded_file($_FILES["comprobante_domicilio"]["tmp_name"], $target_file_comprobante);
+    foreach ($archivos as $archivo) {
+        if (!empty($_FILES[$archivo]['name'])) {
+            $archivo_nombre = $_FILES[$archivo]['name'];
+            $archivo_tipo = $_FILES[$archivo]['type'];
+            $archivo_peso = $_FILES[$archivo]['size'];
+            $archivo_temporal = $_FILES[$archivo]['tmp_name'];
+            $ruta_final = $target_dir . basename($archivo_nombre);
 
-    if (!empty($informe_danos)) {
-        $target_file_informe_danos = $target_dir . basename($informe_danos);
-        move_uploaded_file($_FILES["informe_danos"]["tmp_name"], $target_file_informe_danos);
-    }
+            // Validación de formato y tamaño
+            if ($archivo_tipo != 'application/pdf') {
+                echo "<script>
+                        alert('El archivo $archivo_nombre debe ser un PDF.');
+                        window.history.go(-1);
+                      </script>";
+                exit;
+            }
+            if ($archivo_peso > 2000000) { // 2MB
+                echo "<script>
+                        alert('El archivo $archivo_nombre supera el tamaño permitido de 2MB.');
+                        window.history.go(-1);
+                      </script>";
+                exit;
+            }
 
-    if (!empty($documentacion_terreno)) {
-        $target_file_documentacion_terreno = $target_dir . basename($documentacion_terreno);
-        move_uploaded_file($_FILES["documentacion_terreno"]["tmp_name"], $target_file_documentacion_terreno);
+            // Subir archivo
+            move_uploaded_file($archivo_temporal, $ruta_final);
+            $archivos_subidos[$archivo] = $archivo_nombre; // Guarda el nombre para la BD
+        }
     }
 
     // Insertar los datos en la base de datos
-    $sql = "INSERT INTO solicitudes_apoyo (nombre, fecha_nacimiento, telefono, email, direccion, estado_civil, ocupacion, ingresos, seguro_medico, nivel_educativo, tipo_vivienda, descripcion, mayor_edad, residencia, nacionalidad, ingresos_menores, identificacion_vigente, identificacion, comprobante_domicilio, informe_danos, documentacion_terreno, consentimiento, terminos, tipo_apoyo) 
-            VALUES ('$nombre', '$fecha_nacimiento', '$telefono', '$email', '$direccion', '$estado_civil', '$ocupacion', '$ingresos', '$seguro_medico', '$nivel_educativo', '$tipo_vivienda', '$descripcion', '$mayor_edad', '$residencia', '$nacionalidad', '$ingresos_menores', '$identificacion_vigente', '$identificacion', '$comprobante_domicilio', '$informe_danos', '$documentacion_terreno', '$consentimiento', '$terminos', '$tipo_apoyo')";
+    $sql = "INSERT INTO solicitudes_apoyo (nombre, fecha_nacimiento, telefono, email, direccion, estado_civil, ocupacion, ingresos, seguro_medico, nivel_educativo, tipo_vivienda, descripcion, mayor_edad, residencia, nacionalidad, ingresos_menores, identificacion_vigente, identificacion, comprobante_domicilio, informe_danos, documentacion_terreno, consentimiento, terminos, tipo_apoyo)
+            VALUES ('$nombre', '$fecha_nacimiento', '$telefono', '$email', '$direccion', '$estado_civil', '$ocupacion', '$ingresos', '$seguro_medico', '$nivel_educativo', '$tipo_vivienda', '$descripcion', '$mayor_edad', '$residencia', '$nacionalidad', '$ingresos_menores', '$identificacion_vigente', '{$archivos_subidos['identificacion']}', '{$archivos_subidos['comprobante_domicilio']}', '{$archivos_subidos['informe_danos']}', '{$archivos_subidos['documentacion_terreno']}', '$consentimiento', '$terminos', '$tipo_apoyo')";
 
     if ($conectar->query($sql) === TRUE) {
         // Redirigir a apoyos.php después de insertar los datos
         header("Location: apoyos.php");
-        exit(); // Asegura que el script se detenga después de la redirección
+        exit();
     } else {
         echo "Error: " . $sql . "<br>" . $conectar->error;
     }

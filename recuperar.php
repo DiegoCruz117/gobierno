@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Verificar si el correo y la respuesta son correctos
     $consulta = "SELECT * FROM registro WHERE correo = ? AND pregunta = ? AND respuesta = ?";
     $stmt = $conectar->prepare($consulta);
-    
+
     if (!$stmt) {
         die("Error en la preparación de la consulta: " . $conectar->error);
     }
