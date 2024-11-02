@@ -71,3 +71,7 @@ p {
     border-radius: 5px;
     transition: background-color 0.3s, transform 0.2s;
   }
+
+  .necesario{
+    color: rgb(255, 0, 0);
+}
