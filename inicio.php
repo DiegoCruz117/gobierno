@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -13,13 +16,20 @@
 <div class="header ancho">
     <div class="header-content">
         <div class="header-left">
-            <img src="imagenes/icono_email_naranja.png" alt="Icono de Email" class="icono-email">
         </div>
         <div class="header-center">
             <h2>Plataforma de Apoyo Gubernamental</h2>
         </div>
         <div class="header-right">
-           <!-- <h2 class="info-usuario"><?php echo htmlspecialchars($usuario); ?></h2> -->
+            <?php if (!isset($_SESSION['username'])): // Si no hay usuario logueado ?>
+                <a href="login.php" class="btn-login">
+                    <i class="fas fa-sign-in-alt"></i> 
+                </a>
+            <?php else: // Si hay usuario logueado ?>
+                <a href="salir.php" class="btn-logout">
+                    <i class="fas fa-sign-out-alt"></i> 
+                </a>
+            <?php endif; ?>
         </div>
     </div>
 </div>
@@ -30,28 +40,13 @@
   <div class="logo-section">
     <img class="logo" src="imagenes/logo_merida.png" alt="Logo de Mérida">
   </div>
-  <nav class="menu">
-    <a href="inicio.php" class="nav-button">Inicio</a>
-    <a href="apoyos.php" class="nav-button">Apoyos</a>
-    <a href="programas.php" class="nav-button">Programas</a>
-    <a href="noticias.php" class="nav-button">Noticias</a>
-    <a href="quejas_sugerencias.php" class="nav-button">Quejas y Sugerencias</a>
-    <a href="encargado_apoyos.php" class="nav-button">Encargado de Apoyos</a>
-    <a href="principal.php" class="nav-button">Administrar</a>
-  </nav>
+  <?php 
+    include "botones_inicio.php"; // Incluye el menú de navegación del dashboard
+    ?>
 </div>
 <br><br>
-<!-- Contenido de la página -->
-<div class="container ">
-  <!-- Slider de Imágenes -->
-  <!-- <section class="slider">
-    <div class="slider-content">
-      <img src="imagenes/ayuda1.jpg" alt="Apoyo Económico">
-      <img src="imagenes/ayuda2.jpg" alt="Apoyo Alimentario">
-      <img src="imagenes/ayuda3.jpg" alt="Apoyo para Vivienda">
-      <img src="imagenes/ayuda4.jpg" alt="Asistencia Médica">
-    </div>
-  </section> -->
+
+<div class="container ">  
 
   <!-- Sección de informes -->
   <section class="informes ancho ">

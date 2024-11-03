@@ -1,3 +1,8 @@
+:root {
+  --color1: #611232; /* Color principal */
+  --color2: #bebebe; /* Color secundario */
+}
+
 /* Estilos generales */
 body {
   font-family: 'Arial', sans-serif;
@@ -20,13 +25,13 @@ h1, h2 {
 }
 
 h3 {
-  color: #007BFF;
+  color: var(--color1); /* Uso de variable */
   font-size: 20px;
 }
 
 /* Encabezado */
 .header {
-  background-color: #007BFF;
+  background-color: var(--color1); /* Uso de variable */
   padding: 10px 20px;
   box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
 }
@@ -43,12 +48,12 @@ h3 {
 
 .header-center h2 {
   font-size: 24px;
-  color: #333;
+  color: #ffffff;
 }
 
 .header-right .info-usuario {
   font-size: 16px;
-  color: #333;
+  color: #ffffff;
 }
 
 /* Logo y menú */
@@ -68,7 +73,7 @@ h3 {
 }
 
 .menu a {
-  background-color: #007BFF; /* Color de fondo */
+  background-color: var(--color1); /* Uso de variable */
   color: #ffffff; /* Color del texto */
   padding: 10px 15px;
   text-decoration: none;
@@ -79,7 +84,7 @@ h3 {
 }
 
 .menu a:hover {
-  background-color: #007BFF;
+  background-color: var(--color1); /* Uso de variable */
   color: white;
   transform: translateY(-2px);
 }
@@ -132,21 +137,21 @@ h3 {
   display: inline-block;
   padding: 8px 16px;
   margin-top: 10px;
-  background-color: #FFC107;
-  color: #333;
+  background-color: var(--color1);
+  color: #ffffff;
   border-radius: 5px;
   text-decoration: none;
   transition: background-color 0.3s;
 }
 
 .noticia .btn_detalle:hover {
-  background-color: #e0a800;
+  background-color:var(--color1);
 }
 
 /* Sección de testimonios */
 .testimonio blockquote {
   font-style: italic;
-  color: #666;
+  color: #333;
 }
 
 .testimonio p {
@@ -162,7 +167,7 @@ h3 {
 }
 
 .contacto-rapido a {
-  background-color: #007BFF;
+  background-color: var(--color1); /* Uso de variable */
   color: white;
   padding: 15px;
   border-radius: 50%;
@@ -170,15 +175,12 @@ h3 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.contacto-rapido a:hover {
-  background-color: #0056b3;
-}
 
 /* Footer */
 .footer {
   text-align: center;
   padding: 20px;
-  background-color: #007BFF;
+  background-color: var(--color1); /* Uso de variable */
   color: white;
 }
 
@@ -191,3 +193,29 @@ h3 {
 .footer .social-icons a:hover {
   color: #f4f4f9;
 }
+
+/* Estilo para los botones */
+.btn-logout {
+  color: #ff0000; /* Color del texto */
+  border: none; /* Sin borde */
+  border-radius: 10px; /* Bordes redondeados */
+  text-decoration: none; /* Sin subrayado en el texto */
+  display: inline-flex; /* Para alinear el icono y el texto */
+  align-items: center; /* Alinear verticalmente */
+  transition: background-color 0.3s; /* Transición suave al pasar el ratón */
+}
+
+.btn-login {
+  color: #ffffff; /* Color del texto */
+}
+
+/* Cambiar color de fondo al pasar el ratón */
+.btn-login:hover, .btn-logout:hover {
+  color: white; /* Color del texto al pasar el ratón */
+}
+
+/* Estilo para los iconos dentro de los botones */
+.btn-login i, .btn-logout i {
+  margin-right: 5px; /* Espacio entre el icono y el texto */
+}
+  

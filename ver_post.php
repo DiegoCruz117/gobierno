@@ -100,25 +100,27 @@ $usuario = $_SESSION['username'];
           <hr>
         </div>
         <div class="contenedor_ver_usuarios">
-    <p class="campo">Identificación (Archivo)</p>
-    <p class="dato"><a target="_blank" href="<?php echo $fila['identificacion']; ?>">Ver Archivo Identificación</a></p>
-    <hr>
-</div>
-<div class="contenedor_ver_usuarios">
-    <p class="campo">Comprobante de Domicilio (Archivo)</p>
-    <p class="dato"><a target="_blank" href="<?php echo $fila['comprobante_domicilio']; ?>">Ver Comprobante de Domicilio</a></p>
-    <hr>
-</div>
-<div class="contenedor_ver_usuarios">
-    <p class="campo">Informe de Daños (Archivo)</p>
-    <p class="dato"><a target="_blank" href="<?php echo $fila['informe_danos']; ?>">Ver Informe de Daños</a></p>
-    <hr>
-</div>
-<div class="contenedor_ver_usuarios">
-    <p class="campo">Documentación del Terreno (Archivo)</p>
-    <p class="dato"><a target="_blank" href="<?php echo $fila['documentacion_terreno']; ?>">Ver Documentación del Terreno</a></p>
-    <hr>
-</div>
+        <p class="campo">Identificación (Archivo)</p>
+        <p class="dato"><a target="_blank" href="uploads/<?php echo $fila['identificacion']; ?>">Ver Archivo Identificación</a></p>
+        <hr>
+        </div>
+        <div class="contenedor_ver_usuarios">
+        <p class="campo">Comprobante de Domicilio (Archivo)</p>
+        <p class="dato"><a target="_blank" href="uploads/<?php echo $fila['comprobante_domicilio']; ?>">Ver Comprobante de Domicilio</a></p>
+        <hr>
+        </div>
+        <div class="contenedor_ver_usuarios">
+        <p class="campo">Informe de Daños (Archivo)</p>
+        <p class="dato"><a target="_blank" href="uploads/<?php echo $fila['informe_danos']; ?>">Ver Informe de Daños</a></p>
+        <hr>
+        </div>
+        <div class="contenedor_ver_usuarios">
+        <p class="campo">Documentación del Terreno (Archivo)</p>
+        <p class="dato"><a target="_blank" href="uploads/<?php echo $fila['documentacion_terreno']; ?>">Ver Documentación del Terreno</a></p>
+        <hr>
+    </div>
+
+
 
       
     </div>

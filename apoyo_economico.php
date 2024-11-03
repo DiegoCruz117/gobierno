@@ -14,32 +14,11 @@ $usuario = $_SESSION['username'];
 </head>
 <body>
 
-<!-- Header -->
-<header class="header">
-  <div class="header-content ancho">
-    <div class="header-left">
-      <img src="imagenes/icono_email_naranja.png" alt="Icono Email" class="icono-email">
-    </div>
-    <div class="header-center">
-      <h1>Detalles del Apoyo Económico</h1>
-    </div>
-    <div class="header-right">
-      <p class="usuario"><?php echo htmlspecialchars($usuario); ?></p>
-    </div>
-  </div>
-</header>
-<br>
+<!-- Encabezado -->
+<div class="header ancho">
+    <h1>Detalles del Apoyo para Economico </h1>
+</div>
 
-<!-- Menú de Navegación -->
-<nav class="menu ancho">
-    <a href="inicio.php" class="nav-button">Inicio</a>
-    <a href="apoyos.php" class="nav-button">Apoyos</a>
-    <a href="programas.php" class="nav-button">Programas</a>
-    <a href="noticias.php" class="nav-button">Noticias</a>
-    <a href="quejas_sugerencias.php" class="nav-button">Quejas y Sugerencias</a>
-    <a href="encargado_apoyos.php" class="nav-button">Encargado de Apoyos</a>
-    <a href="principal.php" class="nav-button">Administrar</a>
-</nav>
 
 <!-- Contenido Principal -->
 <main class="container">

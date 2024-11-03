@@ -1,7 +1,6 @@
 <?php
 require "seguridad.php";
 $usuario = $_SESSION['username'];
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,28 +25,29 @@ $usuario = $_SESSION['username'];
       <br> 
       <div class="cont_panel_derecho_hijo2"><br>
         <h2 class="titulo_panel">Solicitudes de Apoyo</h2>
-        <!-- <a href="crear_post.php" class="btn_rojo2">Crear Solicitud</a> -->
         <br>
+        
+        <!-- Tabla para Apoyo Alimentario -->
+        <h3>Apoyo Alimentario</h3>
         <table class="tabla_usuarios">
           <tr>
             <th>ID</th>
             <th>Nombre</th>
             <th>Email</th>
             <th>Teléfono</th>
-            <th>tipo de programa</th>
-            <th>Identificación</th>
+            <th>Tipo de Programa</th>
             <th>Ver</th>
             <th>Eliminar</th>
           </tr>
           <?php
           require "conexion.php"; // Conexión a la base de datos
 
-          // Consulta para obtener todas las solicitudes de apoyo
-          $todos_datos = "SELECT * FROM solicitudes_apoyo ORDER BY id_solicitud ASC";
-          $resultado = mysqli_query($conectar, $todos_datos);
+          // Consulta para obtener solicitudes de apoyo alimentario
+          $query_alimentario = "SELECT * FROM solicitudes_apoyo WHERE tipo_apoyo = 'Alimentario' ORDER BY id_solicitud ASC";
+          $resultado_alimentario = mysqli_query($conectar, $query_alimentario);
           
           // Bucle para mostrar cada solicitud en una fila de la tabla
-          while ($fila = mysqli_fetch_assoc($resultado)) {
+          while ($fila = mysqli_fetch_assoc($resultado_alimentario)) {
           ?>
           <tr>
             <td><?php echo $fila["id_solicitud"]; ?></td>
@@ -55,18 +55,82 @@ $usuario = $_SESSION['username'];
             <td><?php echo $fila["email"]; ?></td>
             <td><?php echo $fila["telefono"]; ?></td>
             <td><?php echo $fila["tipo_apoyo"]; ?></td>
-            <td><?php echo $fila["identificacion"]; ?></td>
-            
-
-            <!-- Enlaces para ver, editar y eliminar -->
             <td><a href="ver_post.php?id=<?php echo $fila["id_solicitud"]; ?>"><img src="imagenes/icono_ver.png" class="img_ver"></a></td>
-
             <td><a href="#" Onclick="validar('eliminar_post.php?id_solicitud=<?php echo $fila["id_solicitud"]; ?>')"><img src="imagenes/icono_eliminar.png" class="img_eliminar"></a></td>
           </tr>
           <?php 
           }
           ?>
         </table>
+        <br><br>
+        <!-- Tabla para Apoyo Vivienda -->
+        <h3>Apoyo Economico</h3>
+        <table class="tabla_usuarios">
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+            <th>Tipo de Programa</th>
+            <th>Ver</th>
+            <th>Eliminar</th>
+          </tr>
+          <?php
+          // Consulta para obtener solicitudes de apoyo vivienda
+          $query_vivienda = "SELECT * FROM solicitudes_apoyo WHERE tipo_apoyo = 'economico' ORDER BY id_solicitud ASC";
+          $resultado_vivienda = mysqli_query($conectar, $query_vivienda);
+          
+          // Bucle para mostrar cada solicitud en una fila de la tabla
+          while ($fila = mysqli_fetch_assoc($resultado_vivienda)) {
+          ?>
+          <tr>
+            <td><?php echo $fila["id_solicitud"]; ?></td>
+            <td><?php echo $fila["nombre"]; ?></td>
+            <td><?php echo $fila["email"]; ?></td>
+            <td><?php echo $fila["telefono"]; ?></td>
+            <td><?php echo $fila["tipo_apoyo"]; ?></td>
+            <td><a href="ver_post.php?id=<?php echo $fila["id_solicitud"]; ?>"><img src="imagenes/icono_ver.png" class="img_ver"></a></td>
+            <td><a href="#" Onclick="validar('eliminar_post.php?id_solicitud=<?php echo $fila["id_solicitud"]; ?>')"><img src="imagenes/icono_eliminar.png" class="img_eliminar"></a></td>
+          </tr>
+          <?php 
+          }
+          ?>
+        </table>
+        <br><br>
+        <!-- Tabla para Apoyo Educativo -->
+        <h3>Apoyo Vivienda</h3>
+        <table class="tabla_usuarios">
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+            <th>Tipo de Programa</th>
+            <th>Ver</th>
+            <th>Eliminar</th>
+          </tr>
+          <?php
+          // Consulta para obtener solicitudes de apoyo educativo
+          $query_educativo = "SELECT * FROM solicitudes_apoyo WHERE tipo_apoyo = 'vivienda' ORDER BY id_solicitud ASC";
+          $resultado_educativo = mysqli_query($conectar, $query_educativo);
+          
+          // Bucle para mostrar cada solicitud en una fila de la tabla
+          while ($fila = mysqli_fetch_assoc($resultado_educativo)) {
+          ?>
+          <tr>
+            <td><?php echo $fila["id_solicitud"]; ?></td>
+            <td><?php echo $fila["nombre"]; ?></td>
+            <td><?php echo $fila["email"]; ?></td>
+            <td><?php echo $fila["telefono"]; ?></td>
+            <td><?php echo $fila["tipo_apoyo"]; ?></td>
+            <td><a href="ver_post.php?id=<?php echo $fila["id_solicitud"]; ?>"><img src="imagenes/icono_ver.png" class="img_ver"></a></td>
+            <td><a href="#" Onclick="validar('eliminar_post.php?id_solicitud=<?php echo $fila["id_solicitud"]; ?>')"><img src="imagenes/icono_eliminar.png" class="img_eliminar"></a></td>
+          </tr>
+          <?php 
+          }
+          ?>
+        </table>
+
       </div>
     </div>
   </div>

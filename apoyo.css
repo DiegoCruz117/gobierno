@@ -1,185 +1,200 @@
-/* Estilos Generales */
+:root {
+  --color1: #611232; /* Color principal */
+  --color2: #bebebe; /* Color secundario */
+}
+
+/* Estilos generales */
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
-  }
-  
-  .ancho {
-    width: 90%;
-    max-width: 1300px;
-    margin: auto;
-  }
-  
-  body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
-    scroll-behavior: smooth;
-  }
-  
-  .ancho {
-    width: 1300px;
-    margin: auto;
-  }
-  
-  h1, h2 {
-    text-align: center;
-    color: #000000;
-    margin-bottom: 20px;
-  }
-  
-  h3 {
-    color: #007BFF;
-    font-size: 20px;
-  }
-  
-  ul {
-    list-style-type: none;
-    padding-left: 0;
-  }
-  
-  ul li::before {
-    content: "•";
-    color: #007BFF;
-    font-weight: bold;
-    display: inline-block; 
-    width: 1em;
-    margin-left: -1em;
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  /* Header */
-  .header {
-    background-color: #007BFF;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-  }
-  
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  scroll-behavior: smooth;
+}
+
+.ancho {
+  width: 100%;
+  max-width: 1300px;
+  margin: auto;
+}
+
+h1, h2 {
+  text-align: center;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+h3 {
+  color: var(--color1); /* Uso de variable */
+  font-size: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+ul li::before {
+  content: "•";
+  color: var(--color1);
+  font-weight: bold;
+  display: inline-block; 
+  width: 1em;
+  margin-left: -1em;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Encabezado */
+.header {
+  background-color: var(--color1); /* Uso de variable */
+  padding: 10px 20px;
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left img {
+  width: 50px;
+}
+
+.header-center h2 {
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.header-right .info-usuario {
+  font-size: 16px;
+  color: #ffffff;
+}
+
+/* Estilo para el menú de navegación */
+.menu {
+  display: flex;
+  justify-content: center;
+  background-color: #f4f4f9;
+  padding: 10px 0;
+}
+
+.nav-button {
+  background-color: var(--color1); /* Uso de variable */
+  color: #ffffff; /* Color del texto */
+  padding: 10px 15px;
+  text-decoration: none;
+  margin: 0 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para profundidad */
+  transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
+}
+
+/* Sección de Apoyos */
+.apoyos {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.apoyo {
+  margin-bottom: 20px;
+}
+
+.apoyo h3 {
+  display: flex;
+  align-items: center;
+  color: var(--color1);
+  font-size: 22px;
+}
+
+.apoyo p {
+  color: #555;
+  margin-top: 5px;
+}
+
+.apoyo i {
+  margin-right: 10px;
+}
+
+.btn_detalle {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 10px;
+  background-color: var(--color1); /* Uso de variable */
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 20px 0;
+  background-color: var(--color1); /* Uso de variable */
+  color: white;
+}
+
+.footer .social-icons a {
+  margin: 0 10px;
+  color: white;
+  font-size: 20px;
+}
+
+.footer .social-icons a:hover {
+  color: #f4f4f9;
+}
+
+/* Estilo para los botones */
+.btn-logout {
+  color: #ff0000; /* Color del texto */
+  border: none; /* Sin borde */
+  border-radius: 10px; /* Bordes redondeados */
+  text-decoration: none; /* Sin subrayado en el texto */
+  display: inline-flex; /* Para alinear el icono y el texto */
+  align-items: center; /* Alinear verticalmente */
+  transition: background-color 0.3s; /* Transición suave al pasar el ratón */
+}
+
+.btn-login {
+  color: #000000; /* Color del texto */
+}
+
+/* Cambiar color de fondo al pasar el ratón */
+.btn-login:hover, .btn-logout:hover {
+  color: white; /* Color del texto al pasar el ratón */
+}
+
+/* Estilo para los iconos dentro de los botones */
+.btn-login i, .btn-logout i {
+  margin-right: 5px; /* Espacio entre el icono y el texto */
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
   .header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
   }
-  
-  .icono-email {
-    width: 30px;
+
+  .menu a {
+    margin: 10px 5px;
+    padding: 10px;
   }
-  
-  .usuario {
-    font-size: 16px;
-    color: white;
-  }
-  
-  /* Estilo para el menú de navegación */
-  .menu {
-    display: flex;
-    justify-content: center;
-    background-color: #f4f4f9;
-    padding: 10px 0;
-  }
-  
-  .nav-button {
-    background-color: #007BFF; /* Color de fondo */
-    color: #ffffff; /* Color del texto */
-    padding: 10px 15px;
-    text-decoration: none;
-    margin: 0 10px;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para profundidad */
-    transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
-  }
-  
-  .nav-button:hover {
-    background-color: #0056b3; /* Color de fondo al pasar el mouse */
-    transform: translateY(-2px); /* Efecto de elevación */
-  }
-  /* Sección de Apoyos */
+
   .apoyos {
-    background-color: #fff;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
   }
-  
-  .apoyo {
-    margin-bottom: 20px;
-  }
-  
-  .apoyo h3 {
-    display: flex;
-    align-items: center;
-    color: #007BFF;
-    font-size: 22px;
-  }
-  
-  .apoyo p {
-    color: #555;
-    margin-top: 5px;
-  }
-  
-  .apoyo i {
-    margin-right: 10px;
-  }
-  
+
   .btn_detalle {
-    display: inline-block;
-    padding: 10px 20px;
-    margin-top: 10px;
-    background-color: #007BFF;
-    color: white;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s;
+    padding: 8px 15px;
   }
-  
-  .btn_detalle:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Footer */
-  .footer {
-    text-align: center;
-    padding: 20px 0;
-    background-color: #007BFF;
-    color: white;
-  }
-  
-  .footer .social-icons a {
-    margin: 0 10px;
-    color: white;
-    font-size: 20px;
-  }
-  
-  .footer .social-icons a:hover {
-    color: #f4f4f9;
-  }
-  
-  /* Media Queries para Responsividad */
-  @media (max-width: 768px) {
-    .header-content {
-      flex-direction: column;
-    }
-  
-    .menu a {
-      margin: 10px 5px;
-      padding: 10px;
-    }
-  
-    .apoyos {
-      padding: 15px;
-    }
-  
-    .btn_detalle {
-      padding: 8px 15px;
-    }
-  }
-  
+}

@@ -1,6 +1,6 @@
 <?php
-require "seguridad.php"; // Verificar que el usuario está autenticado
-$usuario = htmlspecialchars($_SESSION['username']); // Escapar el nombre de usuario para evitar XSS
+require "seguridad.php"; // Verifica que el usuario está autenticado
+$usuario = htmlspecialchars($_SESSION['username']); // Escapa el nombre de usuario para evitar XSS
 ?>
 
 <!DOCTYPE html>
@@ -14,41 +14,18 @@ $usuario = htmlspecialchars($_SESSION['username']); // Escapar el nombre de usua
 </head>
 <body>
 
-<!-- Header -->
-<header class="header ancho">
-  <div class="header-content">
-    <div class="header-left">
-      <img src="imagenes/icono_email_naranja.png" alt="Icono Email" class="icono-email">
-    </div>
-    <div class="header-center">
-      <h1>Detalles del Apoyo para Vivienda</h1>
-    </div>
-    <div class="header-right">
-      <p class="usuario"><?php echo $usuario; ?></p>
-    </div>
-  </div>
-</header>
-<br>
-<!-- Menú de Navegación -->
-<nav class="menu ancho">
-    <a href="inicio.php" class="nav-button">Inicio</a>
-    <a href="apoyos.php" class="nav-button">Apoyos</a>
-    <a href="programas.php" class="nav-button">Programas</a>
-    <a href="noticias.php" class="nav-button">Noticias</a>
-    <a href="quejas_sugerencias.php" class="nav-button">Quejas y Sugerencias</a>
-    <a href="encargado_apoyos.php" class="nav-button">Encargado de Apoyos</a>
-    <a href="principal.php" class="nav-button">Administrar</a>
-</nav>
+<!-- Encabezado -->
+  <div class="header ancho">
+    <h1>Detalles del Apoyo para Vivienda</h1>
+</div>
 
 <!-- Contenido Principal -->
-<main class="container">
+<div class="container">
   <section class="detalle-apoyo">
-    <h2 style="color: #007BFF;">
-      <i class="fas fa-home"></i> Apoyo para Vivienda
-    </h2>
+    <h2><i class="fas fa-home"></i> Apoyo para Vivienda</h2>
 
     <p>
-      El <strong style="color: #007BFF;">Apoyo para Vivienda</strong> tiene como objetivo mejorar las condiciones de vida de familias en situación vulnerable. 
+      El <strong style="color: var(--color1);">Apoyo para Vivienda</strong> tiene como objetivo mejorar las condiciones de vida de familias en situación vulnerable. 
       A través de este programa, se ofrecen subsidios para la rehabilitación de viviendas afectadas por desastres naturales o para aquellas que se encuentran en condiciones insalubres.
       Además, se brinda asistencia para la construcción de viviendas nuevas en terrenos regularizados.
     </p>
@@ -95,7 +72,7 @@ $usuario = htmlspecialchars($_SESSION['username']); // Escapar el nombre de usua
       <a href="apoyos.php" class="btn_volver">Volver al listado de Apoyos</a>
     </div>
   </section>
-</main> 
+</div> 
 
 <!-- Footer -->
 <footer class="footer">

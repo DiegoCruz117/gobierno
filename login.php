@@ -1,18 +1,4 @@
-<?php
-session_start();
 
-if (isset($_SESSION['autentificado']) && $_SESSION['autentificado'] == "SI") {
-    // Redirección según el rol
-    if ($_SESSION['rol'] === 'administrador') {
-        header("Location: admin_dashboard.php");
-    } elseif ($_SESSION['rol'] === 'jefe') {
-        header("Location: jefe_dashboard.php");
-    } else {
-        header("Location: usuario_dashboard.php");
-    }
-    exit();
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

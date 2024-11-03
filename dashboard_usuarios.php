@@ -43,16 +43,17 @@ $usuario = $_SESSION['username'];
           <?php
           require "conexion.php";
 
-          $todos_datos = "SELECT * FROM registro ORDER BY id ASC";
-          $resultado = mysqli_query($conectar,$todos_datos);
-          while($fila = mysqli_fetch_assoc($resultado)){
+          // Excluir el usuario con id 13
+          $todos_datos = "SELECT * FROM registro WHERE id != 33 ORDER BY id ASC";  // id 13 es el id del usuario que se excluye
+          $resultado = mysqli_query($conectar, $todos_datos);
+          while ($fila = mysqli_fetch_assoc($resultado)) {
           ?>
           <tr>
-            <td> <?php echo $fila["id"];?></td>
-            <td><?php echo $fila["nombre"];?></td>
-            <td><?php echo $fila["apellido"];?></td>
-            <td><?php echo $fila["correo"];?></td>
-            <td><?php echo $fila["fecha"];?></td>
+            <td><?php echo $fila["id"]; ?></td>
+            <td><?php echo $fila["nombre"]; ?></td>
+            <td><?php echo $fila["apellido"]; ?></td>
+            <td><?php echo $fila["correo"]; ?></td>
+            <td><?php echo $fila["fecha"]; ?></td>
             <td><a href="ver_usuario.php?id=<?php echo $fila["id"]; ?>"><img src="imagenes/icono_ver.png" class="img_ver"></a></td>
             <td><a href="editar_usuario.php?id=<?php echo $fila["id"]; ?>"><img src="imagenes/icono_editar.png" class="img_modificar"></a></td>
             <td><a href="#" Onclick="validar('borra.php?id=<?php echo $fila["id"]; ?>')"><img src="imagenes/icono_eliminar.png" class="img_eliminar"></a></td>

@@ -12,30 +12,33 @@ $usuario = $_SESSION['username'];
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-
+  
 <div class="header ancho">
-    <div class="header-left">
-        <img src="imagenes/icono_email_naranja.png" alt="Icono de email" class="icono-email">
-    </div>
-    <div class="header-center">
-        <h2>Noticias Gubernamentales</h2>
-    </div>
-    <div class="header-right">
-        <p class="info-usuario"><?php echo htmlspecialchars($usuario); ?></p>
+    <div class="header-content">
+        <div class="header-left">
+        </div>
+        <div class="header-center">
+            <h2> Apoyo Gubernamental</h2>
+        </div>
+        <div class="header-right">
+            <?php if (!isset($_SESSION['username'])): // Si no hay usuario logueado ?>
+                <a href="login.php" class="btn-login">
+                    <i class="fas fa-sign-in-alt"></i> 
+                </a>
+            <?php else: // Si hay usuario logueado ?>
+                <a href="salir.php" class="btn-logout">
+                    <i class="fas fa-sign-out-alt"></i> 
+                </a>
+            <?php endif; ?>
+        </div>
     </div>
 </div>
-
+<br>
 <div class="main-content ancho">
-  <nav class="menu">
-    <a href="inicio.php" class="nav-button">Inicio</a>
-    <a href="apoyos.php" class="nav-button">Apoyos</a>
-    <a href="programas.php" class="nav-button">Programas</a>
-    <a href="noticias.php" class="nav-button active">Noticias</a>
-    <a href="quejas_sugerencias.php" class="nav-button">Quejas y Sugerencias</a>
-    <a href="encargado_apoyos.php" class="nav-button">Encargado de Apoyos</a>
-    <a href="principal.php" class="nav-button">Administrar</a>
-  </nav>
-</div>
+<?php 
+    include "botones_inicio.php"; // Incluye el menú de navegación del dashboard
+    ?>
+</div><br>
 
 <div class="container ancho">
   <section class="noticias">

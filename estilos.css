@@ -10,8 +10,8 @@ body{
   line-height: 24px;
   color: #333;
 }
-:root{
-  --color1: #001dbe; /* Color principal */
+:root {
+  --color1: #611232; /* Color principal */
   --color2: #bebebe; /* Color secundario */
 }
 .ancho{
@@ -47,14 +47,13 @@ body{
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   margin: auto;
   padding: 30px 40px;
-  border-radius: 7px;
-  margin-top: 40px;
+  border-radius: 7px; 
   background-color: #f2f4f6;
 }
 
 .btn_login{
   padding: 12px 120px;
-  background-color: #001dbe;
+  background-color: var(--color1);;
   color: white;
   border-radius: 8px;
   border: none;
@@ -88,7 +87,7 @@ body{
 }
 .btn_crear2{
   padding: 12px 140px;
-  background-color: #001dbe;
+  background-color: var(--color1);;
   color: white;
   border-radius: 8px;
   border: none;
@@ -100,7 +99,7 @@ body{
 
 .btn_crear3{
   padding: 12px 152px;
-  background-color: #001dbe;
+  background-color: var(--color1);;
   color: white;
   border-radius: 8px;
   border: none;
@@ -112,7 +111,7 @@ body{
 
 .btn_crear4{
   padding: 12px 142px;
-  background-color: #001dbe;
+  background-color:var(--color1);;
   color: white;
   border-radius: 8px;
   border: none;
@@ -161,7 +160,7 @@ body{
 .btn_azul{
   width: 350px;
   padding: 15px;
-  background-color: #002d6d;
+  background-color:var(--color1);;
   color: white;
   border: 0;
   border-radius: 6px;
@@ -210,11 +209,11 @@ body{
 }
 .img_logo{
   text-align: center;
-  width: 200px;
+  width: 300px;
   margin: auto;
 }
 .img_logo_panel{
-  width: 200px;
+  width: 2  00px;
   margin: auto;
   text-align: center;
   padding-top: 25px;
@@ -389,4 +388,8 @@ body{
 
 .img_noticia{
   width: 150px;
+}
+
+.container h2{
+  color: --color1;
 }
