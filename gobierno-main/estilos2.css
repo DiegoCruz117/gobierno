@@ -1,0 +1,221 @@
+:root {
+  --color1: #611232; /* Color principal */
+  --color2: #bebebe; /* Color secundario */
+}
+
+/* Estilos generales */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  scroll-behavior: smooth;
+}
+
+.ancho {
+  width: 100%;
+  max-width: 1300px;
+  margin: auto;
+}
+
+h1, h2 {
+  text-align: center;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+h3 {
+  color: var(--color1); /* Uso de variable */
+  font-size: 20px;
+}
+
+/* Encabezado */
+.header {
+  background-color: var(--color1); /* Uso de variable */
+  padding: 10px 20px;
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left img {
+  width: 50px;
+}
+
+.header-center h2 {
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.header-right .info-usuario {
+  font-size: 16px;
+  color: #ffffff;
+}
+
+/* Logo y menú */
+.logo-section {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.logo {
+  width: 200px; /* Ajusta el tamaño según tu logo */
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.menu a {
+  background-color: var(--color1); /* Uso de variable */
+  color: #ffffff; /* Color del texto */
+  padding: 10px 15px;
+  text-decoration: none;
+  margin: 0 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para profundidad */
+  transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
+}
+
+.menu a:hover {
+  background-color: var(--color1); /* Uso de variable */
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Slider de imágenes */
+.slider {
+  overflow: hidden;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+.slider-content {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slider-content img {
+  min-width: 100%;
+  border-radius: 10px;
+}
+
+/* Sección de informes y noticias */
+.informes, .noticias, .testimonios {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.informe, .noticia, .testimonio {
+  margin-bottom: 20px;
+}
+
+.informe h3, .noticia h3 {
+  display: flex;
+  align-items: center;
+}
+
+.informe h3 i, .noticia h3 i {
+  margin-right: 10px;
+}
+
+.informe p, .noticia p {
+  color: #555;
+}
+
+/* Botón de detalles en noticias */
+.noticia .btn_detalle {
+  display: inline-block;
+  padding: 8px 16px;
+  margin-top: 10px;
+  background-color: var(--color1);
+  color: #ffffff;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.noticia .btn_detalle:hover {
+  background-color:var(--color1);
+}
+
+/* Sección de testimonios */
+.testimonio blockquote {
+  font-style: italic;
+  color: #333;
+}
+
+.testimonio p {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Botón de contacto rápido */
+.contacto-rapido {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.contacto-rapido a {
+  background-color: var(--color1); /* Uso de variable */
+  color: white;
+  padding: 15px;
+  border-radius: 50%;
+  font-size: 24px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 20px;
+  background-color: var(--color1); /* Uso de variable */
+  color: white;
+}
+
+.footer .social-icons a {
+  margin: 0 10px;
+  color: white;
+  font-size: 20px;
+}
+
+.footer .social-icons a:hover {
+  color: #f4f4f9;
+}
+
+/* Estilo para los botones */
+.btn-logout {
+  color: #ff0000; /* Color del texto */
+  border: none; /* Sin borde */
+  border-radius: 10px; /* Bordes redondeados */
+  text-decoration: none; /* Sin subrayado en el texto */
+  display: inline-flex; /* Para alinear el icono y el texto */
+  align-items: center; /* Alinear verticalmente */
+  transition: background-color 0.3s; /* Transición suave al pasar el ratón */
+}
+
+.btn-login {
+  color: #ffffff; /* Color del texto */
+}
+
+/* Cambiar color de fondo al pasar el ratón */
+.btn-login:hover, .btn-logout:hover {
+  color: white; /* Color del texto al pasar el ratón */
+}
+
+/* Estilo para los iconos dentro de los botones */
+.btn-login i, .btn-logout i {
+  margin-right: 5px; /* Espacio entre el icono y el texto */
+}
+  
