@@ -1,6 +1,27 @@
 <?php
 require "seguridad.php";
 $usuario = $_SESSION['username'];
+
+// Conexión a la base de datos
+require "conexion.php"; 
+
+// Verifica si se envió el formulario para actualizar el estatus
+if (isset($_POST['actualizar_estatus'])) {
+    // Obtiene los datos enviados
+    $id_solicitud = $_POST['id_solicitud'];
+    $nuevo_estatus = $_POST['estatus'];
+
+    // Prepara la consulta para actualizar el estatus en la base de datos
+    $query_actualizar = "UPDATE solicitudes_apoyo SET estatus = ? WHERE id_solicitud = ?";
+    $stmt = mysqli_prepare($conectar, $query_actualizar);
+    
+    if ($stmt) {
+        mysqli_stmt_bind_param($stmt, 'si', $nuevo_estatus, $id_solicitud);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,12 +57,13 @@ $usuario = $_SESSION['username'];
             <th>Email</th>
             <th>Teléfono</th>
             <th>Tipo de Programa</th>
+            <th>Estatus</th>
+            <th>Acciones</th>
             <th>Ver</th>
             <th>Eliminar</th>
+
           </tr>
           <?php
-          require "conexion.php"; // Conexión a la base de datos
-
           // Consulta para obtener solicitudes de apoyo alimentario
           $query_alimentario = "SELECT * FROM solicitudes_apoyo WHERE tipo_apoyo = 'Alimentario' ORDER BY id_solicitud ASC";
           $resultado_alimentario = mysqli_query($conectar, $query_alimentario);
@@ -55,16 +77,29 @@ $usuario = $_SESSION['username'];
             <td><?php echo $fila["email"]; ?></td>
             <td><?php echo $fila["telefono"]; ?></td>
             <td><?php echo $fila["tipo_apoyo"]; ?></td>
+            <td><?php echo $fila["estatus"]; ?></td>
+            <td>
+              <!-- Formulario para actualizar estatus -->
+              <form method="POST" style="display:inline;">
+                <input type="hidden" name="id_solicitud" value="<?php echo $fila["id_solicitud"]; ?>">
+                <input type="hidden" name="actualizar_estatus" value="1">
+                
+                <!-- Botones de estatus -->
+                <button type="submit" name="estatus" value="Aceptado" class="btn_estatus aceptado">Aceptado</button>
+                <button type="submit" name="estatus" value="Rechazado" class="btn_estatus rechazado">Rechazado</button>
+              </form>
+            </td>
             <td><a href="ver_post.php?id=<?php echo $fila["id_solicitud"]; ?>"><img src="imagenes/icono_ver.png" class="img_ver"></a></td>
-            <td><a href="#" Onclick="validar('eliminar_post.php?id_solicitud=<?php echo $fila["id_solicitud"]; ?>')"><img src="imagenes/icono_eliminar.png" class="img_eliminar"></a></td>
+            <td><a href="#" Onclick="validar('borrar_registros?id_solicitud=<?php echo $fila["id_solicitud"]; ?>')"><img src="imagenes/icono_eliminar.png" class="img_eliminar"></a></td>
           </tr>
           <?php 
           }
           ?>
         </table>
         <br><br>
-        <!-- Tabla para Apoyo Vivienda -->
-        <h3>Apoyo Economico</h3>
+
+        <!-- Tabla para Apoyo Económico -->
+        <h3>Apoyo Económico</h3>
         <table class="tabla_usuarios">
           <tr>
             <th>ID</th>
@@ -72,12 +107,63 @@ $usuario = $_SESSION['username'];
             <th>Email</th>
             <th>Teléfono</th>
             <th>Tipo de Programa</th>
+            <th>Estatus</th>
+            <th>Acciones</th>
             <th>Ver</th>
             <th>Eliminar</th>
           </tr>
           <?php
+          // Consulta para obtener solicitudes de apoyo económico
+          $query_economico = "SELECT * FROM solicitudes_apoyo WHERE tipo_apoyo = 'economico' ORDER BY id_solicitud ASC";
+          $resultado_economico = mysqli_query($conectar, $query_economico);
+          
+          // Bucle para mostrar cada solicitud en una fila de la tabla
+          while ($fila = mysqli_fetch_assoc($resultado_economico)) {
+          ?>
+          <tr>
+            <td><?php echo $fila["id_solicitud"]; ?></td>
+            <td><?php echo $fila["nombre"]; ?></td>
+            <td><?php echo $fila["email"]; ?></td>
+            <td><?php echo $fila["telefono"]; ?></td>
+            <td><?php echo $fila["tipo_apoyo"]; ?></td>
+            <td><?php echo $fila["estatus"]; ?></td>
+            <td>
+              <!-- Formulario para actualizar estatus -->
+              <form method="POST" style="display:inline;">
+                <input type="hidden" name="id_solicitud" value="<?php echo $fila["id_solicitud"]; ?>">
+                <input type="hidden" name="actualizar_estatus" value="1">
+                
+                <!-- Botones de estatus -->
+                <button type="submit" name="estatus" value="Aceptado" class="btn_estatus aceptado">Aceptado</button>
+                <button type="submit" name="estatus" value="Rechazado" class="btn_estatus rechazado">Rechazado</button>
+              </form>
+            </td>
+            <td><a href="ver_post.php?id=<?php echo $fila["id_solicitud"]; ?>"><img src="imagenes/icono_ver.png" class="img_ver"></a></td>
+            <td><a href="#" Onclick="validar('borrar_registros.php?id_solicitud=<?php echo $fila["id_solicitud"]; ?>')"><img src="imagenes/icono_eliminar.png" class="img_eliminar"></a></td>
+          </tr>
+          <?php 
+          }
+          ?>
+        </table>
+        <br><br>
+
+        <!-- Tabla para Apoyo Vivienda -->
+        <h3>Apoyo Vivienda</h3>
+        <table class="tabla_usuarios">
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+            <th>Tipo de Programa</th>
+            <th>Estatus</th>
+            <th>Ver</th>
+            <th>Eliminar</th>
+            <th>Acciones</th>
+          </tr>
+          <?php
           // Consulta para obtener solicitudes de apoyo vivienda
-          $query_vivienda = "SELECT * FROM solicitudes_apoyo WHERE tipo_apoyo = 'economico' ORDER BY id_solicitud ASC";
+          $query_vivienda = "SELECT * FROM solicitudes_apoyo WHERE tipo_apoyo = 'vivienda' ORDER BY id_solicitud ASC";
           $resultado_vivienda = mysqli_query($conectar, $query_vivienda);
           
           // Bucle para mostrar cada solicitud en una fila de la tabla
@@ -89,56 +175,34 @@ $usuario = $_SESSION['username'];
             <td><?php echo $fila["email"]; ?></td>
             <td><?php echo $fila["telefono"]; ?></td>
             <td><?php echo $fila["tipo_apoyo"]; ?></td>
+            <td><?php echo $fila["estatus"]; ?></td>
+          
+            <td>
+              <!-- Formulario para actualizar estatus -->
+              <form method="POST" style="display:inline;">
+                <input type="hidden" name="id_solicitud" value="<?php echo $fila["id_solicitud"]; ?>">
+                <input type="hidden" name="actualizar_estatus" value="1">
+                
+                <!-- Botones de estatus -->
+                <button type="submit" name="estatus" value="Aceptado" class="btn_estatus aceptado">Aceptado</button>
+                <button type="submit" name="estatus" value="Rechazado" class="btn_estatus rechazado">Rechazado</button>
+              </form>
+            </td>
             <td><a href="ver_post.php?id=<?php echo $fila["id_solicitud"]; ?>"><img src="imagenes/icono_ver.png" class="img_ver"></a></td>
-            <td><a href="#" Onclick="validar('eliminar_post.php?id_solicitud=<?php echo $fila["id_solicitud"]; ?>')"><img src="imagenes/icono_eliminar.png" class="img_eliminar"></a></td>
+            <td><a href="#" Onclick="validar('borra_registros.php?id=<?php echo $fila["id_solicitud"]; ?>')"><img src="imagenes/icono_eliminar.png" class="img_eliminar"></a></td>
           </tr>
           <?php 
           }
           ?>
         </table>
         <br><br>
-        <!-- Tabla para Apoyo Educativo -->
-        <h3>Apoyo Vivienda</h3>
-        <table class="tabla_usuarios">
-          <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Email</th>
-            <th>Teléfono</th>
-            <th>Tipo de Programa</th>
-            <th>Ver</th>
-            <th>Eliminar</th>
-          </tr>
-          <?php
-          // Consulta para obtener solicitudes de apoyo educativo
-          $query_educativo = "SELECT * FROM solicitudes_apoyo WHERE tipo_apoyo = 'vivienda' ORDER BY id_solicitud ASC";
-          $resultado_educativo = mysqli_query($conectar, $query_educativo);
-          
-          // Bucle para mostrar cada solicitud en una fila de la tabla
-          while ($fila = mysqli_fetch_assoc($resultado_educativo)) {
-          ?>
-          <tr>
-            <td><?php echo $fila["id_solicitud"]; ?></td>
-            <td><?php echo $fila["nombre"]; ?></td>
-            <td><?php echo $fila["email"]; ?></td>
-            <td><?php echo $fila["telefono"]; ?></td>
-            <td><?php echo $fila["tipo_apoyo"]; ?></td>
-            <td><a href="ver_post.php?id=<?php echo $fila["id_solicitud"]; ?>"><img src="imagenes/icono_ver.png" class="img_ver"></a></td>
-            <td><a href="#" Onclick="validar('eliminar_post.php?id_solicitud=<?php echo $fila["id_solicitud"]; ?>')"><img src="imagenes/icono_eliminar.png" class="img_eliminar"></a></td>
-          </tr>
-          <?php 
-          }
-          ?>
-        </table>
-
       </div>
     </div>
   </div>
   <script>
-    // Función para confirmar la eliminación de una solicitud
     function validar(url){
       var eliminar = confirm("¿Desea eliminar el registro?");
-      if (eliminar == true){
+      if(eliminar == true){
         window.location = url;
       }
     }

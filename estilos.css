@@ -15,7 +15,7 @@ body{
   --color2: #bebebe; /* Color secundario */
 }
 .ancho{
-  width: 1300px;
+  width: 1400px;
   margin: auto;
 }
 .titulo{
@@ -209,7 +209,7 @@ body{
 }
 .img_logo{
   text-align: center;
-  width: 300px;
+  width: 250px;
   margin: auto;
 }
 .img_logo_panel{
@@ -265,7 +265,7 @@ body{
   background-color: #ebebeb;
 }
 .cont_panel_izquierdo{
-  width: 300px;
+  width: 310px;
   display: inline-block;
   border-radius: 5px;
   background-color: white;
@@ -286,13 +286,13 @@ body{
   border-radius: 5px;
   margin-top: 5px;
   background-color: white;
-  width: 960px;
+  width: 1050px;
 }
 .cont_panel_derecho_hijo2{
   background-color: white;
   border-radius: 5px;
   padding: 15px;
-  width: 960px;
+  width: 1050px;
 }
 .titulo_panel{
   text-align: center;

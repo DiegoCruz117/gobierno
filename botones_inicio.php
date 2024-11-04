@@ -14,8 +14,14 @@ $rol = isset($_SESSION['rol']) ? $_SESSION['rol'] : ''; // Si no está definida,
     
     <?php if ($rol === 'administrador'): ?>
         <!-- Botones visibles solo para administradores -->
-        <a href="#" class="nav-button">Quejas y Sugerencias</a>
         <a href="#" class="nav-button">Encargado de Apoyos</a>
         <a href="principal.php" class="nav-button">Administrar</a>
+    <?php endif; ?>
+
+    <?php if ($rol === 'alcalde'): ?>
+        <!-- Botones visibles solo para administradores -->
+        <a href="#" class="nav-button">Encargado de Apoyos</a>
+        <a href="principal.php" class="nav-button">Administrar</a>
+        <a href="#" class="nav-button">Quejas y Sugerencias</a>
     <?php endif; ?>
 </nav>

@@ -69,9 +69,15 @@
     <p>Subir comprobante de domicilio (no mayor a 3 meses):</p>
     <input type="file" name="comprobante_domicilio" class="elemento_inp2" accept=".pdf,.jpg,.jpeg,.png" required>
 
+    <p>Subir informe técnico de daños en la vivienda (si aplica):</p>
+    <input type="file" name="informe_danos" class="elemento_inp2" accept=".pdf,.jpg,.jpeg,.png" required>
+
+    <p>Subir título de propiedad o documentación legal del terreno (si aplica):</p>
+    <input type="file" name="documentacion_terreno" class="elemento_inp2" accept=".pdf,.jpg,.jpeg,.png" required>
+
 
     <!-- Consentimiento -->
-    <h3>Consentimiento <span class="necesario">*</span></h3>
+    <h3>Consentimiento</h3>
     <input type="checkbox" name="consentimiento" required> Autorizo la verificación de la información.<br>
     <input type="checkbox" name="terminos" required> Acepto los términos y condiciones.<br>
 
