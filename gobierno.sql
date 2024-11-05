@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-11-2024 a las 02:57:49
+-- Tiempo de generación: 05-11-2024 a las 05:19:11
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -91,7 +91,8 @@ CREATE TABLE `solicitudes_apoyo` (
 INSERT INTO `solicitudes_apoyo` (`id_solicitud`, `nombre`, `fecha_nacimiento`, `telefono`, `email`, `direccion`, `estado_civil`, `ocupacion`, `ingresos`, `seguro_medico`, `nivel_educativo`, `tipo_vivienda`, `descripcion`, `mayor_edad`, `residencia`, `nacionalidad`, `ingresos_menores`, `identificacion_vigente`, `identificacion`, `comprobante_domicilio`, `consentimiento`, `terminos`, `fecha_solicitud`, `informe_danos`, `documentacion_terreno`, `tipo_apoyo`, `estatus`) VALUES
 (1, 'dasdasd', '2024-10-14', 'as23423', '4fds@fdsf', 'fsdfsdf', 'casado', 'fsdfs', 32332.00, 'no', 'bachillerato', 'prestada', 'fsdfsdfsdf', 1, 1, 1, 1, 1, 'expo ia .pdf', 'Evaluaciขn bimestral 1 chris.pdf', 1, 1, '2024-11-04 01:00:13', '', '', 'alimentario', 'En Revisión'),
 (2, 'dasda', '2024-10-23', '98908098098', 'adad@fsdf', 'sdfsdfsdf', 'divorciado', 'fsdfsdf', 0.00, 'si', 'bachillerato', 'rentada', 'sfdfsdf', 1, 1, 1, 1, 1, '20210531222741_IMG_0627.JPG', 'Captura de pantalla 2024-10-22 203359.png', 1, 1, '2024-11-04 01:05:37', '', '', 'economico', 'En Revisión'),
-(4, 'christian isaac rodriguez gomez ', '2001-03-03', '9981290785', 'chris@gmail.com', 'dadadasd', 'soltero', 'sexologo', 0.00, 'no', 'universidad', 'propia', 'adasdasd', 1, 1, 0, 0, 1, 'Equipo 4.pdf', 'equipo wachipatos .pdf', 1, 1, '2024-11-04 01:57:13', 'Evaluación bimestral 1.pdf', 'Reporte bimestral 1.pdf', 'vivienda', 'Aceptado');
+(4, 'christian isaac rodriguez gomez ', '2001-03-03', '9981290785', 'chris@gmail.com', 'dadadasd', 'soltero', 'sexologo', 0.00, 'no', 'universidad', 'propia', 'adasdasd', 1, 1, 0, 0, 1, 'Equipo 4.pdf', 'equipo wachipatos .pdf', 1, 1, '2024-11-04 01:57:13', 'Evaluación bimestral 1.pdf', 'Reporte bimestral 1.pdf', 'vivienda', 'Aceptado'),
+(6, 'christian gomez', '2001-06-08', '9981290785', 'christian@gmail.com', 'vergel 1', 'casado', 'estudiante', 0.00, 'no', 'universidad', 'rentada', 'me gustaria un apoyo economico', 1, 1, 1, 1, 1, 'Equipo 4.pdf', 'equipo wachipatos .pdf', 1, 1, '2024-11-05 03:28:57', '', '', 'economico', 'En Revisión');
 
 --
 -- Índices para tablas volcadas
@@ -123,7 +124,7 @@ ALTER TABLE `registro`
 -- AUTO_INCREMENT de la tabla `solicitudes_apoyo`
 --
 ALTER TABLE `solicitudes_apoyo`
-  MODIFY `id_solicitud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_solicitud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

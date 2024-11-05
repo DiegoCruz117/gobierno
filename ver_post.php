@@ -12,6 +12,7 @@ $resultado = mysqli_query($conectar, $verSolicitud);
 
 // Obtener la fila correspondiente a la solicitud
 $fila = mysqli_fetch_assoc($resultado);
+$tipo_apoyo = $fila["tipo_apoyo"]; // Tipo de programa
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,26 +39,33 @@ $fila = mysqli_fetch_assoc($resultado);
                 <br><br>
                 <div class="contenedor_ver_usuarios">
                     <div class="datos_solicitud">
+                         <h3>Información Personal </h3><br>
                         <p class="campo">ID Solicitud: <span class="dato"><?php echo $fila["id_solicitud"]; ?></span></p>
                         <p class="campo">Nombre: <span class="dato"><?php echo $fila["nombre"]; ?></span></p>
-                        <p class="campo">Identificación: <span class="dato"><?php echo $fila["identificacion"]; ?></span></p>
                         <p class="campo">Fecha de Nacimiento: <span class="dato"><?php echo $fila["fecha_nacimiento"]; ?></span></p>
                         <p class="campo">Teléfono: <span class="dato"><?php echo $fila["telefono"]; ?></span></p>
                         <p class="campo">Email: <span class="dato"><?php echo $fila["email"]; ?></span></p>
                         <p class="campo">Dirección: <span class="dato"><?php echo $fila["direccion"]; ?></span></p>
+                        <p class="campo">Estado Civil: <span class="dato"><?php echo $fila["estado_civil"]; ?></span></p><br>
+
+                        <h3>Información Socioeconómica</h3><br>
                         <p class="campo">Ocupación: <span class="dato"><?php echo $fila["ocupacion"]; ?></span></p>
                         <p class="campo">Seguro Médico: <span class="dato"><?php echo $fila["seguro_medico"]; ?></span></p>
                         <p class="campo">Nivel Educativo: <span class="dato"><?php echo $fila["nivel_educativo"]; ?></span></p>
-                        <p class="campo">Tipo de Vivienda: <span class="dato"><?php echo $fila["tipo_vivienda"]; ?></span></p>
-                        <p class="campo">Descripción de Situación: <span class="dato"><?php echo $fila["descripcion"]; ?></span></p>
+                        <p class="campo">Tipo de Vivienda: <span class="dato"><?php echo $fila["tipo_vivienda"]; ?></span></p><br>
+
+                        <h3>Situación</h3><br>
+                        <p class="campo">Descripción de Situación: <span class="dato"><?php echo $fila["descripcion"]; ?></span></p><br>
                     </div>
                     <div class="archivos">
-                        <h3>Documentación Adjunta</h3>
+                        <h3>Documentación Adjunta</h3><br>
                         <ul>
                             <li><a target="_blank" href="uploads/<?php echo $fila['identificacion']; ?>">Identificación (Archivo)</a></li>
                             <li><a target="_blank" href="uploads/<?php echo $fila['comprobante_domicilio']; ?>">Comprobante de Domicilio (Archivo)</a></li>
-                            <li><a target="_blank" href="uploads/<?php echo $fila['informe_danos']; ?>">Informe de Daños (Archivo)</a></li>
-                            <li><a target="_blank" href="uploads/<?php echo $fila['documentacion_terreno']; ?>">Documentación del Terreno (Archivo)</a></li>
+                            <?php if ($tipo_apoyo === "vivienda") : ?>
+                                <li><a target="_blank" href="uploads/<?php echo $fila['informe_danos']; ?>">Informe de Daños (Archivo)</a></li>
+                                <li><a target="_blank" href="uploads/<?php echo $fila['documentacion_terreno']; ?>">Documentación del Terreno (Archivo)</a></li>
+                            <?php endif; ?>
                         </ul>
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 :root {
-  --color1: #611232; /* Color principal */
+  --color1: rgb(97, 18, 50); /* Color principal */
   --color2: #bebebe; /* Color secundario */
 }
 
@@ -87,6 +87,7 @@ h3 {
   background-color: var(--color1); /* Uso de variable */
   color: white;
   transform: translateY(-2px);
+  color: rgb(104, 29, 59);
 }
 
 /* Slider de imágenes */
