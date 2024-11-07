@@ -9,30 +9,57 @@ session_start();
   <title>Página de Inicio - Apoyo Gubernamental</title>
   <link rel="stylesheet" href="estilos2.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Toggle el menú al hacer clic en el ícono de usuario
+        $(".dropbtn").click(function(event) {
+            event.preventDefault();  // Previene el comportamiento predeterminado del enlace
+            $("#dropdownMenu").toggle(); // Alterna la visibilidad del menú
+        });
+
+        // Cierra el menú si se hace clic fuera de él
+        $(document).click(function(event) {
+            if (!$(event.target).closest(".dropdown").length) { 
+                $("#dropdownMenu").hide(); // Oculta el menú
+            }
+        });
+    });
+</script>
+
 </head>
+
 <body>
   
 <!-- Encabezado -->
 <div class="header ancho">
     <div class="header-content">
-        <div class="header-left">
-        </div>
+
+
+        
+        <div class="header-left"></div>
+        
         <div class="header-center">
             <h2>Plataforma de Apoyo Gubernamental</h2>
         </div>
-        <div class="header-right">
-            <?php if (!isset($_SESSION['username'])): // Si no hay usuario logueado ?>
-                <a href="login.php" class="btn-login">
-                    <i class="fas fa-sign-in-alt"></i> 
-                </a>
-            <?php else: // Si hay usuario logueado ?>
-                <a href="salir.php" class="btn-logout">
-                    <i class="fas fa-sign-out-alt"></i> 
-                </a>
-            <?php endif; ?>
-        </div>
+        
+          <div class="dropdown">
+      <a href="#" class="btn-login dropbtn">
+          <i class="fas fa-user"></i>
+      </a>
+      <div id="dropdownMenu" class="dropdown-content">
+          <?php if (isset($_SESSION['username'])): ?>
+              <a href="perfil.php">Mi Perfil</a>
+              <a href="ajustes.php">Ajustes</a>
+              <a href="salir.php">Cerrar Sesión</a>
+          <?php else: ?>
+              <a href="login.php">Iniciar Sesión</a>
+          <?php endif; ?>
+      </div>
+  </div>
     </div>
 </div>
+
 
 <!-- Contenido principal -->
 <div class="main-content ancho">

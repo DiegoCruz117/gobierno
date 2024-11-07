@@ -1,7 +1,4 @@
-<?php
-require "seguridad.php"; // Verifica que el usuario está autenticado
-$usuario = htmlspecialchars($_SESSION['username']); // Escapa el nombre de usuario para evitar XSS
-?>
+
 
 <!DOCTYPE html>
 <html lang="es">

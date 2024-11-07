@@ -1,3 +1,7 @@
+<?php
+require "seguridad.php"; // Verificar que el usuario está autenticado
+$usuario = $_SESSION['username'];
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,7 +13,7 @@
 <body>
 
 <form action="procesar_apoyo.php" method="post" class="form_solicitud_apoyo" enctype="multipart/form-data">
-    <input type="hidden" name="tipo_apoyo" value="economico">
+    <input type="hidden" name="tipo_apoyo" value="vivienda">
     <!-- Requisitos para el Apoyo -->
      <a href="apoyo_economico.php" class="btn_detalle">Regresar</a>
      <p><span class="necesario">*</span>Campos obligatorios</p>

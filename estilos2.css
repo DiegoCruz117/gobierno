@@ -220,3 +220,58 @@ h3 {
   margin-right: 5px; /* Espacio entre el icono y el texto */
 }
   
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Estilo para el botón de login con el ícono */
+.btn-login {
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.btn-login:hover {
+  color: #001dbe; /* Cambia el color al pasar el mouse */
+}
+
+/* Estilo para el menú desplegable */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #ffffff;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 5px;
+  padding: 10px 0;
+  margin-top: 5px;
+}
+
+/* Estilo para los enlaces dentro del menú */
+.dropdown-content a {
+  color: #333;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Mostrar el menú cuando se hace hover en el botón */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Estilos para el ícono */
+.fa-user {
+  font-size: 24px;
+}

@@ -90,7 +90,7 @@ if (isset($_POST['actualizar_estatus'])) {
               </form>
             </td>
             <td><a href="ver_post.php?id=<?php echo $fila["id_solicitud"]; ?>"><img src="imagenes/icono_ver.png" class="img_ver"></a></td>
-            <td><a href="#" Onclick="validar('borrar_registros?id_solicitud=<?php echo $fila["id_solicitud"]; ?>')"><img src="imagenes/icono_eliminar.png" class="img_eliminar"></a></td>
+            <td><a href="#" Onclick="validar('borrar_registros.php?id_solicitud=<?php echo $fila["id_solicitud"]; ?>')"><img src="imagenes/icono_eliminar.png" class="img_eliminar"></a></td>
           </tr>
           <?php 
           }
@@ -189,7 +189,7 @@ if (isset($_POST['actualizar_estatus'])) {
               </form>
             </td>
             <td><a href="ver_post.php?id=<?php echo $fila["id_solicitud"]; ?>"><img src="imagenes/icono_ver.png" class="img_ver"></a></td>
-            <td><a href="#" Onclick="validar('borra_registros.php?id=<?php echo $fila["id_solicitud"]; ?>')"><img src="imagenes/icono_eliminar.png" class="img_eliminar"></a></td>
+            <td><a href="#" Onclick="validar('borrar_registros.php?id_solicitud=<?php echo $fila["id_solicitud"]; ?>')"><img src="imagenes/icono_eliminar.png" class="img_eliminar"></a></td>
           </tr>
           <?php 
           }

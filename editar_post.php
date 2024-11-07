@@ -36,7 +36,7 @@ $id_noticia = $_GET['id_noticia'];
       <div class="cont_panel_derecho_hijo2">
         <h2 class="titulo_panel"> EDITAR POST</h2>
         <br>
-        <a href="blog.php" class="btn_rojo2"><< Regresar</a>
+        <a href="noticias_admin.php" class="btn_rojo2"><< Regresar</a>
         <br><br>
         <form action="guardar_noticias_editar.php" method="post" class="form_crear_usuario" enctype="multipart/form-data">
           <input type="text" name="nombrenoticia" class="elemento_inp2" placeholder="Nombre de evento o noticia" required value="<?php echo $fila['nombrenoticia'];?>">

@@ -15,7 +15,7 @@ body{
   --color2: #bebebe; /* Color secundario */
 }
 .ancho{
-  width: 1400px;
+  width: 1300px;
   margin: auto;
 }
 .titulo{
@@ -286,13 +286,13 @@ body{
   border-radius: 5px;
   margin-top: 5px;
   background-color: white;
-  width: 1050px;
+  width: 950px;
 }
 .cont_panel_derecho_hijo2{
   background-color: white;
   border-radius: 5px;
   padding: 15px;
-  width: 1050px;
+  width: 950px;
 }
 .titulo_panel{
   text-align: center;
@@ -392,4 +392,47 @@ body{
 
 .container h2{
   color: --color1;
+}
+
+
+
+.custom-select {
+  position: relative;
+  width: 850px;
+  font-family: Arial, sans-serif;
+}
+.select-selected {
+  background-color: #f1f1f1;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.select-selected i {
+  margin-right: 10px;
+}
+.select-items {
+  position: absolute;
+  background-color: #f9f9f9;
+  width: 100%;
+  z-index: 99;
+  display: none;
+  border: 1px solid #ddd;
+  max-height: 150px;
+  overflow-y: auto;
+}
+.select-items div {
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.select-items div i {
+  margin-right: 10px;
+}
+.select-items div:hover {
+  background-color: #ddd;
+}
+.show {
+  display: block;
 }

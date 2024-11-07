@@ -1,7 +1,6 @@
 <?php
-require "seguridad.php";
-$usuario = $_SESSION['username'];
-?>
+session_start();
+?>  
 <!DOCTYPE html>
 <html lang="es">
 <head>

@@ -1,6 +1,5 @@
 <?php
-require "seguridad.php";
-$usuario = $_SESSION['username'];
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -44,6 +43,7 @@ $usuario = $_SESSION['username'];
   <section class="noticias">
     <h2>Últimas Noticias</h2>
 
+  
     <div class="noticia">
       <h3><i class="fas fa-newspaper"></i> Nuevos programas de apoyo 2024</h3>
       <p>El gobierno ha anunciado nuevos programas para apoyar a comunidades afectadas por la crisis económica global.</p>
