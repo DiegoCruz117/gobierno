@@ -436,3 +436,28 @@ body{
 .show {
   display: block;
 }
+
+.tab {
+  display: flex;
+  cursor: pointer;
+  background-color: #f1f1f1;
+  padding: 10px;
+  border-bottom: 2px solid #ccc;
+}
+.tab div {
+  padding: 10px 20px;
+  margin-right: 10px;
+  background-color: #ddd;
+  border-radius: 5px 5px 0 0;
+}
+.tab div.active {
+  background-color: #fff;
+  border-bottom: 2px solid white;
+  font-weight: bold;
+}
+.tab-content {
+  display: none;
+}
+.tab-content.active {
+  display: block;
+}
