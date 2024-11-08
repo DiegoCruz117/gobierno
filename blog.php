@@ -3,7 +3,7 @@ require "seguridad.php";
 $usuario = $_SESSION['username'];
 
 // Conexión a la base de datos
-require "conexion.php"; 
+require "conexion.php";
 
 // Verifica si se envió el formulario para actualizar el estatus
 if (isset($_POST['actualizar_estatus'])) {
@@ -14,7 +14,7 @@ if (isset($_POST['actualizar_estatus'])) {
     // Prepara la consulta para actualizar el estatus en la base de datos
     $query_actualizar = "UPDATE solicitudes_apoyo SET estatus = ? WHERE id_solicitud = ?";
     $stmt = mysqli_prepare($conectar, $query_actualizar);
-    
+
     if ($stmt) {
         mysqli_stmt_bind_param($stmt, 'si', $nuevo_estatus, $id_solicitud);
         mysqli_stmt_execute($stmt);
@@ -24,7 +24,7 @@ if (isset($_POST['actualizar_estatus'])) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,179 +33,107 @@ if (isset($_POST['actualizar_estatus'])) {
 </head>
 <body>
   <div class="cont_padre_panel ancho">
-    <?php 
-    include "menudashboard.php"; // Incluye el menú de navegación del dashboard
-    ?>
+    <?php include "menudashboard.php"; ?>
     <div class="cont_panel_derecho">
       <div class="cont_panel_derecho_hijo1">
         <div class="elemento_salir">
-          <img src="imagenes/cancelar.png" class="img_cancelar" >
+          <img src="imagenes/cancelar.png" class="img_cancelar">
           <a href="salir.php" class="salir">Salir</a>
         </div>
       </div>
-      <br> 
-      <div class="cont_panel_derecho_hijo2"><br>
+      <br>
+      <div class="cont_panel_derecho_hijo2">
         <h2 class="titulo_panel">Solicitudes de Apoyo</h2>
         <br>
-        
-        <!-- Tabla para Apoyo Alimentario -->
-        <h3>Apoyo Alimentario</h3>
-        <table class="tabla_usuarios">
-          <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Email</th>
-            <th>Teléfono</th>
-            <th>Tipo de Programa</th>
-            <th>Estatus</th>
-            <th>Acciones</th>
-            <th>Ver</th>
-            <th>Eliminar</th>
 
-          </tr>
-          <?php
-          // Consulta para obtener solicitudes de apoyo alimentario
-          $query_alimentario = "SELECT * FROM solicitudes_apoyo WHERE tipo_apoyo = 'Alimentario' ORDER BY id_solicitud ASC";
-          $resultado_alimentario = mysqli_query($conectar, $query_alimentario);
-          
-          // Bucle para mostrar cada solicitud en una fila de la tabla
-          while ($fila = mysqli_fetch_assoc($resultado_alimentario)) {
-          ?>
-          <tr>
-            <td><?php echo $fila["id_solicitud"]; ?></td>
-            <td><?php echo $fila["nombre"]; ?></td>
-            <td><?php echo $fila["email"]; ?></td>
-            <td><?php echo $fila["telefono"]; ?></td>
-            <td><?php echo $fila["tipo_apoyo"]; ?></td>
-            <td><?php echo $fila["estatus"]; ?></td>
-            <td>
-              <!-- Formulario para actualizar estatus -->
-              <form method="POST" style="display:inline;">
-                <input type="hidden" name="id_solicitud" value="<?php echo $fila["id_solicitud"]; ?>">
-                <input type="hidden" name="actualizar_estatus" value="1">
-                
-                <!-- Botones de estatus -->
-                <button type="submit" name="estatus" value="Aceptado" class="btn_estatus aceptado">Aceptado</button>
-                <button type="submit" name="estatus" value="Rechazado" class="btn_estatus rechazado">Rechazado</button>
-              </form>
-            </td>
-            <td><a href="ver_post.php?id=<?php echo $fila["id_solicitud"]; ?>"><img src="imagenes/icono_ver.png" class="img_ver"></a></td>
-            <td><a href="#" Onclick="validar('borrar_registros.php?id_solicitud=<?php echo $fila["id_solicitud"]; ?>')"><img src="imagenes/icono_eliminar.png" class="img_eliminar"></a></td>
-          </tr>
-          <?php 
-          }
-          ?>
-        </table>
-        <br><br>
+        <!-- Pestañas -->
+        <div class="tab">
+          <div class="tablinks" id="tabApoyoAlimentario" onclick="openTab(event, 'ApoyoAlimentario')">Apoyo Alimentario</div>
+          <div class="tablinks" id="tabApoyoEconomico" onclick="openTab(event, 'ApoyoEconomico')">Apoyo Económico</div>
+          <div class="tablinks" id="tabApoyoVivienda" onclick="openTab(event, 'ApoyoVivienda')">Apoyo Vivienda</div>
+        </div>
 
-        <!-- Tabla para Apoyo Económico -->
-        <h3>Apoyo Económico</h3>
-        <table class="tabla_usuarios">
-          <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Email</th>
-            <th>Teléfono</th>
-            <th>Tipo de Programa</th>
-            <th>Estatus</th>
-            <th>Acciones</th>
-            <th>Ver</th>
-            <th>Eliminar</th>
-          </tr>
-          <?php
-          // Consulta para obtener solicitudes de apoyo económico
-          $query_economico = "SELECT * FROM solicitudes_apoyo WHERE tipo_apoyo = 'economico' ORDER BY id_solicitud ASC";
-          $resultado_economico = mysqli_query($conectar, $query_economico);
-          
-          // Bucle para mostrar cada solicitud en una fila de la tabla
-          while ($fila = mysqli_fetch_assoc($resultado_economico)) {
-          ?>
-          <tr>
-            <td><?php echo $fila["id_solicitud"]; ?></td>
-            <td><?php echo $fila["nombre"]; ?></td>
-            <td><?php echo $fila["email"]; ?></td>
-            <td><?php echo $fila["telefono"]; ?></td>
-            <td><?php echo $fila["tipo_apoyo"]; ?></td>
-            <td><?php echo $fila["estatus"]; ?></td>
-            <td>
-              <!-- Formulario para actualizar estatus -->
-              <form method="POST" style="display:inline;">
-                <input type="hidden" name="id_solicitud" value="<?php echo $fila["id_solicitud"]; ?>">
-                <input type="hidden" name="actualizar_estatus" value="1">
-                
-                <!-- Botones de estatus -->
-                <button type="submit" name="estatus" value="Aceptado" class="btn_estatus aceptado">Aceptado</button>
-                <button type="submit" name="estatus" value="Rechazado" class="btn_estatus rechazado">Rechazado</button>
-              </form>
-            </td>
-            <td><a href="ver_post.php?id=<?php echo $fila["id_solicitud"]; ?>"><img src="imagenes/icono_ver.png" class="img_ver"></a></td>
-            <td><a href="#" Onclick="validar('borrar_registros.php?id_solicitud=<?php echo $fila["id_solicitud"]; ?>')"><img src="imagenes/icono_eliminar.png" class="img_eliminar"></a></td>
-          </tr>
-          <?php 
-          }
-          ?>
-        </table>
-        <br><br>
+        <!-- Contenido de las Pestañas -->
+        <div id="ApoyoAlimentario" class="tab-content">
+          <br>
+          <?php include "tabla_alimentario.php" ?>
+        </div>
 
-        <!-- Tabla para Apoyo Vivienda -->
-        <h3>Apoyo Vivienda</h3>
-        <table class="tabla_usuarios">
-          <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Email</th>
-            <th>Teléfono</th>
-            <th>Tipo de Programa</th>
-            <th>Estatus</th>
-            <th>Ver</th>
-            <th>Eliminar</th>
-            <th>Acciones</th>
-          </tr>
-          <?php
-          // Consulta para obtener solicitudes de apoyo vivienda
-          $query_vivienda = "SELECT * FROM solicitudes_apoyo WHERE tipo_apoyo = 'vivienda' ORDER BY id_solicitud ASC";
-          $resultado_vivienda = mysqli_query($conectar, $query_vivienda);
-          
-          // Bucle para mostrar cada solicitud en una fila de la tabla
-          while ($fila = mysqli_fetch_assoc($resultado_vivienda)) {
-          ?>
-          <tr>
-            <td><?php echo $fila["id_solicitud"]; ?></td>
-            <td><?php echo $fila["nombre"]; ?></td>
-            <td><?php echo $fila["email"]; ?></td>
-            <td><?php echo $fila["telefono"]; ?></td>
-            <td><?php echo $fila["tipo_apoyo"]; ?></td>
-            <td><?php echo $fila["estatus"]; ?></td>
-          
-            <td>
-              <!-- Formulario para actualizar estatus -->
-              <form method="POST" style="display:inline;">
-                <input type="hidden" name="id_solicitud" value="<?php echo $fila["id_solicitud"]; ?>">
-                <input type="hidden" name="actualizar_estatus" value="1">
-                
-                <!-- Botones de estatus -->
-                <button type="submit" name="estatus" value="Aceptado" class="btn_estatus aceptado">Aceptado</button>
-                <button type="submit" name="estatus" value="Rechazado" class="btn_estatus rechazado">Rechazado</button>
-              </form>
-            </td>
-            <td><a href="ver_post.php?id=<?php echo $fila["id_solicitud"]; ?>"><img src="imagenes/icono_ver.png" class="img_ver"></a></td>
-            <td><a href="#" Onclick="validar('borrar_registros.php?id_solicitud=<?php echo $fila["id_solicitud"]; ?>')"><img src="imagenes/icono_eliminar.png" class="img_eliminar"></a></td>
-          </tr>
-          <?php 
-          }
-          ?>
-        </table>
-        <br><br>
+        <div id="ApoyoEconomico" class="tab-content">
+          <?php include "tabla_economico.php" ?>
+        </div>
+
+        <div id="ApoyoVivienda" class="tab-content">
+          <?php include "tabla_vivienda.php" ?>
+        </div>
       </div>
     </div>
   </div>
+
   <script>
-    function validar(url){
-      var eliminar = confirm("¿Desea eliminar el registro?");
-      if(eliminar == true){
-        window.location = url;
+    function openTab(evt, tabName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tab-content");
+
+      // Ocultar todas las pestañas
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+        tabcontent[i].classList.remove("active");
+      }
+
+      tablinks = document.getElementsByClassName("tablinks");
+
+      // Eliminar la clase activa de todas las pestañas
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+      }
+
+      // Mostrar la pestaña seleccionada
+      document.getElementById(tabName).style.display = "block";
+      document.getElementById(tabName).classList.add("active");
+
+      // Marcar la pestaña seleccionada como activa
+      evt.currentTarget.classList.add("active");
+
+      // Guardar la pestaña activa en el almacenamiento local
+      localStorage.setItem("activeTab", tabName);
+    }
+
+    // Al cargar la página, verificar si hay una pestaña guardada en el almacenamiento local
+    window.onload = function() {
+      var activeTab = localStorage.getItem("activeTab");
+
+      if (activeTab) {
+        var tabcontent = document.getElementsByClassName("tab-content");
+        var tablinks = document.getElementsByClassName("tablinks");
+
+        // Ocultar todas las pestañas
+        for (var i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+          tabcontent[i].classList.remove("active");
+        }
+
+        // Eliminar la clase activa de todos los enlaces de pestaña
+        for (var i = 0; i < tablinks.length; i++) {
+          tablinks[i].classList.remove("active");
+        }
+
+        // Mostrar la pestaña activa
+        document.getElementById(activeTab).style.display = "block";
+        document.getElementById(activeTab).classList.add("active");
+
+        // Agregar la clase activa al enlace correspondiente para mantener el estilo visual
+        for (var i = 0; i < tablinks.length; i++) {
+          if (tablinks[i].id === "tab" + activeTab) {
+            tablinks[i].classList.add("active");
+          }
+        }
+      } else {
+        // Si no hay una pestaña guardada, mostrar la primera pestaña por defecto
+        document.getElementsByClassName("tablinks")[0].click();
       }
     }
   </script>
+
 </body>
 </html>
