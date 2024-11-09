@@ -13,6 +13,7 @@ body{
 :root {
   --color1: #611232; /* Color principal */
   --color2: #bebebe; /* Color secundario */
+  --color3: #3d9900;
 }
 .ancho{
   width: 1300px;
@@ -53,7 +54,7 @@ body{
 
 .btn_login{
   padding: 12px 120px;
-  background-color: var(--color1);;
+  background-color: var(--color1);
   color: white;
   border-radius: 8px;
   border: none;
@@ -111,7 +112,7 @@ body{
 
 .btn_crear4{
   padding: 12px 142px;
-  background-color:var(--color1);;
+  background-color:var(--color1);
   color: white;
   border-radius: 8px;
   border: none;
@@ -160,7 +161,7 @@ body{
 .btn_azul{
   width: 350px;
   padding: 15px;
-  background-color:var(--color1);;
+  background-color:var(--color1);
   color: white;
   border: 0;
   border-radius: 6px;
@@ -437,14 +438,16 @@ body{
   display: block;
 }
 
+/* PESTAÑAS */
 .tab {
   display: flex;
-  cursor: pointer;
   background-color: #f1f1f1;
   padding: 10px;
   border-bottom: 2px solid #ccc;
 }
+
 .tab div {
+  cursor: pointer;
   padding: 10px 20px;
   margin-right: 10px;
   background-color: #ddd;
@@ -460,4 +463,66 @@ body{
 }
 .tab-content.active {
   display: block;
+}
+
+/* BOTONES */
+.tab1 {
+  /* text-align: center; */
+  margin-top: -25px;
+  padding: 15px 0px 15px 0px;
+  /* border: 1px red solid; */
+  margin-left: 5px;
+}
+
+.pestaña {
+  display: inline-block;
+  vertical-align: top;
+  padding: 8px 15px;
+  cursor: pointer;
+  margin-right: 10px;
+  color: white;
+  border-radius: 5px;
+}
+.color3{
+  background-color:red;
+}
+.color1{
+  background-color: var(--color3);
+}
+.tab1 div.active {
+  background-color: #fff;
+  border-bottom: 2px solid white;
+  font-weight: bold;
+}
+/* PESTAÑAS */
+
+.buscar{
+  display: inline-block;
+  vertical-align: top;
+  /* border: 1px solid black; */
+  width: 70%;
+  height: 40px;
+  margin-left: 10px;
+  /* background-color: #ececec; */
+}
+.caja4{
+  border: 1px solid #c9c5c5;
+  border-radius: 5px;
+  width: 80%;
+  padding: 10px;
+  margin-top: 2px;
+}
+.btn_buscar{
+  padding: 8px 23px;
+  background-color: #f77d22;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 30px;
+  font-size: 17px;
+  text-decoration: none;
+}
+.btn_buscar:hover{
+  transform: scale(1.15);
 }

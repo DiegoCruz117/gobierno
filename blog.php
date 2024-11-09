@@ -60,10 +60,12 @@ if (isset($_POST['actualizar_estatus'])) {
         </div>
 
         <div id="ApoyoEconomico" class="tab-content">
+          <br>
           <?php include "tabla_economico.php" ?>
         </div>
 
         <div id="ApoyoVivienda" class="tab-content">
+          <br>
           <?php include "tabla_vivienda.php" ?>
         </div>
       </div>

@@ -1,4 +1,13 @@
-<h3>Apoyo Alimentario</h3>
+    <div class="tab1">
+        <div class="tablinks pestaña color1" id="aceptados" onclick="openTab(event, 'aceptados')">Aceptados</div>
+        <div class="tablinks pestaña color3" id="rechazados" onclick="openTab(event, 'rechazados')">Rechazados</div>
+            <div class="buscar">
+                    <form action="" method="post">
+                        <input type="text" name="buscar_titulo" placeholder="Buscar" class="caja4">
+                        <button type="submit" name="boton_buscar" class="btn_buscar">Buscar</button>
+                    </form>
+                </div>
+    </div>
           <table class="tabla_usuarios">
           <tr>
             <th>ID</th>
@@ -14,7 +23,7 @@
           </tr>
           <?php
           // Consulta para obtener solicitudes de apoyo alimentario
-          $query_alimentario = "SELECT * FROM solicitudes_apoyo WHERE tipo_apoyo = 'Alimentario' ORDER BY id_solicitud ASC";
+          $query_alimentario = "SELECT * FROM solicitudes_apoyo WHERE tipo_apoyo = 'alimentario' ORDER BY id_solicitud ASC";
           $resultado_alimentario = mysqli_query($conectar, $query_alimentario);
 
           // Bucle para mostrar cada solicitud en una fila de la tabla
@@ -45,3 +54,67 @@
           }
           ?>
         </table>
+        <script>
+    function openTab(evt, tabName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tab-content");
+
+      // Ocultar todas las pestañas
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+        tabcontent[i].classList.remove("active");
+      }
+
+      tablinks = document.getElementsByClassName("tablinks");
+
+      // Eliminar la clase activa de todas las pestañas
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+      }
+
+      // Mostrar la pestaña seleccionada
+      document.getElementById(tabName).style.display = "block";
+      document.getElementById(tabName).classList.add("active");
+
+      // Marcar la pestaña seleccionada como activa
+      evt.currentTarget.classList.add("active");
+
+      // Guardar la pestaña activa en el almacenamiento local
+      localStorage.setItem("activeTab", tabName);
+    }
+
+    // Al cargar la página, verificar si hay una pestaña guardada en el almacenamiento local
+    window.onload = function() {
+      var activeTab = localStorage.getItem("activeTab");
+
+      if (activeTab) {
+        var tabcontent = document.getElementsByClassName("tab-content");
+        var tablinks = document.getElementsByClassName("tablinks");
+
+        // Ocultar todas las pestañas
+        for (var i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+          tabcontent[i].classList.remove("active");
+        }
+
+        // Eliminar la clase activa de todos los enlaces de pestaña
+        for (var i = 0; i < tablinks.length; i++) {
+          tablinks[i].classList.remove("active");
+        }
+
+        // Mostrar la pestaña activa
+        document.getElementById(activeTab).style.display = "block";
+        document.getElementById(activeTab).classList.add("active");
+
+        // Agregar la clase activa al enlace correspondiente para mantener el estilo visual
+        for (var i = 0; i < tablinks.length; i++) {
+          if (tablinks[i].id === "tab1" + activeTab) {
+            tablinks[i].classList.add("active");
+          }
+        }
+      } else {
+        // Si no hay una pestaña guardada, mostrar la primera pestaña por defecto
+        document.getElementsByClassName("tablinks")[0].click();
+      }
+    }
+  </script>

@@ -1,5 +1,15 @@
-<h3>Apoyo Vivienda</h3>
-          <table class="tabla_usuarios">
+    <div class="tab1">
+        <div class="tablinks pestaña color1" id="aceptados" onclick="openTab(event, 'aceptados')">Aceptados</div>
+        <div class="tablinks pestaña color3" id="rechazados" onclick="openTab(event, 'rechazados')">Rechazados</div>
+        <div class="buscar">
+                    <form action="" method="post">
+                        <input type="text" name="buscar_titulo" placeholder="Buscar" class="caja4">
+                        <button type="submit" name="boton_buscar" class="btn_buscar">Buscar</button>
+                    </form>
+                </div>
+    </div>
+
+<table class="tabla_usuarios">
           <tr>
             <th>ID</th>
             <th>Nombre</th>
