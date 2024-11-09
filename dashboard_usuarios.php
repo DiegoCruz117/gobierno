@@ -12,8 +12,9 @@ $usuario = $_SESSION['username'];
 </head>
 <body>
   <div class="cont_padre_panel ancho">
-    <?php 
+    <?php
     include "menudashboard.php";
+    require "conexion.php";
     ?>
     <div class="cont_panel_derecho">
       <div class="cont_panel_derecho_hijo1">
@@ -22,7 +23,7 @@ $usuario = $_SESSION['username'];
           <a href="salir.php" class="salir">Salir</a>
         </div>
       </div>
-      <br> 
+      <br>
       <div class="cont_panel_derecho_hijo2">
         <h2 class="titulo_panel">Usuarios</h2>
         <br>
@@ -30,7 +31,7 @@ $usuario = $_SESSION['username'];
         <br><br>
 
         <!-- Tabla para usuarios con rol de Alcance -->
-        <h3>Alcance</h3>
+        <!-- <h3>Alcande</h3>
         <table class="tabla_usuarios">
           <tr>
             <th>ID</th>
@@ -41,10 +42,9 @@ $usuario = $_SESSION['username'];
 
           </tr>
           <?php
-          require "conexion.php";
-          $query_alcance = "SELECT * FROM registro WHERE rol = 'alcalde' AND id != 33 ORDER BY id ASC";
-          $resultado_alcance = mysqli_query($conectar, $query_alcance);
-          while ($fila = mysqli_fetch_assoc($resultado_alcance)) {
+          // $query_alcance = "SELECT * FROM registro WHERE rol = 'alcalde' AND id != 33 ORDER BY id ASC";
+          // $resultado_alcance = mysqli_query($conectar, $query_alcance);
+          // while ($fila = mysqli_fetch_assoc($resultado_alcance)) {
           ?>
           <tr>
             <td><?php echo $fila["id"]; ?></td>
@@ -53,13 +53,13 @@ $usuario = $_SESSION['username'];
             <td><?php echo $fila["correo"]; ?></td>
             <td><?php echo $fila["rol"]; ?></td>
           </tr>
-          <?php 
-          }
+          <?php
+          // }
           ?>
-        </table><br>
+        </table><br> -->
 
         <!-- Tabla para usuarios con rol de Administrador -->
-        <h3>Administradores</h3>
+        <!-- <h3>Administradores</h3>
         <table class="tabla_usuarios">
           <tr>
             <th>ID</th>
@@ -70,9 +70,9 @@ $usuario = $_SESSION['username'];
             <th>Eliminar</th>
           </tr>
           <?php
-          $query_admin = "SELECT * FROM registro WHERE rol = 'administrador' AND id != 33 ORDER BY id ASC";
-          $resultado_admin = mysqli_query($conectar, $query_admin);
-          while ($fila = mysqli_fetch_assoc($resultado_admin)) {
+          // $query_admin = "SELECT * FROM registro WHERE rol = 'administrador' AND id != 33 ORDER BY id ASC";
+          // $resultado_admin = mysqli_query($conectar, $query_admin);
+          // while ($fila = mysqli_fetch_assoc($resultado_admin)) {
           ?>
           <tr>
             <td><?php echo $fila["id"]; ?></td>
@@ -82,20 +82,20 @@ $usuario = $_SESSION['username'];
             <td><?php echo $fila["rol"]; ?></td>
             <td><a href="#" Onclick="validar('borra.php?id=<?php echo $fila["id"]; ?>')"><img src="imagenes/icono_eliminar.png" class="img_eliminar"></a></td>
           </tr>
-          <?php 
-          }
+          <?php
+          // }
           ?>
-        </table><br>
+        </table><br> -->
 
         <!-- Tabla para usuarios con rol de Usuario -->
-        <h3>Usuarios</h3>
+        <!-- <h3>Usuarios</h3> -->
         <table class="tabla_usuarios">
           <tr>
             <th>ID</th>
             <th>Nombres</th>
             <th>Apellidos</th>
             <th>Email</th>
-            <th>Rol</th>
+            <!-- <th>Rol</th> -->
             <th>Eliminar</th>
           </tr>
           <?php
@@ -108,14 +108,14 @@ $usuario = $_SESSION['username'];
             <td><?php echo $fila["nombre"]; ?></td>
             <td><?php echo $fila["apellido"]; ?></td>
             <td><?php echo $fila["correo"]; ?></td>
-            <td><?php echo $fila["rol"]; ?></td>
+            <!-- <td><?php echo $fila["rol"]; ?></td> -->
             <td><a href="#" Onclick="validar('borra.php?id=<?php echo $fila["id"]; ?>')"><img src="imagenes/icono_eliminar.png" class="img_eliminar"></a></td>
           </tr>
-          <?php 
+          <?php
           }
           ?>
         </table>
-        
+
       </div>
     </div>
   </div>
