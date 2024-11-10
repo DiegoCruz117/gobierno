@@ -79,7 +79,7 @@ session_start();
 
     <div class="apoyo">
       <h3><i class="fas fa-hand-holding-usd"></i> Apoyo Económico </h3>
-      <p>Este apoyo está dirigido a familias de bajos recursos para cubrir necesidades básicas durante la pandemia.</p>
+      <p>Este programa proporciona asistencia económica a familias en situación de vulnerabilidad para cubrir sus necesidades básicas.</p>
       <a href="apoyo_economico.php" class="btn_detalle">Ver Detalles</a>
     </div>
 
@@ -91,7 +91,7 @@ session_start();
 
     <div class="apoyo">
       <h3><i class="fas fa-home"></i> Apoyo para Vivienda</h3>
-      <p>Rehabilitación de viviendas dañadas por desastres naturales, incluyendo techos y estructuras básicas.</p>
+      <p>Este programa busca rehabilitar y mejorar las condiciones de vivienda de familias afectadas por desastres naturales.</p>
       <a href="apoyo_vivienda.php" class="btn_detalle">Ver Detalles</a>
     </div>
 

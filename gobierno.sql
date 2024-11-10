@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-11-2024 a las 00:38:25
+-- Tiempo de generación: 10-11-2024 a las 05:52:19
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -20,6 +20,56 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `gobierno`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `calificaciones`
+--
+
+CREATE TABLE `calificaciones` (
+  `id` int(11) NOT NULL,
+  `encargado` varchar(150) DEFAULT NULL,
+  `rating` int(11) DEFAULT NULL,
+  `comentario` text NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
+  `usuario_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `calificaciones`
+--
+
+INSERT INTO `calificaciones` (`id`, `encargado`, `rating`, `comentario`, `fecha`, `usuario_id`) VALUES
+(1, 'Juan Pérez', 3, 'dasdasda', '2024-11-10 02:42:50', 0),
+(2, 'Juan Pérez', 3, 'dasdasd', '2024-11-10 02:44:46', 0),
+(3, 'Juan Pérez', 3, '', '2024-11-10 02:44:52', 0),
+(4, 'María García', 4, 'dasdas', '2024-11-10 02:52:19', 0),
+(5, 'Juan Pérez', 4, 'hola pete\n', '2024-11-10 03:11:56', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `crear_apoyos`
+--
+
+CREATE TABLE `crear_apoyos` (
+  `id_apoyos` int(11) NOT NULL,
+  `icono_apoyos` varchar(50) DEFAULT NULL,
+  `nombre_programa` varchar(100) DEFAULT NULL,
+  `fecha_programa` date DEFAULT NULL,
+  `descripcioncorta` text DEFAULT NULL,
+  `descripcionlarga` text DEFAULT NULL,
+  `fecha_creacion` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `crear_apoyos`
+--
+
+INSERT INTO `crear_apoyos` (`id_apoyos`, `icono_apoyos`, `nombre_programa`, `fecha_programa`, `descripcioncorta`, `descripcionlarga`, `fecha_creacion`) VALUES
+(1, '', ' Programa de Apoyo Económico', '2024-11-09', 'Este programa proporciona asistencia económica a familias en situación de vulnerabilidad para cubrir sus necesidades básicas.', '<p>El&nbsp;<strong>Apoyo Econ&oacute;mico</strong>&nbsp;est&aacute; dirigido a familias en situaci&oacute;n vulnerable en el municipio de M&eacute;rida. Proporciona un subsidio financiero para cubrir necesidades b&aacute;sicas durante tiempos de crisis. Este apoyo se ha dise&ntilde;ado para ayudar a las familias a enfrentar situaciones de emergencia econ&oacute;mica, asegurando que tengan acceso a lo esencial como alimentaci&oacute;n, salud y educaci&oacute;n.</p>\r\n\r\n<p><strong>Modalidades del Apoyo Econ&oacute;mico:</strong></p>\r\n\r\n<ul>\r\n	<li><strong>Subsidio de Emergencia:</strong>&nbsp;Un monto &uacute;nico para cubrir gastos urgentes en alimentaci&oacute;n, vivienda o salud.</li>\r\n	<li><strong>Becas y Apoyos Educativos:</strong>&nbsp;Ayuda econ&oacute;mica para estudiantes de familias de bajos recursos, desde nivel b&aacute;sico hasta superior.</li>\r\n	<li><strong>Apoyos para Vivienda:</strong>&nbsp;Subsidios destinados a mejoras o rehabilitaci&oacute;n de viviendas, especialmente en zonas rurales o marginadas.</li>\r\n	<li><strong>Programas para Madres Solteras:</strong>&nbsp;Apoyos espec&iacute;ficos para cubrir necesidades de madres solteras y facilitar su acceso a oportunidades educativas o laborales.</li>\r\n</ul>\r\n\r\n<h3>Requisitos para solicitar este apoyo:</h3>\r\n\r\n<ul>\r\n	<li>Ser mayor de 18 a&ntilde;os.</li>\r\n	<li>Residir en el municipio de M&eacute;rida.</li>\r\n	<li>Identificaci&oacute;n oficial vigente (INE, pasaporte).</li>\r\n</ul>\r\n\r\n<h3>Documentaci&oacute;n requerida:</h3>\r\n\r\n<ul>\r\n	<li>Copia de identificaci&oacute;n oficial.</li>\r\n	<li>Comprobante de domicilio no mayor a 3 meses.</li>\r\n</ul>\r\n\r\n<h3>Proceso de solicitud:</h3>\r\n\r\n<p>Para solicitar este apoyo, debes acudir a la oficina de atenci&oacute;n ciudadana o registrarte en el portal web oficial. La solicitud ser&aacute; revisada por un equipo especializado, y se evaluar&aacute; tu situaci&oacute;n. De ser aprobado, recibir&aacute;s el subsidio en un plazo de 30 d&iacute;as h&aacute;biles. Adem&aacute;s, se recomienda mantener actualizada tu informaci&oacute;n de contacto para facilitar la comunicaci&oacute;n.</p>\r\n\r\n<h3>M&aacute;s informaci&oacute;n sobre apoyos econ&oacute;micos en M&eacute;rida:</h3>\r\n\r\n<p>El gobierno de M&eacute;rida ofrece diferentes programas de apoyo econ&oacute;mico que incluyen subsidios para la alimentaci&oacute;n, educaci&oacute;n y salud. Estos programas est&aacute;n dise&ntilde;ados para apoyar a las familias m&aacute;s necesitadas y fomentar el bienestar social. Para m&aacute;s detalles sobre otros apoyos, visita la&nbsp;<a href=\"http://localhost/gobierno/apoyos.php\">secci&oacute;n de Apoyos</a>.</p>\r\n', NULL),
+(2, 'hand-holding-usd', 'adsdasd', '0000-00-00', '', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -42,7 +92,8 @@ CREATE TABLE `publicaciones` (
 --
 
 INSERT INTO `publicaciones` (`id_noticia`, `nombrenoticia`, `fecha`, `descripcioncorta`, `descripcionlarga`, `ruta`, `icono`) VALUES
-(2, 'Nuevos programas de apoyo 2024', '2024-06-05', 'El gobierno ha anunciado nuevos programas para apoyar a comunidades afectadas por la crisis económica global.', '<p>En 2024, varios programas de apoyo social est&aacute;n en marcha en M&eacute;xico, con planes para expandirse en 2025. Destacan tres nuevas iniciativas anunciadas por Claudia Sheinbaum, pr&oacute;xima presidenta de M&eacute;xico:</p>\r\n\r\n<ol>\r\n	<li>\r\n	<p><strong>Apoyo para Mujeres de 60 a 64 a&ntilde;os</strong>: Este programa brindar&aacute; un apoyo bimestral de aproximadamente la mitad de la pensi&oacute;n actual para adultos mayores, beneficiando a mujeres en ese rango de edad. El registro comenz&oacute; en octubre de 2024 y continuar&aacute; en etapas.</p>\r\n	</li>\r\n	<li>\r\n	<p><strong>Beca Universal para Estudiantes de Educaci&oacute;n B&aacute;sica</strong>: Esta beca beneficiar&aacute; a ni&ntilde;os en escuelas p&uacute;blicas, desde preescolar hasta secundaria. El proceso de inscripci&oacute;n se realizar&aacute; en los planteles educativos, asegurando que los estudiantes reciban el apoyo econ&oacute;mico de manera directa.</p>\r\n	</li>\r\n	<li>\r\n	<p><strong>Programa de Salud Casa por Casa</strong>: Este proyecto busca atender a adultos mayores a trav&eacute;s de visitas m&eacute;dicas domiciliarias, con el objetivo de ofrecer seguimiento en salud y realizar diagn&oacute;sticos preventivos</p>\r\n	</li>\r\n</ol>\r\n', 'fotos/2024-11-07-02-21-00_', 'newspaper');
+(2, 'Nuevos programas de apoyo 2024', '2024-06-05', 'El gobierno ha anunciado nuevos programas para apoyar a comunidades afectadas por la crisis económica global.', '<p>En 2024, varios programas de apoyo social est&aacute;n en marcha en M&eacute;xico, con planes para expandirse en 2025. Destacan tres nuevas iniciativas anunciadas por Claudia Sheinbaum, pr&oacute;xima presidenta de M&eacute;xico:</p>\r\n\r\n<ol>\r\n	<li>\r\n	<p><strong>Apoyo para Mujeres de 60 a 64 a&ntilde;os</strong>: Este programa brindar&aacute; un apoyo bimestral de aproximadamente la mitad de la pensi&oacute;n actual para adultos mayores, beneficiando a mujeres en ese rango de edad. El registro comenz&oacute; en octubre de 2024 y continuar&aacute; en etapas.</p>\r\n	</li>\r\n	<li>\r\n	<p><strong>Beca Universal para Estudiantes de Educaci&oacute;n B&aacute;sica</strong>: Esta beca beneficiar&aacute; a ni&ntilde;os en escuelas p&uacute;blicas, desde preescolar hasta secundaria. El proceso de inscripci&oacute;n se realizar&aacute; en los planteles educativos, asegurando que los estudiantes reciban el apoyo econ&oacute;mico de manera directa.</p>\r\n	</li>\r\n	<li>\r\n	<p><strong>Programa de Salud Casa por Casa</strong>: Este proyecto busca atender a adultos mayores a trav&eacute;s de visitas m&eacute;dicas domiciliarias, con el objetivo de ofrecer seguimiento en salud y realizar diagn&oacute;sticos preventivos</p>\r\n	</li>\r\n</ol>\r\n', 'fotos/2024-11-07-02-21-00_', 'newspaper'),
+(4, 'Convenio con instituciones educativas', '2024-11-09', 'Se firmó un convenio con varias universidades para proporcionar becas a estudiantes de bajos recursos.', '<h3>Convenio con Instituciones Educativas de M&eacute;rida, Yucat&aacute;n</h3>\r\n\r\n<p><strong>Se firm&oacute; un convenio con varias universidades para proporcionar becas a estudiantes de bajos recursos.</strong> Este programa tiene como objetivo brindar acceso a la educaci&oacute;n superior a j&oacute;venes en situaci&oacute;n econ&oacute;mica desfavorable, promoviendo as&iacute; su desarrollo personal y profesional en beneficio de la comunidad de M&eacute;rida, Yucat&aacute;n.</p>\r\n\r\n<h4>Universidades Participantes:</h4>\r\n\r\n<ul>\r\n	<li><strong>Universidad Aut&oacute;noma de Yucat&aacute;n (UADY)</strong></li>\r\n	<li><strong>Universidad Marista de M&eacute;rida</strong></li>\r\n	<li><strong>Universidad An&aacute;huac Mayab</strong></li>\r\n	<li><strong>Universidad Modelo</strong></li>\r\n	<li><strong>Tecnol&oacute;gico de M&eacute;rida</strong></li>\r\n</ul>\r\n\r\n<h4>Requisitos para Aplicar:</h4>\r\n\r\n<ol>\r\n	<li><strong>Residencia</strong> en M&eacute;rida, Yucat&aacute;n.</li>\r\n	<li><strong>Condici&oacute;n socioecon&oacute;mica</strong>: Estar en situaci&oacute;n de vulnerabilidad econ&oacute;mica (documentada).</li>\r\n	<li><strong>Rendimiento acad&eacute;mico</strong>: Promedio m&iacute;nimo de 8.0 (o equivalente) en el &uacute;ltimo a&ntilde;o cursado.</li>\r\n	<li><strong>Compromiso</strong>: Disposici&oacute;n para realizar actividades de servicio social o voluntariado en su comunidad.</li>\r\n</ol>\r\n\r\n<h4>Documentaci&oacute;n Necesaria:</h4>\r\n\r\n<ul>\r\n	<li><strong>Comprobante de estudios</strong> (historial acad&eacute;mico actualizado).</li>\r\n	<li><strong>Comprobante de ingresos</strong> familiares (declaraci&oacute;n de ingresos o carta laboral).</li>\r\n	<li><strong>Carta de motivaci&oacute;n</strong> donde el estudiante exprese sus razones para solicitar la beca y c&oacute;mo esta beneficiar&aacute; su desarrollo.</li>\r\n	<li><strong>Identificaci&oacute;n oficial</strong> del solicitante y de sus padres o tutores (si es menor de edad).</li>\r\n</ul>\r\n\r\n<h4>Proceso de Aplicaci&oacute;n:</h4>\r\n\r\n<ol>\r\n	<li><strong>Registro en L&iacute;nea</strong>: Completar el formulario de solicitud en la plataforma.</li>\r\n	<li><strong>Carga de Documentos</strong>: Adjuntar la documentaci&oacute;n necesaria en formato PDF.</li>\r\n	<li><strong>Revisi&oacute;n de Solicitud</strong>: La solicitud ser&aacute; evaluada por el comit&eacute; de becas de la instituci&oacute;n seleccionada.</li>\r\n	<li><strong>Entrevista</strong>: Los candidatos preseleccionados ser&aacute;n contactados para una entrevista virtual o presencial.</li>\r\n	<li><strong>Notificaci&oacute;n</strong>: Los resultados ser&aacute;n enviados al correo electr&oacute;nico registrado en un plazo de 30 d&iacute;as h&aacute;biles.</li>\r\n</ol>\r\n\r\n<h4>Beneficios de la Beca:</h4>\r\n\r\n<ul>\r\n	<li><strong>Cobertura de matr&iacute;cula</strong> parcial o total, dependiendo de la universidad.</li>\r\n	<li><strong>Apoyo en materiales</strong> o recursos educativos adicionales (libros, software, etc.).</li>\r\n	<li><strong>Oportunidades de desarrollo</strong> a trav&eacute;s de programas de mentor&iacute;a y actividades extracurriculares.</li>\r\n</ul>\r\n\r\n<p>Este convenio simboliza el esfuerzo conjunto entre el gobierno y las universidades de M&eacute;rida para transformar el futuro de j&oacute;venes yucatecos, impulsando su acceso a una educaci&oacute;n superior de calidad.</p>\r\n', 'fotos/2024-11-10-01-23-25_', 'handshake');
 
 -- --------------------------------------------------------
 
@@ -51,7 +102,7 @@ INSERT INTO `publicaciones` (`id_noticia`, `nombrenoticia`, `fecha`, `descripcio
 --
 
 CREATE TABLE `registro` (
-  `id` int(4) NOT NULL,
+  `id` int(11) NOT NULL,
   `nombre` varchar(25) DEFAULT NULL,
   `apellido` varchar(50) DEFAULT NULL,
   `correo` varchar(100) DEFAULT NULL,
@@ -125,6 +176,18 @@ INSERT INTO `solicitudes_apoyo` (`id_solicitud`, `nombre`, `fecha_nacimiento`, `
 --
 
 --
+-- Indices de la tabla `calificaciones`
+--
+ALTER TABLE `calificaciones`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `crear_apoyos`
+--
+ALTER TABLE `crear_apoyos`
+  ADD PRIMARY KEY (`id_apoyos`);
+
+--
 -- Indices de la tabla `publicaciones`
 --
 ALTER TABLE `publicaciones`
@@ -147,16 +210,28 @@ ALTER TABLE `solicitudes_apoyo`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `calificaciones`
+--
+ALTER TABLE `calificaciones`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `crear_apoyos`
+--
+ALTER TABLE `crear_apoyos`
+  MODIFY `id_apoyos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `publicaciones`
 --
 ALTER TABLE `publicaciones`
-  MODIFY `id_noticia` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_noticia` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `registro`
 --
 ALTER TABLE `registro`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `solicitudes_apoyo`

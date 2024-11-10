@@ -15,6 +15,8 @@
             <li><a href="noticias_admin.php" class="menu_opciones">Noticias</a></li>
             <hr>
             <li><a href="inicio.php" class="menu_opciones">Inicio</a></li>
+            <hr>
+            <li><a href="apoyo_admin.php" class="menu_opciones">apoyos</a></li>
             <!-- <hr>
             <li><a href="alcalde.php" class="menu_opciones">Alcalde</a></li> -->
             

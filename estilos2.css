@@ -275,3 +275,57 @@ h3 {
 .fa-user {
   font-size: 24px;
 }
+
+
+.encargado {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+
+.stars {
+  display: flex;
+  gap: 5px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.stars i {
+  font-size: 24px;
+  color: #ccc;
+}
+
+.stars .rated {
+  color: #ffcc00;
+}
+
+.rate-btn {
+  background-color:var(--color1);
+  color: #fff;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.rate-btn:hover {
+  background-color:var(--color1);
+}
+
+.comment-box {
+  margin-top: 10px;
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.container2 {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+
+}

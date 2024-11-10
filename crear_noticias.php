@@ -33,9 +33,10 @@ $usuario = $_SESSION['username'];
           <!-- Menú de selección de íconos personalizado -->
           <div class="custom-select" >
             <div class="select-selected" onclick="toggleSelect()">
-              <i class="fas fa-newspaper"></i> Selecciona un ícono
+            <i class="fas fa-file-invoice"></i> Selecciona un ícono
             </div>
             <div class="select-items">
+            <div onclick="selectIcon('hand-holding-usd', 'fas fa-hand-holding-usd')"><i class="fas fa-hand-holding-usd"></i> Apoyo Financiero</div>
               <div onclick="selectIcon('newspaper', 'fas fa-newspaper')"><i class="fas fa-newspaper"></i> Noticias</div>
               <div onclick="selectIcon('handshake', 'fas fa-handshake')"><i class="fas fa-handshake"></i> Acuerdos</div>
               <div onclick="selectIcon('bullhorn', 'fas fa-bullhorn')"><i class="fas fa-bullhorn"></i> Anuncios</div>
