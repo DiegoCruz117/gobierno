@@ -25,7 +25,7 @@ if ($query) {
     echo '
         <script>
             alert("Error al guardar los datos del encargado");
-            location.href="crear_encargados.php";
+           window.history.go(-1);
         </script>
     ';
 }
