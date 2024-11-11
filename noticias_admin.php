@@ -10,7 +10,7 @@ $usuario = $_SESSION['username'];
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="estilos.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
 <body>
@@ -29,7 +29,7 @@ $usuario = $_SESSION['username'];
       <div class="cont_panel_derecho_hijo2">
         <h2 class="titulo_panel">Noticias</h2>
         <br>
-        <a href="crear_noticias.php" class="btn_rojo2"">Crear POST</a>
+        <a href="crear_noticias.php" class="btn_rojo2"><i class="fa-solid fa-newspaper color_icon4"></i>Nuevo</a>
         <br><br>
         <table class="tabla_usuarios">
           <tr>

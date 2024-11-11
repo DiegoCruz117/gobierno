@@ -1,7 +1,6 @@
 <?php
 require "conexion.php";
 
-
 $nombres = $_POST['nombres'];
 $apellidos = $_POST['apellidos'];
 $id_apoyos = $_POST['id_apoyos'];
@@ -11,8 +10,7 @@ $edad = $_POST['edad'];
 $sexo = $_POST['sexo'];
 
 
-$insertar = "INSERT INTO encargados (nombres, apellidos, id_apoyos, correo, numero_tel, edad, sexo) 
-             VALUES ('$nombres', '$apellidos', '$id_apoyos', '$correo', '$numero_tel', '$edad', '$sexo')";
+$insertar = "INSERT INTO crear_encargados (nombres, apellidos, id_apoyos, correo, numero_tel, edad, sexo) VALUES ('$nombres', '$apellidos', '$id_apoyos', '$correo', '$numero_tel', '$edad', '$sexo')";
 
 $query = mysqli_query($conectar, $insertar);
 

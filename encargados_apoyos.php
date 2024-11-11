@@ -44,7 +44,7 @@ session_start();
   <h1>Calificar a Encargados de Apoyos</h1>
 
   <!-- Loop de Encargados -->
-  <?php 
+  <?php
     $encargados = [
         ['nombre' => 'Juan Pérez', 'proyecto' => 'Apoyo Económico', 'descripcion' => 'Responsable de coordinar la distribución de recursos financieros para las familias necesitadas en Mérida.'],
         ['nombre' => 'María García', 'proyecto' => 'Ayuda Alimentaria', 'descripcion' => 'A cargo de organizar y entregar despensas en comunidades rurales con alta vulnerabilidad alimentaria.'],

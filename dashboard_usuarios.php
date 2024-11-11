@@ -9,6 +9,7 @@ $usuario = $_SESSION['username'];
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Panel de Usuarios</title>
   <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
   <div class="cont_padre_panel ancho">
@@ -27,7 +28,7 @@ $usuario = $_SESSION['username'];
       <div class="cont_panel_derecho_hijo2">
         <h2 class="titulo_panel">Usuarios</h2>
         <br>
-        <a href="crear_usuario.php" class="btn_azul">Crear Usuarios</a>
+        <a href="crear_usuario.php" class="btn_azul"><i class="fa-solid fa-user-plus color_icon4"></i>Nuevo</a>
         <br><br>
 
         <!-- Tabla para usuarios con rol de Alcance -->

@@ -27,32 +27,39 @@ $usuario = $_SESSION['username'];
       </div>
       <br>
       <div class="cont_panel_derecho_hijo2">
-        <h2 class="titulo_panel">Programas de Apoyos</h2>
+        <h2 class="titulo_panel">Encargados de Apoyos</h2>
         <br>
-        <a href="crear_programa_apoyos.php" class="btn_rojo2"><i class="fa-solid fa-square-plus color_icon4"></i>Nuevo</a>
+        <a href="crear_encargados.php" class="btn_rojo2"><i class="fa-solid fa-address-card color_icon4"></i>Nuevo</a>
         <br><br>
         <table class="tabla_usuarios">
           <tr>
-            <th>Folio</th>
-            <!-- <th class="fo">Icono</th> -->
-            <th>Tipo de programa</th>
+            <th>Nombre(s)</th>
+            <th>Apellidos</th>
+            <th>Encargado de programa</th>
+            <th>Celular</th>
+            <!-- <th>Edad</th> -->
+            <!-- <th>Sexo</th> -->
             <th colspan="3"></th>
-            <!-- <th>Ver</th> -->
-            <!-- <th>Editar</th> -->
-            <!-- <th>Eliminar</th> -->
           </tr>
           <?php
           require "conexion.php";
 
-          $todos_datos = "SELECT * FROM crear_apoyos ORDER BY id_apoyos  ASC";
-          $resultado = mysqli_query($conectar,$todos_datos);
+          // $todos_datos = "SELECT * FROM crear_encargados ORDER BY id_encargados ASC";
+          // $consulta = "SELECT * FROM libros INNER JOIN autor ON libros.autor = autor.id_autor;
+
+          $consulta = "SELECT crear_encargados.*, crear_apoyos.nombre_programa FROM crear_encargados INNER JOIN crear_apoyos ON crear_encargados.id_apoyos = crear_apoyos.id_apoyos;";
+          $resultado = mysqli_query($conectar,$consulta);
           while($fila = mysqli_fetch_assoc($resultado)){
           ?>
           <tr>
+            <!-- <td></td>
+            <td></td>
+            <td></td>
+            <td></td> -->
+            <td><?php echo $fila["nombres"]?></td>
+            <td><?php echo $fila['apellidos']; ?></td>
             <td><?php echo $fila["id_apoyos"]?></td>
-            <!-- <td> <i class="fas fa-<?php echo $fila['icono_apoyos']; ?>" style="font-size: 24px;"></i></td> -->
-            <td><?php echo $fila["nombre_programa"]?></td>
-            <!-- <td><?php echo $fila["fecha_programa"]?></td> -->
+            <td><?php echo $fila["numero_tel"]?></td>
 
             <td><a href="ver_noticias.php?id_apoyos=<?php echo $fila["id_apoyos"]; ?>"><i class="fa-solid fa-eye size_icon color_icon1"></i></a></td>
 

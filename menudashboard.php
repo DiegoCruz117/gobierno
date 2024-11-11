@@ -1,5 +1,5 @@
 
-<div class="cont_panel_izquierdo">
+  <div class="cont_panel_izquierdo">
       <div class="img_logo_panel">
         <a href="principal.php"><img  class="img_logo" src="imagenes/logo.jpg" ></a>
         <br><br>
@@ -16,12 +16,11 @@
             <hr>
             <li><a href="inicio.php" class="menu_opciones">Inicio</a></li>
             <hr>
-            <li><a href="apoyo_admin.php" class="menu_opciones">apoyos</a></li>
+            <li><a href="apoyo_admin.php" class="menu_opciones">Apoyos</a></li>
+            <hr>
+            <li><a href="encargados_admin.php" class="menu_opciones">Encargados</a></li>
             <!-- <hr>
             <li><a href="alcalde.php" class="menu_opciones">Alcalde</a></li> -->
-            
-
         </ul>
       </div>
     </div>
-    

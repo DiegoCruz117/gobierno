@@ -8,9 +8,8 @@ $descripcioncorta = $_POST['descripcioncorta'];
 $descripcionlarga = $_POST['editor1'];
 $icono_apoyos = $_POST['icono_apoyos'];
 
-
-$insertar = "INSERT INTO crear_apoyos (nombre_programa, fecha_programa, descripcioncorta, descripcionlarga, icono_apoyos) VALUES 
-('$nombre_programa','$fecha_programa','$descripcioncorta','$descripcionlarga','$icono_apoyos')";
+$insertar = "INSERT INTO crear_apoyos ( nombre_programa, fecha_programa, descripcioncorta, descripcionlarga, icono_apoyos) VALUES
+( '$nombre_programa', '$fecha_programa', '$descripcioncorta', '$descripcionlarga', '$icono_apoyos')";
 $query = mysqli_query($conectar, $insertar);
 
 
@@ -25,7 +24,7 @@ location.href="apoyo_admin.php ";
 echo '
 <script>
 alert("NO SE GUARDO EL POST");
-location.href="crear_programas.php";
+location.href="crear_programa_apoyos.php";
 </script>
 ';
 }

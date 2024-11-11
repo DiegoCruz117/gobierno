@@ -88,7 +88,7 @@ body{
 }
 .btn_crear2{
   padding: 12px 140px;
-  background-color: var(--color1);;
+  background-color: var(--color1);
   color: white;
   border-radius: 8px;
   border: none;
@@ -100,7 +100,7 @@ body{
 
 .btn_crear3{
   padding: 12px 152px;
-  background-color: var(--color1);;
+  background-color: var(--color1);
   color: white;
   border-radius: 8px;
   border: none;
@@ -168,9 +168,10 @@ body{
   text-decoration: none;
 }
 .btn_rojo2{
-  width: 150px;
+  width: 120px;
   padding: 9px 15px;
-  background-color: #3d9900;
+  /* background-color: #093766; */
+  background-color: var(--color1);
   color: white;
   border: 0;
   border-radius: 6px;
@@ -320,25 +321,23 @@ body{
   border-radius: 5px;
 }
 .tabla_usuarios{
-  border-radius: 5px;
-  border: 1px #ccc solid;
+  border-collapse: collapse;
+  /* border-radius: 5px; */
   width: 98%;
 }
 .tabla_usuarios th{
-  background-color: black;
+  /* background-color: #E7EEF2; */
+  background-color: var(--color1);
   color: white;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   padding: 5px 10px;
 }
-.tabla_usuarios tr:nth-child(even) { /* Filas pares */
-  background-color: #d3d3d3; 
-}
-.tabla_usuarios tr:nth-child(odd) { /* Filas impares */
-  background-color: #ffffff;
-}
 .tabla_usuarios td{
+  background-color: #ffffff;
   text-align: center;
-  padding: 1px 1px;
+  padding: 10px 1px;
+  border-top: 1px var(--color1) solid;
+  border-bottom: 1px var(--color1) solid;
 }
 .form_crear_usuario{
   width: 850px;
@@ -525,4 +524,26 @@ body{
 }
 .btn_buscar:hover{
   transform: scale(1.15);
+}
+.size_icon {
+  font-size: 20px;
+}
+.size_icon:hover{
+  transform: scale(1.12);
+}
+.color_icon1{
+  color: blue;
+}
+.color_icon2{
+  color: green;
+}
+.color_icon3{
+  color: red;
+}
+.color_icon4{
+  color: white;
+  margin-right: 5px;
+}
+.requerido{
+  color: red;
 }
