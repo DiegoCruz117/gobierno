@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-11-2024 a las 05:16:14
+-- Tiempo de generación: 11-11-2024 a las 07:49:12
 -- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Versión de PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -58,7 +58,9 @@ CREATE TABLE `crear_apoyos` (
 
 INSERT INTO `crear_apoyos` (`id_apoyos`, `icono_apoyos`, `nombre_programa`, `fecha_programa`, `descripcioncorta`, `descripcionlarga`) VALUES
 (14, 'hand-holding-usd', 'FINANCIERO APOYO', '2024-10-30', '123', '<p>456</p>\r\n'),
-(15, 'utensils', 'Alimentación Apoyo', '2024-11-04', '123', '<p>4456</p>\r\n');
+(15, 'utensils', 'Alimentación Apoyo', '2024-11-04', '123', '<p>4456</p>\r\n'),
+(16, 'utensils', 'asdasd', '2024-11-10', 'dadada', '<p>adadada</p>\r\n'),
+(17, 'home', 'sexo en casa', '2024-11-11', 'adasdasda', '<p>sexo en la boca de kim</p>\r\n\r\n<p>&nbsp;</p>\r\n');
 
 -- --------------------------------------------------------
 
@@ -82,8 +84,8 @@ CREATE TABLE `crear_encargados` (
 --
 
 INSERT INTO `crear_encargados` (`id_encargados`, `nombres`, `apellidos`, `id_apoyos`, `correo`, `numero_tel`, `edad`, `sexo`) VALUES
-(2, 'Fabian', '', 14, 'christiangomez@hotmail.com', '9995320386', '2024-11-10', 'Masculino'),
-(3, 'Diego Augusto', 'Cruz Rivero', 15, 'christiangomez@hotmail.com', '9995320386', '2024-10-31', 'Femenino');
+(22, 'mono', 'gallina', 14, 'mono@gmail.com', '9988234765', '2024-11-11', 'Femenino'),
+(23, 'emanuel ', 'padilla', 14, 'ema@gmail.com', '9988001122', '2024-11-11', 'Masculino');
 
 -- --------------------------------------------------------
 
@@ -207,8 +209,7 @@ ALTER TABLE `crear_apoyos`
 --
 ALTER TABLE `crear_encargados`
   ADD PRIMARY KEY (`id_encargados`),
-  ADD UNIQUE KEY `id_apoyos` (`id_apoyos`),
-  ADD KEY `id_apoyos_2` (`id_apoyos`);
+  ADD KEY `id_apoyos` (`id_apoyos`);
 
 --
 -- Indices de la tabla `publicaciones`
@@ -242,13 +243,13 @@ ALTER TABLE `calificaciones`
 -- AUTO_INCREMENT de la tabla `crear_apoyos`
 --
 ALTER TABLE `crear_apoyos`
-  MODIFY `id_apoyos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_apoyos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `crear_encargados`
 --
 ALTER TABLE `crear_encargados`
-  MODIFY `id_encargados` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_encargados` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `publicaciones`
@@ -276,7 +277,7 @@ ALTER TABLE `solicitudes_apoyo`
 -- Filtros para la tabla `crear_encargados`
 --
 ALTER TABLE `crear_encargados`
-  ADD CONSTRAINT `encargado-apoyo` FOREIGN KEY (`id_apoyos`) REFERENCES `crear_apoyos` (`id_apoyos`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `encargados-apoyos` FOREIGN KEY (`id_apoyos`) REFERENCES `crear_apoyos` (`id_apoyos`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
