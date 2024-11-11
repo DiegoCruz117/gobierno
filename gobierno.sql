@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-11-2024 a las 04:25:47
+-- Tiempo de generación: 11-11-2024 a las 05:16:14
 -- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.0.30
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -49,9 +49,16 @@ CREATE TABLE `crear_apoyos` (
   `nombre_programa` varchar(100) DEFAULT NULL,
   `fecha_programa` date DEFAULT NULL,
   `descripcioncorta` text DEFAULT NULL,
-  `descripcionlarga` text DEFAULT NULL,
-  `fecha_creacion` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
+  `descripcionlarga` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `crear_apoyos`
+--
+
+INSERT INTO `crear_apoyos` (`id_apoyos`, `icono_apoyos`, `nombre_programa`, `fecha_programa`, `descripcioncorta`, `descripcionlarga`) VALUES
+(14, 'hand-holding-usd', 'FINANCIERO APOYO', '2024-10-30', '123', '<p>456</p>\r\n'),
+(15, 'utensils', 'Alimentación Apoyo', '2024-11-04', '123', '<p>4456</p>\r\n');
 
 -- --------------------------------------------------------
 
@@ -75,7 +82,8 @@ CREATE TABLE `crear_encargados` (
 --
 
 INSERT INTO `crear_encargados` (`id_encargados`, `nombres`, `apellidos`, `id_apoyos`, `correo`, `numero_tel`, `edad`, `sexo`) VALUES
-(1, 'christian isaac', 'rodriguez gomez', 0, NULL, '9981290785', '2001-06-08', 'masculino');
+(2, 'Fabian', '', 14, 'christiangomez@hotmail.com', '9995320386', '2024-11-10', 'Masculino'),
+(3, 'Diego Augusto', 'Cruz Rivero', 15, 'christiangomez@hotmail.com', '9995320386', '2024-10-31', 'Femenino');
 
 -- --------------------------------------------------------
 
@@ -199,7 +207,8 @@ ALTER TABLE `crear_apoyos`
 --
 ALTER TABLE `crear_encargados`
   ADD PRIMARY KEY (`id_encargados`),
-  ADD UNIQUE KEY `id_apoyos` (`id_apoyos`);
+  ADD UNIQUE KEY `id_apoyos` (`id_apoyos`),
+  ADD KEY `id_apoyos_2` (`id_apoyos`);
 
 --
 -- Indices de la tabla `publicaciones`
@@ -233,13 +242,13 @@ ALTER TABLE `calificaciones`
 -- AUTO_INCREMENT de la tabla `crear_apoyos`
 --
 ALTER TABLE `crear_apoyos`
-  MODIFY `id_apoyos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_apoyos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `crear_encargados`
 --
 ALTER TABLE `crear_encargados`
-  MODIFY `id_encargados` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_encargados` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `publicaciones`
@@ -264,16 +273,10 @@ ALTER TABLE `solicitudes_apoyo`
 --
 
 --
--- Filtros para la tabla `calificaciones`
+-- Filtros para la tabla `crear_encargados`
 --
-ALTER TABLE `calificaciones`
+ALTER TABLE `crear_encargados`
   ADD CONSTRAINT `encargado-apoyo` FOREIGN KEY (`id_apoyos`) REFERENCES `crear_apoyos` (`id_apoyos`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `crear_apoyos`
---
-ALTER TABLE `crear_apoyos`
-  ADD CONSTRAINT `encargados-apoyos` FOREIGN KEY (`id_apoyos`) REFERENCES `crear_encargados` (`id_apoyos`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
