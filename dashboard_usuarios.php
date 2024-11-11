@@ -28,7 +28,7 @@ $usuario = $_SESSION['username'];
       <div class="cont_panel_derecho_hijo2">
         <h2 class="titulo_panel">Usuarios</h2>
         <br>
-        <a href="crear_usuario.php" class="btn_azul"><i class="fa-solid fa-user-plus color_icon4"></i>Nuevo</a>
+        <a href="crear_usuario.php" class="btn_azul anima"><i class="fa-solid fa-user-plus color_icon4"></i>Nuevo</a>
         <br><br>
 
         <!-- Tabla para usuarios con rol de Alcance -->
@@ -110,7 +110,7 @@ $usuario = $_SESSION['username'];
             <td><?php echo $fila["apellido"]; ?></td>
             <td><?php echo $fila["correo"]; ?></td>
             <!-- <td><?php echo $fila["rol"]; ?></td> -->
-            <td><a href="#" Onclick="validar('borra.php?id=<?php echo $fila["id"]; ?>')"><img src="imagenes/icono_eliminar.png" class="img_eliminar"></a></td>
+            <td><a href="#" Onclick="validar('borra.php?id=<?php echo $fila["id"]; ?>')"><img src="imagenes/icono_eliminar.png" class="img_eliminar  anima"></a></td>
           </tr>
           <?php
           }

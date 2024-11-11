@@ -597,3 +597,10 @@ body{
 .anima2:hover{
   transform: scale(1.01);
 }
+.mitad{
+  width: 100%;
+}
+.textdesc{
+  height: 80px;
+  resize: none;
+}

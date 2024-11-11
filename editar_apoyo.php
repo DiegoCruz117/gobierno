@@ -25,7 +25,7 @@ $usuario = $_SESSION['username'];
       </div>
       <br>
       <div class="cont_panel_derecho_hijo2">
-        <h2 class="titulo_panel">Crear programas de Apoyos</h2>
+        <h2 class="titulo_panel">Editar programas de Apoyos</h2>
         <br>
         <a href="apoyo_admin.php" class="btn_rojo2 anima"><i class="fa-regular fa-circle-left color_icon4"></i>Regresar</a>
         <br><br>
@@ -94,7 +94,7 @@ $usuario = $_SESSION['username'];
           <script>
             CKEDITOR.replace('editor1');
           </script>
-          <button class="btn_amarillo2">Registrar</button>
+          <button class="btn_amarillo2">Actualizar datos</button>
         </form>
       </div>
     </div>
