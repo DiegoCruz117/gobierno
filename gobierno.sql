@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-11-2024 a las 05:52:19
+-- Tiempo de generación: 11-11-2024 a las 04:25:47
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -28,24 +28,14 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `calificaciones` (
-  `id` int(11) NOT NULL,
+  `id_encargado` int(11) NOT NULL,
   `encargado` varchar(150) DEFAULT NULL,
   `rating` int(11) DEFAULT NULL,
   `comentario` text NOT NULL,
   `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
-  `usuario_id` int(11) NOT NULL
+  `usuario_id` int(11) NOT NULL,
+  `id_apoyos` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `calificaciones`
---
-
-INSERT INTO `calificaciones` (`id`, `encargado`, `rating`, `comentario`, `fecha`, `usuario_id`) VALUES
-(1, 'Juan Pérez', 3, 'dasdasda', '2024-11-10 02:42:50', 0),
-(2, 'Juan Pérez', 3, 'dasdasd', '2024-11-10 02:44:46', 0),
-(3, 'Juan Pérez', 3, '', '2024-11-10 02:44:52', 0),
-(4, 'María García', 4, 'dasdas', '2024-11-10 02:52:19', 0),
-(5, 'Juan Pérez', 4, 'hola pete\n', '2024-11-10 03:11:56', 0);
 
 -- --------------------------------------------------------
 
@@ -63,13 +53,29 @@ CREATE TABLE `crear_apoyos` (
   `fecha_creacion` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
+
 --
--- Volcado de datos para la tabla `crear_apoyos`
+-- Estructura de tabla para la tabla `crear_encargados`
 --
 
-INSERT INTO `crear_apoyos` (`id_apoyos`, `icono_apoyos`, `nombre_programa`, `fecha_programa`, `descripcioncorta`, `descripcionlarga`, `fecha_creacion`) VALUES
-(1, '', ' Programa de Apoyo Económico', '2024-11-09', 'Este programa proporciona asistencia económica a familias en situación de vulnerabilidad para cubrir sus necesidades básicas.', '<p>El&nbsp;<strong>Apoyo Econ&oacute;mico</strong>&nbsp;est&aacute; dirigido a familias en situaci&oacute;n vulnerable en el municipio de M&eacute;rida. Proporciona un subsidio financiero para cubrir necesidades b&aacute;sicas durante tiempos de crisis. Este apoyo se ha dise&ntilde;ado para ayudar a las familias a enfrentar situaciones de emergencia econ&oacute;mica, asegurando que tengan acceso a lo esencial como alimentaci&oacute;n, salud y educaci&oacute;n.</p>\r\n\r\n<p><strong>Modalidades del Apoyo Econ&oacute;mico:</strong></p>\r\n\r\n<ul>\r\n	<li><strong>Subsidio de Emergencia:</strong>&nbsp;Un monto &uacute;nico para cubrir gastos urgentes en alimentaci&oacute;n, vivienda o salud.</li>\r\n	<li><strong>Becas y Apoyos Educativos:</strong>&nbsp;Ayuda econ&oacute;mica para estudiantes de familias de bajos recursos, desde nivel b&aacute;sico hasta superior.</li>\r\n	<li><strong>Apoyos para Vivienda:</strong>&nbsp;Subsidios destinados a mejoras o rehabilitaci&oacute;n de viviendas, especialmente en zonas rurales o marginadas.</li>\r\n	<li><strong>Programas para Madres Solteras:</strong>&nbsp;Apoyos espec&iacute;ficos para cubrir necesidades de madres solteras y facilitar su acceso a oportunidades educativas o laborales.</li>\r\n</ul>\r\n\r\n<h3>Requisitos para solicitar este apoyo:</h3>\r\n\r\n<ul>\r\n	<li>Ser mayor de 18 a&ntilde;os.</li>\r\n	<li>Residir en el municipio de M&eacute;rida.</li>\r\n	<li>Identificaci&oacute;n oficial vigente (INE, pasaporte).</li>\r\n</ul>\r\n\r\n<h3>Documentaci&oacute;n requerida:</h3>\r\n\r\n<ul>\r\n	<li>Copia de identificaci&oacute;n oficial.</li>\r\n	<li>Comprobante de domicilio no mayor a 3 meses.</li>\r\n</ul>\r\n\r\n<h3>Proceso de solicitud:</h3>\r\n\r\n<p>Para solicitar este apoyo, debes acudir a la oficina de atenci&oacute;n ciudadana o registrarte en el portal web oficial. La solicitud ser&aacute; revisada por un equipo especializado, y se evaluar&aacute; tu situaci&oacute;n. De ser aprobado, recibir&aacute;s el subsidio en un plazo de 30 d&iacute;as h&aacute;biles. Adem&aacute;s, se recomienda mantener actualizada tu informaci&oacute;n de contacto para facilitar la comunicaci&oacute;n.</p>\r\n\r\n<h3>M&aacute;s informaci&oacute;n sobre apoyos econ&oacute;micos en M&eacute;rida:</h3>\r\n\r\n<p>El gobierno de M&eacute;rida ofrece diferentes programas de apoyo econ&oacute;mico que incluyen subsidios para la alimentaci&oacute;n, educaci&oacute;n y salud. Estos programas est&aacute;n dise&ntilde;ados para apoyar a las familias m&aacute;s necesitadas y fomentar el bienestar social. Para m&aacute;s detalles sobre otros apoyos, visita la&nbsp;<a href=\"http://localhost/gobierno/apoyos.php\">secci&oacute;n de Apoyos</a>.</p>\r\n', NULL),
-(2, 'hand-holding-usd', 'adsdasd', '0000-00-00', '', '', NULL);
+CREATE TABLE `crear_encargados` (
+  `id_encargados` int(11) NOT NULL,
+  `nombres` varchar(100) DEFAULT NULL,
+  `apellidos` varchar(100) DEFAULT NULL,
+  `id_apoyos` int(11) NOT NULL,
+  `correo` varchar(80) DEFAULT NULL,
+  `numero_tel` varchar(10) DEFAULT NULL,
+  `edad` date DEFAULT NULL,
+  `sexo` varchar(25) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `crear_encargados`
+--
+
+INSERT INTO `crear_encargados` (`id_encargados`, `nombres`, `apellidos`, `id_apoyos`, `correo`, `numero_tel`, `edad`, `sexo`) VALUES
+(1, 'christian isaac', 'rodriguez gomez', 0, NULL, '9981290785', '2001-06-08', 'masculino');
 
 -- --------------------------------------------------------
 
@@ -179,13 +185,21 @@ INSERT INTO `solicitudes_apoyo` (`id_solicitud`, `nombre`, `fecha_nacimiento`, `
 -- Indices de la tabla `calificaciones`
 --
 ALTER TABLE `calificaciones`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_encargado`),
+  ADD UNIQUE KEY `id_apoyos` (`id_apoyos`);
 
 --
 -- Indices de la tabla `crear_apoyos`
 --
 ALTER TABLE `crear_apoyos`
   ADD PRIMARY KEY (`id_apoyos`);
+
+--
+-- Indices de la tabla `crear_encargados`
+--
+ALTER TABLE `crear_encargados`
+  ADD PRIMARY KEY (`id_encargados`),
+  ADD UNIQUE KEY `id_apoyos` (`id_apoyos`);
 
 --
 -- Indices de la tabla `publicaciones`
@@ -213,19 +227,25 @@ ALTER TABLE `solicitudes_apoyo`
 -- AUTO_INCREMENT de la tabla `calificaciones`
 --
 ALTER TABLE `calificaciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_encargado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `crear_apoyos`
 --
 ALTER TABLE `crear_apoyos`
-  MODIFY `id_apoyos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_apoyos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `crear_encargados`
+--
+ALTER TABLE `crear_encargados`
+  MODIFY `id_encargados` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `publicaciones`
 --
 ALTER TABLE `publicaciones`
-  MODIFY `id_noticia` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_noticia` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `registro`
@@ -238,6 +258,22 @@ ALTER TABLE `registro`
 --
 ALTER TABLE `solicitudes_apoyo`
   MODIFY `id_solicitud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `calificaciones`
+--
+ALTER TABLE `calificaciones`
+  ADD CONSTRAINT `encargado-apoyo` FOREIGN KEY (`id_apoyos`) REFERENCES `crear_apoyos` (`id_apoyos`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `crear_apoyos`
+--
+ALTER TABLE `crear_apoyos`
+  ADD CONSTRAINT `encargados-apoyos` FOREIGN KEY (`id_apoyos`) REFERENCES `crear_encargados` (`id_apoyos`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
