@@ -659,8 +659,7 @@ body{
   text-align: center;
 }
 .derecha{
-  border: 1px black solid;
-  text-align: right;
+  margin-left: 4px;
 }
 .anima2{
   transition: 0.5s;

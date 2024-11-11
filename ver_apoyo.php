@@ -33,8 +33,7 @@ $usuario = $_SESSION['username'];
         require "conexion.php";
         $id_apoyos = $_GET['id_apoyos'];
 
-        // Consulta con INNER JOIN para obtener datos de 'crear_encargados' y 'crear_apoyos'
-        $verusuario = "SELECT * FROM crear_apoyos ORDER BY id_apoyos ASC";
+        $verusuario = "SELECT * FROM crear_apoyos WHERE id_apoyos = '$id_apoyos'";
 
         $resultado = mysqli_query($conectar, $verusuario);
 
@@ -47,15 +46,17 @@ $usuario = $_SESSION['username'];
         ?>
         <div class="contenedor_ver_usuarios datos5 margen">
           <h3 class="up2">Datos generales</h3>
-            <div class="nombre2">
-              <label class="campo">Nombre del programa</label><br>
-              <p class="dato"><?php echo htmlspecialchars($fila['icono_apoyos'] . ' ' . $fila['nombre_programa']); ?></p>
-            </div>
+          <div class="nombre2">
+            <label class="campo">Nombre del programa</label><br>
+            <p class="dato">
+              <i class="fas fa-<?php echo htmlspecialchars($fila['icono_apoyos']); ?>" style="font-size: 24px;"></i> <span class="derecha"><?php echo htmlspecialchars($fila['nombre_programa']); ?></span>
+            </p>
+          </div>
           <br>
           <div class="nombre2">
-              <label class="campo">Fecha de creación</label><br>
-              <p class="dato"><?php echo htmlspecialchars($fila['fecha_programa']); ?></p>
-            </div>
+            <label class="campo">Fecha de creación</label><br>
+            <p class="dato"><?php echo htmlspecialchars($fila['fecha_programa']); ?></p>
+          </div>
         </div>
         <div class="contenedor_ver_usuarios datos4 margen">
           <h3 class="up2">Breve descripción</h3>
