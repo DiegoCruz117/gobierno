@@ -168,7 +168,6 @@ body{
   text-decoration: none;
 }
 .btn_rojo2{
-  width: 120px;
   padding: 9px 15px;
   /* background-color: #093766; */
   background-color: var(--color1);
@@ -178,6 +177,13 @@ body{
   text-decoration: none;
   display: inline-block;
   text-align: center;
+  margin-left: 30px;
+}
+.anima{
+  transition: 0.5s;
+}
+.anima:hover{
+  transform: scale(1.15);
 }
 .btn_rojo3{
   width: 150px;
@@ -251,7 +257,7 @@ body{
   text-decoration: none;
   display: inline-block;
   margin: auto;
-
+  cursor: pointer;
 }
 .centrar{
   text-align: center; 
@@ -528,9 +534,6 @@ body{
 .size_icon {
   font-size: 20px;
 }
-.size_icon:hover{
-  transform: scale(1.12);
-}
 .color_icon1{
   color: blue;
 }
@@ -546,4 +549,51 @@ body{
 }
 .requerido{
   color: red;
+}
+.datos{
+  /* border: 1px black solid; */
+  margin-bottom: 5px;
+}
+.cont_form{
+  /* border: 1px red solid; */
+}
+.nombre{
+  /* border: 1px blue solid; */
+  display: inline-block;
+  vertical-align: top;
+  width: 49%;
+}
+.elemento_inp1{
+  padding: 10px;
+  width: 95%;
+  margin: 5px 0px 15px 2px;
+  border-radius: 6px;
+  border: 0;
+  border: 1px #ccc solid;
+}
+.corte{
+  width: 100%;
+  height: 5px;
+  border: none;
+  border-radius: 10px;
+  background-color: #ccc;
+  margin: 10px 0px 15px 0px;
+}
+.titulo1{
+  font-size: 17px;
+  font-weight: bold;
+}
+.centro{
+  text-align: center;
+}
+.derecha{
+  border: 1px black solid;
+  text-align: right;
+}
+.anima2{
+  transition: 0.5s;
+  width: 8%;
+}
+.anima2:hover{
+  transform: scale(1.01);
 }
