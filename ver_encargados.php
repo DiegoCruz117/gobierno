@@ -49,42 +49,46 @@ $usuario = $_SESSION['username'];
 
         $fila = mysqli_fetch_assoc($resultado);
         ?>
-        <div class="contenedor_ver_usuarios">
-          <p class="campo">Nombre(s)</p>
-          <p class="dato"><?php echo htmlspecialchars($fila['nombres']); ?></p>
-          <hr>
+        <div class="contenedor_ver_usuarios datos margen">
+          <h3 class="up">Datos generales</h3>
+            <div class="nombre4">
+              <label class="campo">Nombre Completo</label><br>
+              <p class="dato"><?php echo htmlspecialchars($fila['nombres'] . ' ' . $fila['apellidos']); ?></p>
+            </div>
+          <!-- <hr> -->
+          <div class="nombre5">
+              <label class="campo">Edad</label><br>
+              <p class="dato"><?php echo htmlspecialchars($fila['edad']); ?></p>
+            </div>
+          <!-- <hr> -->
+          <div class="nombre5">
+              <label class="campo">Sexo</label><br>
+              <p class="dato"><?php echo htmlspecialchars($fila['sexo']); ?></p>
+            </div>
+          <!-- <hr> -->
         </div>
-        <div class="contenedor_ver_usuarios">
-          <p class="campo">Apellidos</p>
-          <p class="dato"><?php echo htmlspecialchars($fila['apellidos']); ?></p>
-          <hr>
+
+        <div class="contenedor_ver_usuarios datos2 margen">
+          <h3 class="up1">Apoyo Asiganado</h3>
+            <div class="nombre2">
+              <label class="campo">Nombre del apoyo</label><br>
+              <p class="dato"><?php echo htmlspecialchars($fila['nombre_programa']); ?></p>
+            </div>
         </div>
-        <div class="contenedor_ver_usuarios">
-          <p class="campo">Encargado de programa</p>
-          <p class="dato"><?php echo htmlspecialchars($fila['nombre_programa']); ?></p>
-          <hr>
+
+        <div class="contenedor_ver_usuarios datos3 margen">
+          <h3 class="up3">Contacto</h3>
+            <div class="nombre3">
+              <label class="campo">Correo</label><br>
+              <p class="dato"><?php echo htmlspecialchars($fila['correo']); ?></p>
+            </div>
+          <!-- <hr> -->
+            <div class="nombre1">
+              <label class="campo">Teléfono</label><br>
+              <p class="dato"><?php echo htmlspecialchars($fila['numero_tel']); ?></p>
+            </div>
         </div>
-        <div class="contenedor_ver_usuarios">
-          <p class="campo">Correo</p>
-          <p class="dato"><?php echo htmlspecialchars($fila['correo']); ?></p>
-          <hr>
-        </div>
-        <div class="contenedor_ver_usuarios">
-          <p class="campo">Celular</p>
-          <p class="dato"><?php echo htmlspecialchars($fila['numero_tel']); ?></p>
-          <hr>
-        </div>
-        <div class="contenedor_ver_usuarios">
-          <p class="campo">Edad</p>
-          <p class="dato"><?php echo htmlspecialchars($fila['edad']); ?></p>
-          <hr>
-        </div>
-        <div class="contenedor_ver_usuarios">
-          <p class="campo">Sexo</p>
-          <p class="dato"><?php echo htmlspecialchars($fila['sexo']); ?></p>
-          <hr>
-        </div>
-        <br>
+        <br><br>
         <a class="btn_rojo3" href="editar_encargados.php?id_encargados=<?php echo $fila["id_encargados"]; ?>">Editar Post</a>
       </div>
     </div>

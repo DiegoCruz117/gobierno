@@ -77,8 +77,8 @@ $usuario = $_SESSION['username'];
                     </div>
 
                     <div class="nombre">
-                    <label for="">Sexo <span class="requerido">*</span></label>
-                    <select name="sexo" class="elemento_inp1" required>
+                    <label for="">Sexo</label>
+                    <select name="sexo" class="elemento_inp1">
                         <option selected disabled value="">Selecciona una opción</option>
                         <option value="Masculino" <?php echo ($fila['sexo'] == 'Masculino') ? 'selected' : ''; ?>>Masculino</option>
                         <option value="Femenino" <?php echo ($fila['sexo'] == 'Femenino') ? 'selected' : ''; ?>>Femenino</option>

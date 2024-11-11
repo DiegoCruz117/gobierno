@@ -28,7 +28,6 @@ $usuario = $_SESSION['username'];
         <h2 class="titulo_panel"> VER APOYOS</h2>
         <br>
         <a href="apoyo_admin.php" class="btn_rojo2 anima"><i class="fa-regular fa-circle-left color_icon4"></i>Regresar</a>
-        <!-- <a href="encargados_admin.php" class="btn_rojo2"><< Regresar</a> -->
         <br><br>
         <?php
         require "conexion.php";
@@ -46,30 +45,30 @@ $usuario = $_SESSION['username'];
 
         $fila = mysqli_fetch_assoc($resultado);
         ?>
-        <div class="contenedor_ver_usuarios">
-          <p class="campo">Ícono</p>
-          <p class="dato"><?php echo htmlspecialchars($fila['icono_apoyos']); ?></p>
-          <hr>
+        <div class="contenedor_ver_usuarios datos5 margen">
+          <h3 class="up2">Datos generales</h3>
+            <div class="nombre2">
+              <label class="campo">Nombre del programa</label><br>
+              <p class="dato"><?php echo htmlspecialchars($fila['icono_apoyos'] . ' ' . $fila['nombre_programa']); ?></p>
+            </div>
+          <br>
+          <div class="nombre2">
+              <label class="campo">Fecha de creación</label><br>
+              <p class="dato"><?php echo htmlspecialchars($fila['fecha_programa']); ?></p>
+            </div>
         </div>
-        <div class="contenedor_ver_usuarios">
-          <p class="campo">Nombre programa</p>
-          <p class="dato"><?php echo htmlspecialchars($fila['nombre_programa']); ?></p>
-          <hr>
+        <div class="contenedor_ver_usuarios datos4 margen">
+          <h3 class="up2">Breve descripción</h3>
+            <div class="nombre2">
+              <p class="dato"><?php echo htmlspecialchars($fila['descripcioncorta']); ?></p>
+            </div>
         </div>
-        <div class="contenedor_ver_usuarios">
-          <p class="campo">Fecha</p>
-          <p class="dato"><?php echo htmlspecialchars($fila['fecha_programa']); ?></p>
-          <hr>
-        </div>
-        <div class="contenedor_ver_usuarios">
-          <p class="campo">Corta</p>
-          <p class="dato"><?php echo htmlspecialchars($fila['descripcioncorta']); ?></p>
-          <hr>
-        </div>
-        <div class="contenedor_ver_usuarios">
-          <p class="campo">Larga</p>
-          <p class="dato"><?php echo htmlspecialchars($fila['descripcionlarga']); ?></p>
-          <hr>
+        <br><br>
+        <div class="contenedor_ver_usuarios datos1 margen">
+          <h3 class="up4">Descripción completa</h3>
+            <div class="nombre2">
+            <p class="dato"><?php echo htmlspecialchars($fila['descripcionlarga']); ?></p>
+            </div>
         </div>
         <br>
         <a class="btn_rojo3" href="editar_apoyo.php?id_apoyo=<?php echo $fila["id_apoyos"]; ?>">Editar apoyo</a>

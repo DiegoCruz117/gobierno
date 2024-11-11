@@ -23,6 +23,7 @@ $usuario = $_SESSION['username'];
       </div>
       <br>
       <div class="cont_panel_derecho_hijo2">
+        <br>
         <h2 class="titulo_panel">Encargados de Apoyos</h2>
         <br>
         <a href="crear_encargados.php" class="btn_rojo2"><i class="fa-solid fa-address-card color_icon4"></i>Nuevo</a>
@@ -33,7 +34,7 @@ $usuario = $_SESSION['username'];
             <th>Apellidos</th>
             <th>Encargado de programa</th>
             <th>Celular</th>
-            <th colspan="3">Acciones</th>
+            <th colspan="3"></th>
           </tr>
           <?php
           require "conexion.php";

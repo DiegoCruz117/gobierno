@@ -27,6 +27,7 @@ $usuario = $_SESSION['username'];
       </div>
       <br>
       <div class="cont_panel_derecho_hijo2">
+        <br>
         <h2 class="titulo_panel">Programas de Apoyos</h2>
         <br>
         <a href="crear_programa_apoyos.php" class="btn_rojo2 anima"><i class="fa-solid fa-square-plus color_icon4"></i>Nuevo</a>
