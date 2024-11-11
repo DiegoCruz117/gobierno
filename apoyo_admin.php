@@ -29,7 +29,7 @@ $usuario = $_SESSION['username'];
       <div class="cont_panel_derecho_hijo2">
         <h2 class="titulo_panel">Programas de Apoyos</h2>
         <br>
-        <a href="crear_programa_apoyos.php" class="btn_rojo2"><i class="fa-solid fa-square-plus color_icon4"></i>Nuevo</a>
+        <a href="crear_programa_apoyos.php" class="btn_rojo2 anima"><i class="fa-solid fa-square-plus color_icon4"></i>Nuevo</a>
         <br><br>
         <table class="tabla_usuarios">
           <tr>
@@ -54,11 +54,11 @@ $usuario = $_SESSION['username'];
             <td><?php echo $fila["nombre_programa"]?></td>
             <!-- <td><?php echo $fila["fecha_programa"]?></td> -->
 
-            <td><a href="ver_noticias.php?id_apoyos=<?php echo $fila["id_apoyos"]; ?>"><i class="fa-solid fa-eye size_icon color_icon1"></i></a></td>
+            <td><a href="ver_apoyo.php?id_apoyos=<?php echo $fila["id_apoyos"]; ?>"><i class="fa-solid fa-eye size_icon color_icon1 anima"></i></a></td>
 
-            <td><a href="editar_post.php?id_apoyos=<?php echo $fila["id_apoyos"]; ?>"><i class="fa-solid fa-pen-to-square size_icon color_icon2"></i></a></td>
+            <td><a href="editar_apoyo.php?id_apoyos=<?php echo $fila["id_apoyos"]; ?>"><i class="fa-solid fa-pen-to-square size_icon color_icon2 anima"></i></a></td>
 
-            <td><a href="#" onclick="validar('eliminar_post.php?id_apoyos=<?php echo $fila['id_apoyos']; ?>')"><i class="fa-solid fa-trash color size_icon color_icon3"></i></a></td>
+            <td><a href="#" onclick="validar('eliminar_post.php?id_apoyos=<?php echo $fila['id_apoyos']; ?>')"><i class="fa-solid fa-trash color size_icon color_icon3 anima"></i></a></td>
           </tr>
           <?php
           }
