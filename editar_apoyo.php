@@ -15,7 +15,22 @@ $usuario = $_SESSION['username'];
 </head>
 <body>
   <div class="cont_padre_panel ancho">
-    <?php include "menudashboard.php"; ?>
+    <?php
+      include "menudashboard.php";
+      require "conexion.php";
+      $id_apoyos = $_GET['id_apoyos'];
+
+      // Consulta con INNER JOIN para obtener datos de 'crear_encargados' y 'crear_apoyos'
+      $verusuario = "SELECT * FROM crear_apoyos WHERE id_apoyos = '$id_apoyos'";
+
+$resultado = mysqli_query($conectar, $verusuario);
+
+// Verificar si hay resultados
+if (!$resultado) {
+die("Error en la consulta: " . mysqli_error($conectar));
+}
+$fila = mysqli_fetch_assoc($resultado);
+    ?>
     <div class="cont_panel_derecho">
       <div class="cont_panel_derecho_hijo1">
         <div class="elemento_salir">
@@ -74,22 +89,23 @@ $usuario = $_SESSION['username'];
     };
 </script>
 <br>
+    <input type="hidden" name="id_apoyos" value="<?php echo $fila['id_apoyos']; ?>">
       <div class="datos">
           <div class="nombre">
               <label for="">Nombre del programa <span class="requerido">*</span></label>
-              <input type="text" name="nombre_programa" class="elemento_inp1" placeholder="Nombre del programa" required>
+              <input type="text" name="nombre_programa" class="elemento_inp1" placeholder="Nombre del programa" value="<?php echo $fila['nombre_programa'];?>" required>
           </div>
 
           <div class="nombre">
-              <label for="">Fecha <span class="requerido">*</span></label>
-              <input type="date" name="fecha_programa" class="elemento_inp1" required>
+              <label for="">Fecha </label>
+              <input type="date" name="fecha_programa" class="elemento_inp1" value="<?php echo $fila['fecha_programa'];?>" disabled>
           </div>
       </div>
           <label>Breve descripción <span class="requerido">*</span></label>
-          <textarea name="descripcioncorta" placeholder="Descripcion Corta" class="elemento_inp2 textdesc"></textarea>
+          <textarea name="descripcioncorta" placeholder="Descripcion Corta" class="elemento_inp2 textdesc"><?php echo $fila['descripcioncorta'];?></textarea>
           <br>
           <p class="texto_fecha">Descripción larga de la noticia: <span class="requerido">*</span></p>
-          <textarea class="elemento_inp2" name="editor1" id="editor1"></textarea>
+          <textarea class="elemento_inp2" name="editor1" id="editor1"><?php echo $fila['descripcionlarga'];?></textarea>
           <br>
           <script>
             CKEDITOR.replace('editor1');
