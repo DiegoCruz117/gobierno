@@ -1,20 +1,20 @@
 <?php
 require "seguridad.php";
 $usuario = $_SESSION['username'];
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Panel de Usuarios</title>
   <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
   <div class="cont_padre_panel ancho">
-    <?php 
+    <?php
     include "menudashboard.php";
+    require "conexion.php";
     ?>
     <div class="cont_panel_derecho">
       <div class="cont_panel_derecho_hijo1">
@@ -23,45 +23,99 @@ $usuario = $_SESSION['username'];
           <a href="salir.php" class="salir">Salir</a>
         </div>
       </div>
-      <br> 
+      <br>
       <div class="cont_panel_derecho_hijo2">
         <h2 class="titulo_panel">Usuarios</h2>
         <br>
         <a href="crear_usuario.php" class="btn_azul">Crear Usuarios</a>
         <br><br>
+
+        <!-- Tabla para usuarios con rol de Alcance -->
+        <!-- <h3>Alcande</h3>
         <table class="tabla_usuarios">
           <tr>
             <th>ID</th>
             <th>Nombres</th>
             <th>Apellidos</th>
             <th>Email</th>
-            <th>Fecha de nacimiento</th>
-            <th>Ver</th>
-            <th>Editar</th>
-            <th>Eliminar</th>
+            <th>Rol</th>
+
           </tr>
           <?php
-          require "conexion.php";
-
-          // Excluir el usuario con id 13
-          $todos_datos = "SELECT * FROM registro WHERE id != 33 ORDER BY id ASC";  // id 13 es el id del usuario que se excluye
-          $resultado = mysqli_query($conectar, $todos_datos);
-          while ($fila = mysqli_fetch_assoc($resultado)) {
+          // $query_alcance = "SELECT * FROM registro WHERE rol = 'alcalde' AND id != 33 ORDER BY id ASC";
+          // $resultado_alcance = mysqli_query($conectar, $query_alcance);
+          // while ($fila = mysqli_fetch_assoc($resultado_alcance)) {
           ?>
           <tr>
             <td><?php echo $fila["id"]; ?></td>
             <td><?php echo $fila["nombre"]; ?></td>
             <td><?php echo $fila["apellido"]; ?></td>
             <td><?php echo $fila["correo"]; ?></td>
-            <td><?php echo $fila["fecha"]; ?></td>
-            <td><a href="ver_usuario.php?id=<?php echo $fila["id"]; ?>"><img src="imagenes/icono_ver.png" class="img_ver"></a></td>
-            <td><a href="editar_usuario.php?id=<?php echo $fila["id"]; ?>"><img src="imagenes/icono_editar.png" class="img_modificar"></a></td>
+            <td><?php echo $fila["rol"]; ?></td>
+          </tr>
+          <?php
+          // }
+          ?>
+        </table><br> -->
+
+        <!-- Tabla para usuarios con rol de Administrador -->
+        <!-- <h3>Administradores</h3>
+        <table class="tabla_usuarios">
+          <tr>
+            <th>ID</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Email</th>
+            <th>Rol</th>
+            <th>Eliminar</th>
+          </tr>
+          <?php
+          // $query_admin = "SELECT * FROM registro WHERE rol = 'administrador' AND id != 33 ORDER BY id ASC";
+          // $resultado_admin = mysqli_query($conectar, $query_admin);
+          // while ($fila = mysqli_fetch_assoc($resultado_admin)) {
+          ?>
+          <tr>
+            <td><?php echo $fila["id"]; ?></td>
+            <td><?php echo $fila["nombre"]; ?></td>
+            <td><?php echo $fila["apellido"]; ?></td>
+            <td><?php echo $fila["correo"]; ?></td>
+            <td><?php echo $fila["rol"]; ?></td>
             <td><a href="#" Onclick="validar('borra.php?id=<?php echo $fila["id"]; ?>')"><img src="imagenes/icono_eliminar.png" class="img_eliminar"></a></td>
           </tr>
-          <?php 
+          <?php
+          // }
+          ?>
+        </table><br> -->
+
+        <!-- Tabla para usuarios con rol de Usuario -->
+        <!-- <h3>Usuarios</h3> -->
+        <table class="tabla_usuarios">
+          <tr>
+            <th>ID</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Email</th>
+            <!-- <th>Rol</th> -->
+            <th>Eliminar</th>
+          </tr>
+          <?php
+          $query_usuarios = "SELECT * FROM registro WHERE rol = 'usuario' AND id != 33 ORDER BY id ASC";
+          $resultado_usuarios = mysqli_query($conectar, $query_usuarios);
+          while ($fila = mysqli_fetch_assoc($resultado_usuarios)) {
+          ?>
+          <tr>
+            <td><?php echo $fila["id"]; ?></td>
+            <td><?php echo $fila["nombre"]; ?></td>
+            <td><?php echo $fila["apellido"]; ?></td>
+            <td><?php echo $fila["correo"]; ?></td>
+            <!-- <td><?php echo $fila["rol"]; ?></td> -->
+            <td><a href="#" Onclick="validar('borra.php?id=<?php echo $fila["id"]; ?>')"><img src="imagenes/icono_eliminar.png" class="img_eliminar"></a></td>
+          </tr>
+          <?php
           }
           ?>
         </table>
+
       </div>
     </div>
   </div>

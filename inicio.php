@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,23 +9,57 @@
   <title>Página de Inicio - Apoyo Gubernamental</title>
   <link rel="stylesheet" href="estilos2.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Toggle el menú al hacer clic en el ícono de usuario
+        $(".dropbtn").click(function(event) {
+            event.preventDefault();  // Previene el comportamiento predeterminado del enlace
+            $("#dropdownMenu").toggle(); // Alterna la visibilidad del menú
+        });
+
+        // Cierra el menú si se hace clic fuera de él
+        $(document).click(function(event) {
+            if (!$(event.target).closest(".dropdown").length) { 
+                $("#dropdownMenu").hide(); // Oculta el menú
+            }
+        });
+    });
+</script>
+
 </head>
+
 <body>
   
 <!-- Encabezado -->
 <div class="header ancho">
     <div class="header-content">
-        <div class="header-left">
-            <img src="imagenes/icono_email_naranja.png" alt="Icono de Email" class="icono-email">
-        </div>
+
+
+        
+        <div class="header-left"></div>
+        
         <div class="header-center">
             <h2>Plataforma de Apoyo Gubernamental</h2>
         </div>
-        <div class="header-right">
-            <a href="login.php" class="btn-login">Iniciar Sesión</a>
-        </div>
+        
+          <div class="dropdown">
+      <a href="#" class="btn-login dropbtn">
+          <i class="fas fa-user"></i>
+      </a>
+      <div id="dropdownMenu" class="dropdown-content">
+          <?php if (isset($_SESSION['username'])): ?>
+              <a href="perfil.php">Mi Perfil</a>
+              <a href="ajustes.php">Ajustes</a>
+              <a href="salir.php">Cerrar Sesión</a>
+          <?php else: ?>
+              <a href="login.php">Iniciar Sesión</a>
+          <?php endif; ?>
+      </div>
+  </div>
     </div>
 </div>
+
 
 <!-- Contenido principal -->
 <div class="main-content ancho">
@@ -30,28 +67,13 @@
   <div class="logo-section">
     <img class="logo" src="imagenes/logo_merida.png" alt="Logo de Mérida">
   </div>
-  <nav class="menu">
-    <a href="inicio.php" class="nav-button">Inicio</a>
-    <a href="apoyos.php" class="nav-button">Apoyos</a>
-    <a href="programas.php" class="nav-button">Programas</a>
-    <a href="noticias.php" class="nav-button">Noticias</a>
-    <a href="quejas_sugerencias.php" class="nav-button">Quejas y Sugerencias</a>
-    <a href="encargado_apoyos.php" class="nav-button">Encargado de Apoyos</a>
-    <a href="principal.php" class="nav-button">Administrar</a>
-  </nav>
+  <?php 
+    include "botones_inicio.php"; // Incluye el menú de navegación del dashboard
+    ?>
 </div>
 <br><br>
-<!-- Contenido de la página -->
-<div class="container ">
-  <!-- Slider de Imágenes -->
-  <!-- <section class="slider">
-    <div class="slider-content">
-      <img src="imagenes/ayuda1.jpg" alt="Apoyo Económico">
-      <img src="imagenes/ayuda2.jpg" alt="Apoyo Alimentario">
-      <img src="imagenes/ayuda3.jpg" alt="Apoyo para Vivienda">
-      <img src="imagenes/ayuda4.jpg" alt="Asistencia Médica">
-    </div>
-  </section> -->
+
+<div class="container ">  
 
   <!-- Sección de informes -->
   <section class="informes ancho ">
