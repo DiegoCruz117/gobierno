@@ -1,4 +1,5 @@
-    <div class="tab1">
+<link rel="icon" type="image/x-icon" href="imagenes/logo_icono.png">
+   <div class="tab1">
         <div class="tablinks pestaña color1" id="aceptados" onclick="openTab(event, 'aceptados')">Aceptados</div>
         <div class="tablinks pestaña color3" id="rechazados" onclick="openTab(event, 'rechazados')">Rechazados</div>
         <div class="buscar">

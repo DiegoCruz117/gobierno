@@ -11,9 +11,41 @@ $usuario = $_SESSION['username'];
   <title>Document</title>
   <link rel="stylesheet" href="estilos.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="imagenes/logo_icono.png">
   <script src="ckeditor/ckeditor.js"></script>
 </head>
 <body>
+<script>
+    // Variable para marcar si hubo cambios en el formulario
+    let isFormEdited = false;
+
+    // Función que se ejecuta cuando hay cambios en un campo
+    function handleInputChange() {
+      isFormEdited = true; // Cambiar el estado cuando hay un cambio
+    }
+
+    // Función que valida si se debe enviar el formulario
+    function validateForm(event) {
+      if (!isFormEdited) {
+        event.preventDefault(); // Si no hubo cambios, prevenir el envío del formulario
+        alert("Por favor edite algún campo antes de guardar.");
+      }
+    }
+
+    // Asignar eventos a los campos de formulario
+    window.onload = function() {
+      // Seleccionar todos los campos que deseas monitorear
+      const inputs = document.querySelectorAll("input, textarea");
+      
+      inputs.forEach(input => {
+        input.addEventListener('input', handleInputChange); // Detectar cambios
+      });
+      
+      // Asignar la validación al enviar el formulario
+      const form = document.querySelector("form");
+      form.addEventListener('submit', validateForm);
+    };
+  </script>
   <div class="cont_padre_panel ancho">
     <?php
     include "menudashboard.php";

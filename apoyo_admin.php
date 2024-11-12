@@ -11,6 +11,8 @@ $usuario = $_SESSION['username'];
   <title>Document</title>
   <link rel="stylesheet" href="estilos.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="imagenes/logo_icono.png">
+  
 
 </head>
 <body>
@@ -59,7 +61,7 @@ $usuario = $_SESSION['username'];
 
             <td><a href="editar_apoyo.php?id_apoyos=<?php echo $fila["id_apoyos"]; ?>"><i class="fa-solid fa-pen-to-square size_icon color_icon2 anima"></i></a></td>
 
-            <td><a href="#" onclick="validar('eliminar_post.php?id_apoyos=<?php echo $fila['id_apoyos']; ?>')"><i class="fa-solid fa-trash color size_icon color_icon3 anima"></i></a></td>
+            <td><a href="#" onclick="validar('eliminar_apoyos.php?id_apoyos=<?php echo $fila['id_apoyos']; ?>')"><i class="fa-solid fa-trash color size_icon color_icon3 anima"></i></a></td>
           </tr>
           <?php
           }

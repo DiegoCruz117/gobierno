@@ -10,6 +10,7 @@ $usuario = $_SESSION['username'];
   <title>Document</title>
   <link rel="stylesheet" href="estilos.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="imagenes/logo_icono.png">
   <script src="ckeditor/ckeditor.js"></script>
 </head>
 <body>
@@ -46,22 +47,6 @@ $usuario = $_SESSION['username'];
                 <p id="nombreError" style="color: red; display: none;">El campo Nombre(s) solo debe contener letras y espacios.</p>
                 </div>
 
-                <script>
-                document.querySelector("form").addEventListener("submit", function(event) {
-                    const nombreInput = document.getElementById("nombres");
-                    const nombreError = document.getElementById("nombreError");
-
-                    // Expresión regular para letras y espacios
-                    const nombreRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
-
-                    if (!nombreRegex.test(nombreInput.value.trim())) {
-                        nombreError.style.display = "block";
-                        event.preventDefault(); // Evita que el formulario se envíe
-                    } else {
-                        nombreError.style.display = "none";
-                    }
-                });
-                </script>
 
                 <div class="nombre">
                     <label for="apellidos">Apellidos <span class="requerido">*</span></label><br>
@@ -69,30 +54,20 @@ $usuario = $_SESSION['username'];
                     <p id="apellidoError" style="color: red; display: none;">El campo Apellidos solo debe contener letras y espacios.</p>
                 </div>
 
-                <script>
-                document.querySelector("form").addEventListener("submit", function(event) {
-                    const apellidoInput = document.getElementById("apellidos");
-                    const apellidoError = document.getElementById("apellidoError");
-
-                    // Expresión regular para letras y espacios
-                    const apellidoRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
-
-                    if (!apellidoRegex.test(apellidoInput.value.trim())) {
-                        apellidoError.style.display = "block";
-                        event.preventDefault(); // Evita que el formulario se envíe
-                    } else {
-                        apellidoError.style.display = "none";
-                    }
-                });
-                </script>
                 </div>
 
                 <div class="datos">
 
                 <div class="nombre">
-                <label for="edad">Edad <span class="requerido">*</span></label>
-                <input type="date" name="edad" class="elemento_inp1" required id="edad">
-                 </div>
+                    <label for="edad">Edad <span class="requerido">*</span></label>
+                    <input type="date" name="edad" class="elemento_inp1" required id="edad" max="">
+                </div>
+
+                <script>
+                    // Obtener la fecha actual en formato adecuado para el campo de tipo date
+                    const hoy = new Date().toISOString().split('T')[0];
+                    document.getElementById("edad").setAttribute("max", hoy);
+                </script>
 
 
 
@@ -138,8 +113,8 @@ $usuario = $_SESSION['username'];
                         <input type="email" name="correo" class="elemento_inp1" placeholder="Ejemplo (correo@ejemplo.com)" required>
                     </div>
                     <div class="nombre">
-                        <label for="">Teléfono <span class="requerido">*</span></label>
-                        <input type="tel" name="numero_tel" class="elemento_inp1" placeholder="Ejemplo (999 999 9999)" required>
+                        <label for="numero_tel">Teléfono <span class="requerido">*</span></label>
+                        <input type="tel" name="numero_tel" class="elemento_inp1" placeholder="Ejemplo (9999999999)" required pattern="[0-9]{10}" title="El teléfono debe tener 10 dígitos numéricos">
                     </div>
                 </div>
                 <button class="btn_amarillo2">Registrar</button>

@@ -9,6 +9,7 @@ $usuario = $_SESSION['username'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Solicitud de Apoyo</title>
     <link rel="stylesheet" href="estilos_apoyos.css"> <!-- Enlace al archivo CSS -->
+    <link rel="icon" type="image/x-icon" href="imagenes/logo_icono.png">
 </head>
 <body>
 

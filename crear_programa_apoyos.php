@@ -11,9 +11,11 @@ $usuario = $_SESSION['username'];
   <link rel="stylesheet" href="estilos.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="imagenes/logo_icono.png">
   <script src="ckeditor/ckeditor.js"></script>
 </head>
 <body>
+  
   <div class="cont_padre_panel ancho">
     <?php include "menudashboard.php"; ?>
     <div class="cont_panel_derecho">
@@ -81,9 +83,17 @@ $usuario = $_SESSION['username'];
           </div>
 
           <div class="nombre">
-              <label for="">Fecha <span class="requerido">*</span></label>
-              <input type="date" name="fecha_programa" class="elemento_inp1" required>
+              <label for="fecha_programa">Fecha <span class="requerido">*</span></label>
+              <input type="date" name="fecha_programa" class="elemento_inp1" required id="fecha_programa">
           </div>
+
+          <script>
+              // Obtener la fecha actual en formato adecuado para el campo de tipo date
+              const hoy = new Date().toISOString().split('T')[0];
+              document.getElementById("fecha_programa").setAttribute("min", hoy);
+          </script>
+
+          
       </div>
           <label>Breve descripción <span class="requerido">*</span></label>
           <textarea name="descripcioncorta" placeholder="Descripcion Corta" class="elemento_inp2 textdesc"></textarea>

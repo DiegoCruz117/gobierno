@@ -11,6 +11,7 @@ $usuario = $_SESSION['username'];
   <link rel="stylesheet" href="estilos.css">
   <!-- Incluye Font Awesome para los íconos -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="imagenes/logo_icono.png">
 </head>
 <body>
   <div class="cont_padre_panel ancho">

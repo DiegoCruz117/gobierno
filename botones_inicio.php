@@ -11,11 +11,10 @@ $rol = isset($_SESSION['rol']) ? $_SESSION['rol'] : ''; // Si no está definida,
     <a href="apoyos.php" class="nav-button">Apoyos</a>
     <a href="noticias.php" class="nav-button">Noticias</a>
     <a href="testimonios.php" class="nav-button">Testimonios</a>
-    <a href="encargados_apoyos.php" class="nav-button">Encargado de Apoyos</a>
     
     <?php if ($rol === 'administrador'): ?>
         <!-- Botones visibles solo para administradores -->
-       
+        <a href="encargados_apoyos.php" class="nav-button">Encargado de Apoyos</a>
         <a href="principal.php" class="nav-button">Administrar</a>
     <?php endif; ?>
 
