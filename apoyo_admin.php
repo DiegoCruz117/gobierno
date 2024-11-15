@@ -11,6 +11,8 @@ $usuario = $_SESSION['username'];
   <title>Document</title>
   <link rel="stylesheet" href="estilos.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="imagenes/logo_icono.png">
+  
 
 </head>
 <body>
@@ -27,6 +29,7 @@ $usuario = $_SESSION['username'];
       </div>
       <br>
       <div class="cont_panel_derecho_hijo2">
+        <br>
         <h2 class="titulo_panel">Programas de Apoyos</h2>
         <br>
         <a href="crear_programa_apoyos.php" class="btn_rojo2 anima"><i class="fa-solid fa-square-plus color_icon4"></i>Nuevo</a>
@@ -44,7 +47,7 @@ $usuario = $_SESSION['username'];
           <?php
           require "conexion.php";
 
-          $todos_datos = "SELECT * FROM crear_apoyos ORDER BY id_apoyos  ASC";
+          $todos_datos = "SELECT * FROM crear_apoyos ORDER BY id_apoyos ASC";
           $resultado = mysqli_query($conectar,$todos_datos);
           while($fila = mysqli_fetch_assoc($resultado)){
           ?>
@@ -58,7 +61,7 @@ $usuario = $_SESSION['username'];
 
             <td><a href="editar_apoyo.php?id_apoyos=<?php echo $fila["id_apoyos"]; ?>"><i class="fa-solid fa-pen-to-square size_icon color_icon2 anima"></i></a></td>
 
-            <td><a href="#" onclick="validar('eliminar_post.php?id_apoyos=<?php echo $fila['id_apoyos']; ?>')"><i class="fa-solid fa-trash color size_icon color_icon3 anima"></i></a></td>
+            <td><a href="#" onclick="validar('eliminar_apoyos.php?id_apoyos=<?php echo $fila['id_apoyos']; ?>')"><i class="fa-solid fa-trash color size_icon color_icon3 anima"></i></a></td>
           </tr>
           <?php
           }

@@ -10,9 +10,12 @@ $usuario = $_SESSION['username'];
   <title>Document</title>
   <link rel="stylesheet" href="estilos.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="imagenes/logo_icono.png">
   <script src="ckeditor/ckeditor.js"></script>
 </head>
 <body>
+  
   <div class="cont_padre_panel ancho">
     <?php include "menudashboard.php"; ?>
     <div class="cont_panel_derecho">
@@ -26,12 +29,13 @@ $usuario = $_SESSION['username'];
       <div class="cont_panel_derecho_hijo2">
         <h2 class="titulo_panel">Crear programas de Apoyos</h2>
         <br>
-        <a href="apoyo_admin.php" class="btn_rojo2"><< Regresar</a>
+        <a href="apoyo_admin.php" class="btn_rojo2 anima"><i class="fa-regular fa-circle-left color_icon4"></i>Regresar</a>
         <br><br>
         <form action="guardar_programas_apoyos.php" method="post" class="form_crear_usuario" enctype="multipart/form-data">
 
 <!-- Menú de selección de íconos personalizado -->
 <div class="custom-select">
+    <label for="">Ícono <span class="requerido">*</span></label>
     <div class="select-selected" onclick="toggleSelect()">
     <i class="fas fa-file-invoice"></i></i> Selecciona un ícono
     </div>
@@ -71,16 +75,30 @@ $usuario = $_SESSION['username'];
         }
     };
 </script>
-
 <br>
-          <!-- Otros campos del formulario -->
-          <input type="text" name="nombre_programa" class="elemento_inp2" placeholder="Nombre del Programas de Apoyos" required>
+      <div class="datos">
+          <div class="nombre">
+              <label for="">Nombre del programa <span class="requerido">*</span></label>
+              <input type="text" name="nombre_programa" class="elemento_inp1" placeholder="Nombre del programa" required>
+          </div>
+
+          <div class="nombre">
+              <label for="fecha_programa">Fecha de creacion<span class="requerido">*</span></label>
+              <input type="date" name="fecha_programa" class="elemento_inp1" required id="fecha_programa">
+          </div>
+
+          <script>
+              // Obtener la fecha actual en formato adecuado para el campo de tipo date
+              const hoy = new Date().toISOString().split('T')[0];
+              document.getElementById("fecha_programa").setAttribute("min", hoy);
+          </script>
+
+          
+      </div>
+          <label>Breve descripción <span class="requerido">*</span></label>
+          <textarea name="descripcioncorta" placeholder="Descripcion Corta" class="elemento_inp2 textdesc"></textarea>
           <br>
-          <input type="date" name="fecha_programa" class="elemento_inp2">
-          <br>
-          <textarea name="descripcioncorta" placeholder="Descripcion Noticia (corta)" class="elemento_inp2 textdesc"></textarea>
-          <br>
-          <p class="texto_fecha">Descripción larga de la noticia: </p>
+          <p class="texto_fecha">Descripción larga de la noticia: <span class="requerido">*</span></p>
           <textarea class="elemento_inp2" name="editor1" id="editor1"></textarea>
           <br>
           <script>

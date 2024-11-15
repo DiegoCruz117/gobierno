@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-11-2024 a las 07:49:12
+-- Tiempo de generación: 12-11-2024 a las 04:35:34
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -57,10 +57,8 @@ CREATE TABLE `crear_apoyos` (
 --
 
 INSERT INTO `crear_apoyos` (`id_apoyos`, `icono_apoyos`, `nombre_programa`, `fecha_programa`, `descripcioncorta`, `descripcionlarga`) VALUES
-(14, 'hand-holding-usd', 'FINANCIERO APOYO', '2024-10-30', '123', '<p>456</p>\r\n'),
-(15, 'utensils', 'Alimentación Apoyo', '2024-11-04', '123', '<p>4456</p>\r\n'),
-(16, 'utensils', 'asdasd', '2024-11-10', 'dadada', '<p>adadada</p>\r\n'),
-(17, 'home', 'sexo en casa', '2024-11-11', 'adasdasda', '<p>sexo en la boca de kim</p>\r\n\r\n<p>&nbsp;</p>\r\n');
+(1, 'hand-holding-usd', 'FINANCIERO APOYO', '2024-10-30', '123', '<p>456</p>\r\n'),
+(2, '', 'Alimentación Apoyo', '2024-11-04', '123', '<p>4456</p>\r\n');
 
 -- --------------------------------------------------------
 
@@ -84,8 +82,10 @@ CREATE TABLE `crear_encargados` (
 --
 
 INSERT INTO `crear_encargados` (`id_encargados`, `nombres`, `apellidos`, `id_apoyos`, `correo`, `numero_tel`, `edad`, `sexo`) VALUES
-(22, 'mono', 'gallina', 14, 'mono@gmail.com', '9988234765', '2024-11-11', 'Femenino'),
-(23, 'emanuel ', 'padilla', 14, 'ema@gmail.com', '9988001122', '2024-11-11', 'Masculino');
+(1, 'mono', 'gallina', 1, 'mono@gmail.com', '9988234765', '2024-11-11', 'Femenino'),
+(2, 'emanuel ', 'padilla', 1, 'ema@gmail.com', '9988001122', '2024-11-11', 'Masculino'),
+(3, 'chris', 'gomez', 2, 'c@gmai.com', '9981290763', '2006-01-01', 'Otro'),
+(4, 'holaq', 'dasd', 2, 'dasdasd@adsdas.com', '9847582903', '2000-11-11', 'Otro');
 
 -- --------------------------------------------------------
 
@@ -243,13 +243,13 @@ ALTER TABLE `calificaciones`
 -- AUTO_INCREMENT de la tabla `crear_apoyos`
 --
 ALTER TABLE `crear_apoyos`
-  MODIFY `id_apoyos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_apoyos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `crear_encargados`
 --
 ALTER TABLE `crear_encargados`
-  MODIFY `id_encargados` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_encargados` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `publicaciones`

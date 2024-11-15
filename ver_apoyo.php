@@ -9,9 +9,10 @@ $usuario = $_SESSION['username'];
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="estilos.css">
+  <!-- Incluye Font Awesome para los íconos -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <script src="ckeditor/ckeditor.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="imagenes/logo_icono.png">
 </head>
 <body>
   <div class="cont_padre_panel ancho">
@@ -25,77 +26,54 @@ $usuario = $_SESSION['username'];
       </div>
       <br>
       <div class="cont_panel_derecho_hijo2">
-        <h2 class="titulo_panel">Crear programas de Apoyos</h2>
+        <h2 class="titulo_panel"> VER APOYOS</h2>
         <br>
         <a href="apoyo_admin.php" class="btn_rojo2 anima"><i class="fa-regular fa-circle-left color_icon4"></i>Regresar</a>
         <br><br>
-        <form action="editar_apoyo.php" method="post" class="form_crear_usuario" enctype="multipart/form-data">
+        <?php
+        require "conexion.php";
+        $id_apoyos = $_GET['id_apoyos'];
 
-<!-- Menú de selección de íconos personalizado -->
-<div class="custom-select">
-    <label for="">Ícono <span class="requerido">*</span></label>
-    <div class="select-selected" onclick="toggleSelect()">
-    <i class="fas fa-file-invoice"></i></i> Selecciona un ícono
-    </div>
-    <div class="select-items">
-        <div onclick="selectIcon('hand-holding-usd', 'fas fa-hand-holding-usd')"><i class="fas fa-hand-holding-usd"></i> Apoyo Financiero</div>
-        <div onclick="selectIcon('utensils', 'fas fa-utensils')"><i class="fas fa-utensils"></i> Alimentación</div>
-        <div onclick="selectIcon('home', 'fas fa-home')"><i class="fas fa-home"></i> Vivienda</div>
-        <div onclick="selectIcon('graduation-cap', 'fas fa-graduation-cap')"><i class="fas fa-graduation-cap"></i> Educación</div>
-        <div onclick="selectIcon('heartbeat', 'fas fa-heartbeat')"><i class="fas fa-heartbeat"></i> Salud</div>
-    </div>
-</div>
+        $verusuario = "SELECT * FROM crear_apoyos WHERE id_apoyos = '$id_apoyos'";
 
-<!-- Campo oculto para almacenar el valor del ícono seleccionado -->
-<input type="hidden" name="icono_apoyos" value="">
+        $resultado = mysqli_query($conectar, $verusuario);
 
-<script>
-    function toggleSelect() {
-        document.querySelector(".select-items").classList.toggle("show");
-    }
-
-    function selectIcon(value, iconClass) {
-        // Cambia el texto y el ícono mostrado en el elemento seleccionado
-        const selected = document.querySelector(".select-selected");
-        selected.innerHTML = `<i class="${iconClass}"></i> ${value.charAt(0).toUpperCase() + value.slice(1)}`;
-
-        // Guarda el valor del ícono seleccionado en el campo oculto
-        document.querySelector("input[name='icono_apoyos']").value = value;
-
-        // Oculta el menú de opciones
-        document.querySelector(".select-items").classList.remove("show");
-    }
-
-    // Cierra el menú desplegable si se hace clic fuera de él
-    window.onclick = function(event) {
-        if (!event.target.matches('.select-selected')) {
-            document.querySelectorAll(".select-items").forEach(dropdown => dropdown.classList.remove('show'));
+        // Verificar si hay resultados
+        if (!$resultado) {
+            die("Error en la consulta: " . mysqli_error($conectar));
         }
-    };
-</script>
-<br>
-      <div class="datos">
-          <div class="nombre">
-              <label for="">Nombre del programa <span class="requerido">*</span></label>
-              <input type="text" name="nombre_programa" class="elemento_inp1" placeholder="Nombre del programa" required>
-          </div>
 
-          <div class="nombre">
-              <label for="">Fecha <span class="requerido">*</span></label>
-              <input type="date" name="fecha_programa" class="elemento_inp1" required>
+        $fila = mysqli_fetch_assoc($resultado);
+        ?>
+        <div class="contenedor_ver_usuarios datos5 margen">
+          <h3 class="up2">Datos generales</h3>
+          <div class="nombre2">
+            <label class="campo">Nombre del programa</label><br>
+            <p class="dato">
+              <i class="fas fa-<?php echo htmlspecialchars($fila['icono_apoyos']); ?>" style="font-size: 24px;"></i> <span class="derecha"><?php echo htmlspecialchars($fila['nombre_programa']); ?></span>
+            </p>
           </div>
-      </div>
-          <label>Breve descripción <span class="requerido">*</span></label>
-          <textarea name="descripcioncorta" placeholder="Descripcion Corta" class="elemento_inp2 textdesc"></textarea>
           <br>
-          <p class="texto_fecha">Descripción larga de la noticia: <span class="requerido">*</span></p>
-          <textarea class="elemento_inp2" name="editor1" id="editor1"></textarea>
-          <br>
-          <script>
-            CKEDITOR.replace('editor1');
-          </script>
-          <button class="btn_amarillo2">Editar</button>
-        </form>
+          <div class="nombre2">
+            <label class="campo">Fecha de creación</label><br>
+            <p class="dato"><?php echo htmlspecialchars($fila['fecha_programa']); ?></p>
+          </div>
+        </div>
+        <div class="contenedor_ver_usuarios datos4 margen">
+          <h3 class="up2">Breve descripción</h3>
+            <div class="nombre2">
+              <p class="dato"><?php echo htmlspecialchars($fila['descripcioncorta']); ?></p>
+            </div>
+        </div>
+        <br><br>
+        <div class="contenedor_ver_usuarios datos1 margen">
+          <h3 class="up4">Descripción completa</h3>
+            <div class="nombre2">
+            <p class="dato"><?php echo htmlspecialchars($fila['descripcionlarga']); ?></p>
+            </div>
+        </div>
+        <br>
+        <a class="btn_rojo3" href="editar_apoyo.php?id_apoyo=<?php echo $fila["id_apoyos"]; ?>">Editar apoyo</a>
       </div>
     </div>
   </div>
