@@ -10,6 +10,7 @@ $usuario = $_SESSION['username'];
   <title>Document</title>
   <link rel="stylesheet" href="estilos.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="imagenes/logo_icono.png">
 </head>
 <body>
   <div class="cont_padre_panel ancho">
@@ -23,6 +24,7 @@ $usuario = $_SESSION['username'];
       </div>
       <br>
       <div class="cont_panel_derecho_hijo2">
+        <br>
         <h2 class="titulo_panel">Encargados de Apoyos</h2>
         <br>
         <a href="crear_encargados.php" class="btn_rojo2"><i class="fa-solid fa-address-card color_icon4"></i>Nuevo</a>
@@ -33,19 +35,18 @@ $usuario = $_SESSION['username'];
             <th>Apellidos</th>
             <th>Encargado de programa</th>
             <th>Celular</th>
-            <th colspan="3">Acciones</th>
+            <th colspan="3"></th>
           </tr>
           <?php
           require "conexion.php";
 
           $consulta = "SELECT 
               ce.*,
-              ca.nombre_programa 
-            FROM crear_encargados ce 
-            INNER JOIN crear_apoyos ca 
-            ON ce.id_apoyos = ca.id_apoyos 
+              ca.nombre_programa
+            FROM crear_encargados ce
+            INNER JOIN crear_apoyos ca
+            ON ce.id_apoyos = ca.id_apoyos
             ORDER BY ce.id_encargados ASC";
-            
           $resultado = mysqli_query($conectar, $consulta);
           while($fila = mysqli_fetch_assoc($resultado)){
           ?>

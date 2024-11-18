@@ -10,6 +10,7 @@ $usuario = $_SESSION['username'];
   <title>Formulario de Apoyo Gubernamental</title>
   <link rel="stylesheet" href="estilos.css">
   <script src="ckeditor/ckeditor.js"></script>
+  <link rel="icon" type="image/x-icon" href="imagenes/logo_icono.png">
 </head>
 <body>
   <div class="cont_padre_panel ancho">

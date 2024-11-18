@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require "conexion.php";
 
@@ -15,9 +15,14 @@ if ($resultado->num_rows > 0) {
     $fila = $resultado->fetch_assoc();
     if (password_verify($contrasena, $fila['contrasena'])) {
         session_start();
-        $_SESSION['username'] = $correo;
+        $_SESSION['username'] = $fila['nombre']; // Guarda el nombre del usuario
+        $_SESSION['rol'] = $fila['rol']; // Guarda el rol del usuario
         $_SESSION["autentificado"] = "SI";
-        header("Location: principal.php");
+
+        // Establece la cookie para el tiempo de actividad (10 minutos)
+        setcookie("last_activity", time(), time() + (10 * 60), "/"); // 10 minutos
+
+        header("Location: inicio.php");
         exit();
     } else {
         // Contraseña incorrecta

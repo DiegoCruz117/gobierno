@@ -1,3 +1,7 @@
+<?php
+require "seguridad.php"; // Verificar que el usuario está autenticado
+$usuario = $_SESSION['username'];
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Solicitud de Apoyo</title>
     <link rel="stylesheet" href="estilos_apoyos.css"> <!-- Enlace al archivo CSS -->
+    <link rel="icon" type="image/x-icon" href="imagenes/logo_icono.png">
 </head>
 <body>
 
@@ -63,7 +68,7 @@
     <textarea name="descripcion" placeholder="Describa su situación actual" class="elemento_inp2 textdesc" required></textarea>
 
     <!-- Documentación Requerida -->
-    <h3>Documentación Adjunta (SOLO PDF ) <span class="necesario">*</span></h3>
+    <h3>Documentación Adjunta (SOLO PDF, MÁXIMO 2MB ) <span class="necesario">*</span></h3>
     <p>Subir copia de identificación oficial (INE, pasaporte):</p>
     <input type="file" name="identificacion" class="elemento_inp2" accept=".pdf,.jpg,.jpeg,.png" required>
     <p>Subir comprobante de domicilio (no mayor a 3 meses):</p>

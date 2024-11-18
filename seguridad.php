@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 //aca en seguridad implemente la parte del tiempo
 
@@ -14,7 +14,7 @@ if ($_SESSION["autentificado"] != "SI") {
 // Comprobar el tiempo de inactividad
 if (isset($_SESSION['ultimo_acceso'])) {
     $tiempo_inactividad = time() - $_SESSION['ultimo_acceso'];
-    
+
     if ($tiempo_inactividad > $tiempo_inactividad_maximo) {
         // Si ha pasado el tiempo máximo, destruir la sesión y redirigir al login
         session_unset();

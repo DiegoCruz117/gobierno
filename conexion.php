@@ -1,9 +1,9 @@
-<?php 
+<?php
 
 $host ="localhost";
 $user = "root";
 $contrasena = "";
-$bd = "gobierno";
+$bd = "gob";
 
 
 $conectar = mysqli_connect($host, $user, $contrasena,$bd);
