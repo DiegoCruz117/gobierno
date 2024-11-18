@@ -77,6 +77,27 @@ session_start();
 
   </section>
 </div>
+<br>
+
+<div class="container ancho">
+  <section class="noticias">
+    <h2>Últimas Noticias</h2>
+
+    <?php
+    include "conexion.php";
+    $todos_datos = "SELECT * FROM publicaciones ORDER BY id_noticia";
+    $resultado = mysqli_query($conectar, $todos_datos);
+    while ($fila = mysqli_fetch_assoc($resultado)) {
+  ?>
+    <div class="noticia">
+    <h3><i class="fas fa-newspaper"><?php echo $fila['icono']; ?></i> <?php echo $fila['nombrenoticia']; ?></h3>
+      <p><?php echo $fila['descripcioncorta']; ?></p>
+      <a href="noticias_info.php?id_noticia=<?php echo $fila["id_noticia"]; ?>" class="btn_detalle">Leer más</a><br>
+    </div>
+  <?php } ?>
+
+  </section>
+</div>
 
 <footer class="footer ancho">
   <p>© 2024 Plataforma de Noticias Gubernamentales | Todos los derechos reservados.</p>

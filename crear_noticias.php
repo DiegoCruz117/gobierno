@@ -7,7 +7,7 @@ $usuario = $_SESSION['username'];
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Crear-Noticias</title>
   <link rel="stylesheet" href="estilos.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="icon" type="image/x-icon" href="imagenes/logo_icono.png">
@@ -77,7 +77,15 @@ $usuario = $_SESSION['username'];
           <!-- Otros campos del formulario -->
           <input type="text" name="nombrenoticia" class="elemento_inp2" placeholder="Nombre de evento o noticia" required>
           <br>
-          <input type="date" name="fecha" class="elemento_inp2">
+          <input type="date" name="fecha" class="elemento_inp2" id="fecha" required>
+          <script>
+            // Obtén la fecha actual en formato yyyy-mm-dd
+            const today = new Date().toISOString().split('T')[0];
+
+            // Asigna la fecha mínima al campo de fecha
+            document.getElementById('fecha').setAttribute('min', today);
+          </script>
+
           <br>
           <textarea name="descripcioncorta" placeholder="Descripcion Noticia (corta)" class="elemento_inp2 textdesc"></textarea>
           <br>

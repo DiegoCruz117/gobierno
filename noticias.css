@@ -174,6 +174,8 @@ body {
   }
     
 
+
+
       /* Estilos para el modal */
       .modal {
         display: none;
@@ -207,4 +209,111 @@ body {
       }
 
 
-      
+
+/* Contenido de la noticia */
+/* Estilos para el modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Contenido de la noticia */
+.titulo_noticia {
+  color: #ffffff;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.text2 {
+  font-size: 20px;
+  font-weight: 500;
+  margin-left: 40px;
+  color: #333;
+  line-height: 1.6; /* Mejor legibilidad */
+}
+
+.detalle-noticia {
+  display: flex; /* Utilizamos flexbox para alinear imagen y texto */
+  max-width: 1200px;
+
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.detalle-noticia .imagen-noticia img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.detalle-noticia .contenido-noticia {
+  flex: 1 1 60%; /* El contenido ocupa el 60% del ancho */
+  display: flex;
+  flex-direction: column; /* Para que los elementos se apilen verticalmente */
+  justify-content: space-between; /* Para que la información se distribuya por toda la altura */
+}
+
+.detalle-noticia p {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.detalle-noticia .texto-destacado {
+  font-weight: 600;
+  color: var(--color1);
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+.detalle-noticia .btn-volver {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--color1);
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.detalle-noticia .btn-volver:hover {
+  background-color: #6f6969;
+}
+
