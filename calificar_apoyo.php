@@ -1,5 +1,6 @@
 <?php
-session_start();
+require "seguridad.php"; // Verificar que el usuario está autenticado
+$usuario = $_SESSION['username'];
 ?>
 <!DOCTYPE html>
 <html lang="es">

@@ -1,26 +1,14 @@
-let currentIndex = 0; // Índice actual
-const items = document.querySelectorAll(".carousel .encargado");
-const totalItems = items.length;
-
-// Función para mover el carrusel
-function moveCarousel(direction) {
-    currentIndex += direction;
-
-    // Si llegamos al final, volver al inicio
-    if (currentIndex >= totalItems) {
-        currentIndex = 0;
-    }
-    // Si retrocedemos más allá del inicio, ir al final
-    if (currentIndex < 0) {
-        currentIndex = totalItems - 1;
-    }
-
-    // Calcular el desplazamiento
-    const offset = -currentIndex * 300; // 300px es el ancho de cada tarjeta
-    document.querySelector(".carousel").style.transform = `translateX(${offset}px)`;
-}
-
-// Configurar desplazamiento automático cada 20 segundos
-setInterval(() => {
-    moveCarousel(1); // Mover hacia la derecha
-}, 20000);
+document.addEventListener("DOMContentLoaded", () => {
+    const carousel = document.querySelector(".carousel");
+    const items = Array.from(carousel.children);
+    const visibleItems = Math.ceil(carousel.parentElement.offsetWidth / 300); // 300px es el ancho de cada tarjeta
+  
+    // Duplicar los elementos
+    items.forEach((item) => {
+      const clone = item.cloneNode(true);
+      carousel.appendChild(clone);
+    });
+  
+    // Calcular la cantidad visible para ajustar la animación
+    carousel.style.setProperty("--visible-items", visibleItems);
+  });

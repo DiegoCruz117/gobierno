@@ -331,17 +331,23 @@ h3 {
 }
 
 .carousel-wrapper {
-  position: relative;
   overflow: hidden;
-  display: flex;
-  align-items: center;
+  width: 85%;
+  margin: 0 auto;
 }
 
 .carousel {
   display: flex;
-  gap: 50px;
-  transition: transform 1.45s ease;
-  width: 90%;
+  animation: scroll-infinite 20s linear infinite;
+}
+
+@keyframes scroll-infinite {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-300px * var(--visible-items)));
+  }
 }
 
 .encargado {
@@ -410,8 +416,3 @@ font-size: 80px;
   text-decoration: none;
   /* transition: background-color 0.3s ease; */
 }
-
-/* Efecto al pasar el cursor sobre el botón */
-/* .btn-view-more:hover {
-  background-color: #45a049;
-} */

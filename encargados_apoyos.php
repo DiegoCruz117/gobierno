@@ -46,20 +46,14 @@ session_start();
     <h1>Calificar a Encargados de Apoyos</h1>
 
     <div class="carousel-wrapper">
-        <!-- Botón para desplazarse hacia la izquierda -->
-        <button class="carousel-btn left-btn" onclick="moveCarousel(-1)">
-            <i class="fas fa-chevron-left"></i>
-        </button>
-
-        <!-- Contenedor del carrusel -->
-        <div class="carousel ancho">
+        <div class="carousel">
             <?php
             require "conexion.php";
 
             // Consulta para obtener los datos
             $calificacion = "SELECT * FROM crear_encargados
-                             INNER JOIN crear_apoyos
-                             ON crear_encargados.id_apoyos = crear_apoyos.id_apoyos";
+                            INNER JOIN crear_apoyos
+                            ON crear_encargados.id_apoyos = crear_apoyos.id_apoyos";
             $resultado = mysqli_query($conectar, $calificacion);
 
             // Verificar que existan registros
@@ -83,11 +77,6 @@ session_start();
             }
             ?>
         </div>
-
-        <!-- Botón para desplazarse hacia la derecha -->
-        <button class="carousel-btn right-btn" onclick="moveCarousel(1)">
-            <i class="fas fa-chevron-right"></i>
-        </button>
     </div>
 </div>
 
