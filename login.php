@@ -1,18 +1,4 @@
-<?php
-session_start();
 
-if (isset($_SESSION['autentificado']) && $_SESSION['autentificado'] == "SI") {
-    // Redirección según el rol
-    if ($_SESSION['rol'] === 'administrador') {
-        header("Location: admin_dashboard.php");
-    } elseif ($_SESSION['rol'] === 'jefe') {
-        header("Location: jefe_dashboard.php");
-    } else {
-        header("Location: usuario_dashboard.php");
-    }
-    exit();
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +6,7 @@ if (isset($_SESSION['autentificado']) && $_SESSION['autentificado'] == "SI") {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inicio de Sesión</title>
   <link rel="stylesheet" href="estilos.css">
+  <link rel="icon" type="image/x-icon" href="imagenes/logo_icono.png">
 </head>
 <body>
 <br><br>

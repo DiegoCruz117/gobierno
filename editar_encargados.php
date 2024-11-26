@@ -10,11 +10,44 @@ $usuario = $_SESSION['username'];
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="imagenes/logo_icono.png">
   <script src="ckeditor/ckeditor.js"></script>
 </head>
 <body>
+<script>
+    // Variable para marcar si hubo cambios en el formulario
+    let isFormEdited = false;
+
+    // Función que se ejecuta cuando hay cambios en un campo
+    function handleInputChange() {
+      isFormEdited = true; // Cambiar el estado cuando hay un cambio
+    }
+
+    // Función que valida si se debe enviar el formulario
+    function validateForm(event) {
+      if (!isFormEdited) {
+        event.preventDefault(); // Si no hubo cambios, prevenir el envío del formulario
+        alert("Por favor edite algún campo antes de guardar.");
+      }
+    }
+
+    // Asignar eventos a los campos de formulario
+    window.onload = function() {
+      // Seleccionar todos los campos que deseas monitorear
+      const inputs = document.querySelectorAll("input, textarea");
+      
+      inputs.forEach(input => {
+        input.addEventListener('input', handleInputChange); // Detectar cambios
+      });
+      
+      // Asignar la validación al enviar el formulario
+      const form = document.querySelector("form");
+      form.addEventListener('submit', validateForm);
+    };
+  </script>
   <div class="cont_padre_panel ancho">
-    <?php 
+    <?php
     include "menudashboard.php";
     ?>
    <?php
@@ -22,7 +55,7 @@ $usuario = $_SESSION['username'];
         $id_encargados = $_GET['id_encargados'];
 
         // Consulta con INNER JOIN para obtener datos de 'crear_encargados' y 'crear_apoyos'
-        $verusuario = "SELECT ce.*, ca.nombre_programa 
+        $verusuario = "SELECT ce.*, ca.nombre_programa
                        FROM crear_encargados ce
                        INNER JOIN crear_apoyos ca ON ce.id_apoyos = ca.id_apoyos
                        WHERE ce.id_encargados = '$id_encargados'";
@@ -47,7 +80,8 @@ $usuario = $_SESSION['username'];
       <div class="cont_panel_derecho_hijo2">
         <h2 class="titulo_panel"> EDITAR ENCARGADOS</h2>
         <br>
-        <a href="encargados_admin.php" class="btn_rojo2"><< Regresar</a>
+        <a href="encargados_admin.php" class="btn_rojo2 anima"><i class="fa-regular fa-circle-left color_icon4"></i>Regresar</a>
+        <!-- <a href="encargados_admin.php" class="btn_rojo2"><< Regresar</a> -->
         <br><br>
         <form action="guardar_encargados_editar.php" method="post" class="form_crear_usuario" enctype="multipart/form-data">
         <div class="centro">
@@ -70,13 +104,13 @@ $usuario = $_SESSION['username'];
 
                 <div class="datos">
                     <div class="nombre">
-                        <label for="">Edad <span class="requerido"></span></label>
-                        <input type="date" name="edad" class="elemento_inp1" require disabled value="<?php echo $fila['edad'];?>">
+                        <label for="">Fecha de Nacimiento <span class="requerido"></span></label>
+                        <input type="date" name="edad" class="elemento_inp1" disabled value="<?php echo $fila['edad'];?>">
                     </div>
 
                     <div class="nombre">
-                    <label for="">Sexo <span class="requerido">*</span></label>
-                    <select name="sexo" class="elemento_inp1" required>
+                    <label for="">Sexo</label>
+                    <select name="sexo" class="elemento_inp1">
                         <option selected disabled value="">Selecciona una opción</option>
                         <option value="Masculino" <?php echo ($fila['sexo'] == 'Masculino') ? 'selected' : ''; ?>>Masculino</option>
                         <option value="Femenino" <?php echo ($fila['sexo'] == 'Femenino') ? 'selected' : ''; ?>>Femenino</option>
@@ -124,7 +158,7 @@ $usuario = $_SESSION['username'];
                 <div class="datos">
                     <div class="nombre">
                         <label for="">Correo <span class="requerido"></span></label>
-                        <input type="email" name="correo" class="elemento_inp1" placeholder="Ejemplo@dominio" disabled required value="<?php echo $fila['correo'];?>">
+                        <input type="email" name="correo" class="elemento_inp1" placeholder="Ejemplo@dominio" disabled value="<?php echo $fila['correo'];?>">
                     </div>
 
                     <div class="nombre">

@@ -1,6 +1,5 @@
 <?php
-require "seguridad.php";
-$usuario = $_SESSION['username'];
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -10,66 +9,53 @@ $usuario = $_SESSION['username'];
   <title>Noticias Gubernamentales</title>
   <link rel="stylesheet" href="noticias.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="imagenes/logo_icono.png">
 </head>
 <body>
-
+  
 <div class="header ancho">
-    <div class="header-left">
-        <img src="imagenes/icono_email_naranja.png" alt="Icono de email" class="icono-email">
-    </div>
-    <div class="header-center">
-        <h2>Noticias Gubernamentales</h2>
-    </div>
-    <div class="header-right">
-        <p class="info-usuario"><?php echo htmlspecialchars($usuario); ?></p>
+    <div class="header-content">
+        <div class="header-left">
+        </div>
+        <div class="header-center">
+            <h2> Apoyo Gubernamental</h2>
+        </div>
+        <div class="header-right">
+            <?php if (!isset($_SESSION['username'])): // Si no hay usuario logueado ?>
+                <a href="login.php" class="btn-login">
+                    <i class="fas fa-sign-in-alt"></i> 
+                </a>
+            <?php else: // Si hay usuario logueado ?>
+                <a href="salir.php" class="btn-logout">
+                    <i class="fas fa-sign-out-alt"></i> 
+                </a>
+            <?php endif; ?>
+        </div>
     </div>
 </div>
-
+<br>
 <div class="main-content ancho">
-  <nav class="menu">
-    <a href="inicio.php" class="nav-button">Inicio</a>
-    <a href="apoyos.php" class="nav-button">Apoyos</a>
-    <a href="programas.php" class="nav-button">Programas</a>
-    <a href="noticias.php" class="nav-button active">Noticias</a>
-    <a href="quejas_sugerencias.php" class="nav-button">Quejas y Sugerencias</a>
-    <a href="encargado_apoyos.php" class="nav-button">Encargado de Apoyos</a>
-    <a href="principal.php" class="nav-button">Administrar</a>
-  </nav>
-</div>
+<?php 
+    include "botones_inicio.php"; // Incluye el menú de navegación del dashboard
+    ?>
+</div><br>
 
 <div class="container ancho">
   <section class="noticias">
     <h2>Últimas Noticias</h2>
 
+    <?php
+    include "conexion.php";
+    $todos_datos = "SELECT * FROM publicaciones ORDER BY id_noticia";
+    $resultado = mysqli_query($conectar, $todos_datos);
+    while ($fila = mysqli_fetch_assoc($resultado)) {
+  ?>
     <div class="noticia">
-      <h3><i class="fas fa-newspaper"></i> Nuevos programas de apoyo 2024</h3>
-      <p>El gobierno ha anunciado nuevos programas para apoyar a comunidades afectadas por la crisis económica global.</p>
-      <a href="#" class="btn_detalle">Leer más</a>
+    <h3> <i class="fas fa-<?php echo $fila['icono']; ?>" style="font-size: 24px;"></i> <?php echo $fila['nombrenoticia']; ?></h3>
+      <p><?php echo $fila['descripcioncorta']; ?></p>
+      <a href="noticias_info.php?id_noticia=<?php echo $fila["id_noticia"]; ?>" class="btn_detalle">Leer más</a><br>
     </div>
-
-    <div class="noticia">
-      <h3><i class="fas fa-handshake"></i> Convenio con instituciones educativas</h3>
-      <p>Se firmó un convenio con varias universidades para proporcionar becas a estudiantes de bajos recursos.</p>
-      <a href="#" class="btn_detalle">Leer más</a>
-    </div>
-
-    <div class="noticia">
-      <h3><i class="fas fa-bullhorn"></i> Nueva Iniciativa de Educación</h3>
-      <p>El gobierno anuncia un nuevo programa para mejorar la calidad educativa en las zonas rurales, con el objetivo de reducir la brecha educativa.</p>
-      <a href="noticia_educacion.php" class="btn_detalle">Leer Más</a>
-    </div>
-
-    <div class="noticia">
-      <h3><i class="fas fa-calendar-alt"></i> Campaña de Vacunación</h3>
-      <p>Se inicia una nueva campaña de vacunación para combatir enfermedades prevenibles. Se recomienda a la población acudir a sus centros de salud más cercanos.</p>
-      <a href="noticia_vacunacion.php" class="btn_detalle">Leer Más</a>
-    </div>
-
-    <div class="noticia">
-      <h3><i class="fas fa-comments"></i> Espacio de Quejas y Sugerencias</h3>
-      <p>El gobierno habilita un nuevo canal para recibir quejas y sugerencias de la ciudadanía, fomentando la participación y transparencia.</p>
-      <a href="noticia_quejas.php" class="btn_detalle">Leer Más</a>
-    </div>
+  <?php } ?>
 
   </section>
 </div>

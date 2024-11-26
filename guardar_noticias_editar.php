@@ -58,7 +58,7 @@ if ($query){
   echo '
     <script>
       alert("Se actualizaron los datos correctamente");
-      location.href="blog.php";
+      location.href="noticias_admin.php";
     </script>
   ';
 } else {

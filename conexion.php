@@ -3,7 +3,7 @@
 $host ="localhost";
 $user = "root";
 $contrasena = "";
-$bd = "gobierno";
+$bd = "gobierno1";
 
 
 $conectar = mysqli_connect($host, $user, $contrasena,$bd);
