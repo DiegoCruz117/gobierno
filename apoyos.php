@@ -1,18 +1,18 @@
 <?php
 session_start();
-?>  
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Apoyos Gubernamentales</title>
-  <link rel="stylesheet" href="apoyo.css">
+  <link rel="stylesheet" href="css/apoyo.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="icon" type="image/x-icon" href="imagenes/logo_icono.png">
 </head>
 <body>
-  
+
 <!-- Encabezado -->
 <div class="header ancho">
     <div class="header-content">
@@ -24,11 +24,11 @@ session_start();
         <div class="header-right">
             <?php if (!isset($_SESSION['username'])): // Si no hay usuario logueado ?>
                 <a href="login.php" class="btn-login">
-                    <i class="fas fa-sign-in-alt"></i> 
+                    <i class="fas fa-sign-in-alt"></i>
                 </a>
             <?php else: // Si hay usuario logueado ?>
                 <a href="salir.php" class="btn-logout">
-                    <i class="fas fa-sign-out-alt"></i> 
+                    <i class="fas fa-sign-out-alt"></i>
                 </a>
             <?php endif; ?>
         </div>
@@ -37,7 +37,7 @@ session_start();
 
 <br>
 <div class="main-content ancho">
-<?php 
+<?php
     include "botones_inicio.php"; // Incluye el menú de navegación del dashboard
     ?>
 </div>

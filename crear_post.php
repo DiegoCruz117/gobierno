@@ -8,7 +8,7 @@ $usuario = $_SESSION['username'];
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulario de Apoyo Gubernamental</title>
-  <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="css/estilos.css">
   <script src="ckeditor/ckeditor.js"></script>
   <link rel="icon" type="image/x-icon" href="imagenes/logo_icono.png">
 </head>

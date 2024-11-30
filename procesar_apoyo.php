@@ -30,19 +30,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $terminos = isset($_POST['terminos']) ? 1 : 0;
 
     // Validar que si se marca mayor de edad, la fecha de nacimiento sea válida
-    if ($mayor_edad) {
-        $fecha_nacimiento_date = new DateTime($fecha_nacimiento);
-        $fecha_actual = new DateTime();
-        $edad = $fecha_actual->diff($fecha_nacimiento_date)->y;
+    // if ($mayor_edad) {
+    //     $fecha_nacimiento_date = new DateTime($fecha_nacimiento);
+    //     $fecha_actual = new DateTime();
+    //     $edad = $fecha_actual->diff($fecha_nacimiento_date)->y;
 
-        if ($edad < 18) {
-            echo "<script>
-                    alert('Debes ser mayor de 18 años de edad.');
-                    window.history.go(-1);
-                  </script>";
-            exit;
-        }
-    }
+    //     if ($edad < 18) {
+    //         echo "<script>
+    //                 alert('Debes ser mayor de 18 años de edad.');
+    //                 window.history.go(-1);
+    //               </script>";
+    //         exit;
+    //     }
+    // }
 
     // Validar el campo de teléfono
     if (!preg_match('/^[0-9]{10}$/', $telefono)) {

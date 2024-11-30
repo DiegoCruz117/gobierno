@@ -12,7 +12,7 @@ $mensaje = $_POST['mensaje'];
 // $rutaTemporal = $_FILES['foto']['tmp_name'];
 // $nombreImagen = $_FILES['foto']['name'];
 
-// //para que no se sobreescriban los nombres de las fotos 
+// //para que no se sobreescriban los nombres de las fotos
 // date_default_timezone_set('UTC');
 // $nombreimagenunico = date('Y-m-d-h-i-s') . "_" . $nombreImagen;
 

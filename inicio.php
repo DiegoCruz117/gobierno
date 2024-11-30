@@ -7,7 +7,7 @@ session_start();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Página de Inicio - Apoyo Gubernamental</title>
-  <link rel="stylesheet" href="estilos2.css">
+  <link rel="stylesheet" href="css/estilos2.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="icon" type="image/x-icon" href="imagenes/logo_icono.png">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -21,7 +21,7 @@ session_start();
 
         // Cierra el menú si se hace clic fuera de él
         $(document).click(function(event) {
-            if (!$(event.target).closest(".dropdown").length) { 
+            if (!$(event.target).closest(".dropdown").length) {
                 $("#dropdownMenu").hide(); // Oculta el menú
             }
         });

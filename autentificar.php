@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 require "conexion.php";
 
 $correo = $_POST['correo'];
@@ -15,8 +14,11 @@ if ($resultado->num_rows > 0) {
     $fila = $resultado->fetch_assoc();
     if (password_verify($contrasena, $fila['contrasena'])) {
         session_start();
+        session_regenerate_id(true); // Regenera el ID de sesión para prevenir fijación de sesión
         $_SESSION['username'] = $fila['nombre']; // Guarda el nombre del usuario
         $_SESSION['rol'] = $fila['rol']; // Guarda el rol del usuario
+        $_SESSION['user_id'] = $fila['id']; // Guarda el ID del usuario
+        $_SESSION['correo'] = $fila["correo"]; // Guarda el correo
         $_SESSION["autentificado"] = "SI";
 
         // Establece la cookie para el tiempo de actividad (10 minutos)

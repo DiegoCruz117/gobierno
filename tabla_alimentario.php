@@ -56,6 +56,14 @@
           ?>
         </table>
         <script>
+
+      function validar(url){
+        var eliminar = confirm("¿Desea eliminar el registro?");
+        if(eliminar == true){
+          window.location = url;
+        }
+      }
+
     function openTab(evt, tabName) {
       var i, tabcontent, tablinks;
       tabcontent = document.getElementsByClassName("tab-content");

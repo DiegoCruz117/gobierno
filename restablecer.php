@@ -14,7 +14,7 @@ if (isset($_GET['correo'])) {
 <head>
     <meta charset="UTF-8">
     <title>Restablecer Contraseña</title>
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="css/estilo.css">
     <script>
         function validarContrasena() {
             const contrasena = document.querySelector('input[name="contrasena"]').value;

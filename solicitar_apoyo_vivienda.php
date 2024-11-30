@@ -1,5 +1,10 @@
 <?php
 require "seguridad.php"; // Verificar que el usuario está autenticado
+if (!isset($_SESSION["autentificado"]) || $_SESSION["autentificado"] != "SI") {
+    header("Location: login.php");
+    exit();
+}
+$user_id = $_SESSION['user_id'];// Obtén el ID del usuario
 $usuario = $_SESSION['username'];
 ?>
 <!DOCTYPE html>
@@ -8,13 +13,29 @@ $usuario = $_SESSION['username'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Solicitud de Apoyo</title>
-    <link rel="stylesheet" href="estilos_apoyos.css"> <!-- Enlace al archivo CSS -->
+    <link rel="stylesheet" href="css/estilos_apoyos.css"> <!-- Enlace al archivo CSS -->
     
 </head>
 <body>
+    <?php
+        require "conexion.php";
+
+        $verusuario = "SELECT * FROM registro WHERE id = '$user_id'";
+
+        $resultado = mysqli_query($conectar, $verusuario);
+
+        // Verificar si hay resultados
+        if (!$resultado) {
+            die("Error en la consulta: " . mysqli_error($conectar));
+        }
+
+        $fila = mysqli_fetch_assoc($resultado);
+    ?>
 
 <form action="procesar_apoyo.php" method="post" class="form_solicitud_apoyo" enctype="multipart/form-data">
+<input type="hidden" name="id" value="<?php echo $fila['id']; ?>">
     <input type="hidden" name="tipo_apoyo" value="vivienda">
+
     <!-- Requisitos para el Apoyo -->
      <a href="apoyo_economico.php" class="btn_detalle">Regresar</a>
      <p><span class="necesario">*</span>Campos obligatorios</p>
@@ -27,11 +48,22 @@ $usuario = $_SESSION['username'];
 
     <!-- Información Personal -->
     <h3>Información Personal <span class="necesario">*</span></h3>
-    <input type="text" name="nombre" class="elemento_inp2" placeholder="Nombre Completo" required>
-    <p>Fecha de Nacimiento</p>
-    <input type="date" name="fecha_nacimiento" class="elemento_inp2" required>
-    <input type="tel" name="telefono" class="elemento_inp2" placeholder="Teléfono de Contacto (Ejemplo: 99 91 22 33 44)"required>
-    <input type="email" name="email" class="elemento_inp2" placeholder="Correo Electrónico (ejemplo@dominio.com)" required>
+
+    <label for="nombre">Nombre</label>
+    <input type="text" name="nombre" class="elemento_inp2 bg_disabled" value="<?php echo $fila['nombre'] ." ". $fila['apellido'];?>" disabled>
+    <input type="hidden" name="nombre" class="elemento_inp2 bg_disabled" value="<?php echo $fila['nombre'] ." ". $fila['apellido'];?>">
+
+    <label>Fecha de Nacimiento</label>
+    <input type="date" name="fecha_nacimiento" class="elemento_inp2 bg_disabled" value="<?php echo $fila['fecha'];?>" disabled>
+    <input type="hidden" name="fecha_nacimiento" class="elemento_inp2 bg_disabled" value="<?php echo $fila['fecha'];?>">
+
+    <label for="nombre">Teléfono de contacto</label>
+    <input type="tel" name="telefono" class="elemento_inp2" placeholder="(Ejemplo: 99 91 22 33 44)" minlength="10" maxlength="10" required>
+
+    <label for="email">Correo electrónico</label>
+    <input type="email" name="email" class="elemento_inp2 bg_disabled" value="<?php echo $fila['correo'];?>" disabled>
+    <input type="hidden" name="email" class="elemento_inp2 bg_disabled" value="<?php echo $fila['correo'];?>">
+    
     <input type="text" name="direccion" class="elemento_inp2" placeholder="Dirección Completa" required>
     <select name="estado_civil" class="elemento_inp2" required>
         <option value="" disabled selected>Estado Civil</option>

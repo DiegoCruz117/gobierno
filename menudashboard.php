@@ -12,7 +12,7 @@
             <hr>
             <li><a href="blog.php" class="menu_opciones">Seguimiento</a></li>
             <hr>
-            <li><a href="dashboard_usuarios.php	" class="menu_opciones">Usuarios</a></li>
+            <li><a href="dashboard_usuarios.php" class="menu_opciones">Usuarios</a></li>
             <hr>
             <li><a href="noticias_admin.php" class="menu_opciones">Noticias</a></li>
             <hr>

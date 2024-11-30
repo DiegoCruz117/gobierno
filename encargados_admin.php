@@ -8,7 +8,7 @@ $usuario = $_SESSION['username'];
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="css/estilos.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="icon" type="image/x-icon" href="imagenes/logo_icono.png">
 </head>
@@ -40,14 +40,14 @@ $usuario = $_SESSION['username'];
           <?php
           require "conexion.php";
 
-          $consulta = "SELECT 
+          $consulta = "SELECT
               ce.*,
-              ca.nombre_programa 
-            FROM crear_encargados ce 
-            INNER JOIN crear_apoyos ca 
-            ON ce.id_apoyos = ca.id_apoyos 
+              ca.nombre_programa
+            FROM crear_encargados ce
+            INNER JOIN crear_apoyos ca
+            ON ce.id_apoyos = ca.id_apoyos
             ORDER BY ce.id_encargados ASC";
-            
+
           $resultado = mysqli_query($conectar, $consulta);
           while($fila = mysqli_fetch_assoc($resultado)){
           ?>

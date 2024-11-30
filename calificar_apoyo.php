@@ -1,8 +1,8 @@
 <?php
-require "seguridad.php"; // Verificar que el usuario está autenticado
+require "seguridad.php";
 require "conexion.php";
+// include "seguridad.php";
 
-// Verifica si ya hay encargados calificados guardados en la sesión
 // Verifica si ya hay encargados calificados guardados en la sesión
 if (!isset($_SESSION['calificados'])) {
     $_SESSION['calificados'] = [];
@@ -13,11 +13,12 @@ $id_encargados = $_GET['id_encargados'] ?? null;
 
 // Verifica si el encargado ya fue calificado
 if ($id_encargados && in_array($id_encargados, $_SESSION['calificados'])) {
-    echo "<h3>Este encargado ya ha sido calificado.</h3>";
-    echo "<a href='inicio.php'>Volver al inicio</a>";
+    echo "<script>
+            alert('Este encargado ya ha sido calificado.');
+            window.location.href = 'inicio.php';
+        </script>";
     exit;
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -25,8 +26,8 @@ if ($id_encargados && in_array($id_encargados, $_SESSION['calificados'])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Testimonios - Apoyo Gubernamental</title>
-  <link rel="stylesheet" href="estilos2.css">
-  <link rel="stylesheet" href="apoyo.css">
+  <link rel="stylesheet" href="css/estilos2.css">
+  <link rel="stylesheet" href="cc/apoyo.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -61,19 +62,21 @@ if ($id_encargados && in_array($id_encargados, $_SESSION['calificados'])) {
 <br>
 
 <!-- Sección de Calificación -->
-<div class="container apoyos">
+<div class="container apoyos ancho">
   <h1>Calificar a Encargados de Apoyos</h1>
 
   <?php
-    require "conexion.php";
-
-    // Consulta para obtener los datos
-    $id_encargados = $_GET['id_encargados'];
-    $calificacion = "SELECT * FROM crear_encargados INNER JOIN crear_apoyos ON crear_encargados.id_apoyos = crear_apoyos.id_apoyos WHERE id_encargados = '$id_encargados'";
-    $resultado = mysqli_query($conectar, $calificacion);
-    $fila = $resultado->fetch_array();
-
+    // Consulta para obtener los datos del encargado
+    if ($id_encargados) {
+        $calificacion = "SELECT * FROM crear_encargados 
+                         INNER JOIN crear_apoyos 
+                         ON crear_encargados.id_apoyos = crear_apoyos.id_apoyos 
+                         WHERE id_encargados = '$id_encargados'";
+        $resultado = mysqli_query($conectar, $calificacion);
+        $fila = $resultado->fetch_array();
+    }
   ?>
+    <?php if ($fila): ?>
     <div>
         <h3>Encargado: <?php echo htmlspecialchars($fila['nombres'] . ' ' . $fila['apellidos']); ?></h3>
         <p>Proyecto: <span class="derecha"><?php echo htmlspecialchars($fila['nombre_programa']); ?></span></p>
@@ -89,17 +92,23 @@ if ($id_encargados && in_array($id_encargados, $_SESSION['calificados'])) {
         </div>
 
         <!-- Formulario para guardar calificación -->
-        <form action="" method="POST">
-            <input type="hidden" name="encargado" value="<?php echo ($fila['nombres'] . ' ' . $fila['apellidos']); ?>">
-            <input type="hidden" name="proyecto" value="<?php echo ($fila['nombre_programa']); ?>">
-            <input type="hidden" name="rating" class="rating-input">
-            <textarea name="comentario" class="comment-box" placeholder="Deja tu comentario..." required></textarea>
-            <button type="submit" class="rate-btn">Calificar</button>
-        </form>
+        <form action="guardar_calificacion.php" method="POST">
+    <input type="hidden" name="id_encargado" value="<?php echo $id_encargados; ?>">
+    <input type="hidden" name="encargado" value="<?php echo htmlspecialchars($fila['nombres'] . ' ' . $fila['apellidos']); ?>">
+    <input type="hidden" name="proyecto" value="<?php echo htmlspecialchars($fila['nombre_programa']); ?>">
+    <input type="hidden" name="rating" class="rating-input">
+    <textarea name="comentario" class="comment-box" placeholder="Deja tu comentario..." required></textarea>
+    <button type="submit" class="rate-btn">Calificar</button>
+</form>
+
 
     </div>
+    <?php else: ?>
+        <p>No se encontró información sobre el encargado.</p>
+    <?php endif; ?>
     <br><br>
 </div>
+
 
 <script>
 $(document).ready(function() {
@@ -113,47 +122,7 @@ $(document).ready(function() {
         // Actualizar el valor en el campo oculto del formulario
         $("input[name='rating']").val(rating); // Aquí se actualiza el campo 'rating' con el valor correcto
     });
-
-    // Manejo del envío del formulario
-    $(".rate-btn").click(function(e) {
-        e.preventDefault(); // Prevenir el comportamiento predeterminado del botón
-
-        // Obtener los valores del formulario
-        var form = $(this).closest("form");
-        var encargado = form.find("input[name='encargado']").val();
-        var proyecto = form.find("input[name='proyecto']").val();
-        var rating = form.find("input[name='rating']").val(); // Obtener el valor de rating desde el campo oculto
-        var comentario = form.find(".comment-box").val();
-
-        if (rating > 0) {
-            // Enviar datos por AJAX
-            $.ajax({
-                url: 'guardar_calificacion.php', // Archivo PHP para guardar los datos
-                type: 'POST',
-                data: {
-                    encargado: encargado,
-                    proyecto: proyecto,
-                    rating: rating,
-                    comentario: comentario
-                },
-                success: function() {
-                    alert('Registro exitoso');
-                    window.location.href = "inicio.php";  // Mostrar la respuesta del servidor
-                    // Opcional: limpiar el formulario
-                    form.find(".comment-box").val("");
-                    form.find(".stars i").removeClass("rated");
-                    form.find("input[name='rating']").val(""); // Limpiar el campo 'rating'
-                },
-                error: function(xhr, status, error) {
-                    alert('Hubo un error al guardar la calificación. Intenta nuevamente.');
-                }
-            });
-        } else {
-            alert("Por favor, califica a la persona con al menos 1 estrella.");
-        }
-    });
 });
-
 </script>
 
 <br><br><br>

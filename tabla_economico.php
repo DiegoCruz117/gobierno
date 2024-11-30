@@ -10,7 +10,6 @@
                 </div>
     </div>
 
-<table class="">
           <table class="tabla_usuarios">
           <tr>
             <th>ID</th>

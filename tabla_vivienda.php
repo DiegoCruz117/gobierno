@@ -56,3 +56,11 @@
           }
           ?>
         </table>
+        <script>
+    function validar(url){
+      var eliminar = confirm("¿Desea eliminar el registro?");
+      if(eliminar == true){
+        window.location = url;
+      }
+    }
+  </script>

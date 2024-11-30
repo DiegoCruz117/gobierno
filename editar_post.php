@@ -10,7 +10,7 @@ $id_noticia = $_GET['id_noticia'];
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="css/estilos.css">
   <script src="ckeditor/ckeditor.js"></script>
   <link rel="icon" type="image/x-icon" href="imagenes/logo_icono.png">
 </head>

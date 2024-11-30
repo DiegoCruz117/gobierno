@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Recuperar Contraseña</title>
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="css/estilo.css">
     <link rel="icon" type="image/x-icon" href="imagenes/logo_icono.png">
 </head>
 <body>
