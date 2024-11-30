@@ -1,0 +1,238 @@
+:root {
+    --color1:  #611232; /* Color principal */
+    --color2: #bebebe; /* Color secundario */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e9ecef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.cont_registrar {
+    width: 400px;
+    padding: 30px;
+    background-color: #ffffff;  
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.cont_registrar:hover {
+    transform: scale(1.02);
+}
+
+.titulo {
+    text-align: center;
+    color: var(--color1);
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.sub_cont_iniciar {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.caja {
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 2px solid var(--color1);
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+    width: 316px;
+}
+
+.caja:focus {
+    border-color: var(--color2);
+    outline: none;
+}
+
+.btn_crear {
+    background-color: var(--color1);
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.3s;
+    width: 315px;
+}
+
+.btn_regresar {
+    background-color: var(--color2);
+    color: rgb(0, 0, 0);
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    width: 315px;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 15px;
+}
+
+.btn_crear:hover {
+    background-color: var(--color2);
+    transform: translateY(-2px);
+}
+
+.fecha {
+    margin: 10px 0 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+select {
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 2px solid var(--color1);
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+select:focus {
+    border-color: var(--color2);
+    outline: none;
+}
+
+a {
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+    color: var(--color1);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: var(--color2);
+}
+
+/* recuperar_contraseña  */
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.form_wrapper {
+    width: 400px;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.titulo {
+    text-align: center;
+    color: var(--color1);
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+}
+
+.input_group {
+    margin-bottom: 20px;
+}
+
+.label {
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.input {
+    padding: 12px;
+    border: 2px solid var(--color1);
+    border-radius: 8px;
+    font-size: 16px;
+    width: 100%;
+    transition: border-color 0.3s;
+}
+
+.input:focus {
+    border-color: var(--color2);
+    outline: none;
+}
+
+.button_group {
+    display: flex;
+    justify-content: center;
+}
+
+.btn_crear2 {
+    background-color: var(--color1);
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.3s;
+    width: 340px;
+}
+
+.btn_regresar2 {
+    background-color: var(--color2);
+    color: rgb(0, 0, 0);
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    width: 340px;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 15px;
+}
+
+.btn_crear:hover {
+    background-color: var(--color2);
+    transform: translateY(-2px);
+}
+
+.btn_regresar3{
+    background-color: var(--color2);
+    color: rgb(0, 0, 0);
+    padding: 12px;
+    border: none;
+    text-decoration: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    width: 315px;
+    margin-top: 15px;
+}
+.btn_regresar3:hover{
+    transform: translateY(-2px);
+    color: white;
+    text-decoration: none;
+}
